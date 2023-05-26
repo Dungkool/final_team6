@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Slf4j
 @Controller
-@RequestMapping("/class")
+@RequestMapping("/cookingclass")
 public class ClassController {
 
 //    @Autowired
@@ -15,11 +15,11 @@ public class ClassController {
 //    @Autowired
 //    CartService cartService;
 
-    String dir = "class/";
+    String dir = "cookingclass/";
 
-    @RequestMapping("")
-    public String main(Model model){
-        model.addAttribute("center","class");
+    @RequestMapping("/class")
+    public String main(Model model) {
+        model.addAttribute("center", dir + "class");
         return "index";
     }
 }
