@@ -24,7 +24,7 @@ public class RecipeBasic {
     private String thumbnailimg;
     private String finishedimg;
     private int time;
-    private String level;
+    private String recipelevel;
     private String recipetitle;
     private String recipedesc;
     private Date recipedate;

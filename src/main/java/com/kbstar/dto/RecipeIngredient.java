@@ -9,7 +9,7 @@ import lombok.*;
 @Getter
 @ToString
 public class RecipeIngredient {
-    private int number;
+    private int ingredientnumber;
     private int recipepin;
     private String name;
     private String quantity;

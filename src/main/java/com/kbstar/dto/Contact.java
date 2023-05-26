@@ -19,8 +19,8 @@ public class Contact {
     private String contactcontent;
     private Date contactdate;
     private String answer;
-    private int 관리자번호;
-    private String 답변관리자;
-    private String 답변내용;
-    private Date 답변등록일자;
+    private int adminpin;
+    private String adminid;
+    private String answercontent;
+    private Date answerdate;
 }

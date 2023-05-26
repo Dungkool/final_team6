@@ -15,5 +15,5 @@ public class Notice {
     private int adminpin;
     private String noticetitle;
     private String noticecontent;
-    private Date date;
+    private Date noticedate;
 }

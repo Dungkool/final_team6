@@ -15,5 +15,5 @@ public class BanText {
     private int adminpin;
     private String adminid;
     private String status;
-    private Date date;
+    private Date bantextdate;
 }
