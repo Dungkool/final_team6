@@ -64,15 +64,18 @@
                                 </div>
                             </div>
                         </div>
-
-                        <c:forEach var="obj" items="${recipelist}">
                         <div class="row">
                             <div class="col-lg-4 col-md-6 col-sm-6">
                                 <div class="product__item">
-                                    <div class="product__item__pic set-bg">
-                                        <a href="#" data-toggle="modal" data-target="#target${obj.id}">
-                                            <img src="/uimg/${obj.imgname}" alt="">
-                                        </a>
+                                    <div
+                                            class="product__item__pic set-bg"
+                                            data-setbg="/img/trending/trend-1.jpg"
+                                    >
+                                        <div class="ep">18 / 18</div>
+                                        <div class="comment">
+                                            <i class="fa fa-comments"></i> 11
+                                        </div>
+                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
                                     </div>
                                     <div class="product__item__text">
                                         <ul>
@@ -80,51 +83,271 @@
                                             <li>Movie</li>
                                         </ul>
                                         <h5>
-                                            <a href="#">${obj.recipetitle}<br>한그릇 덮밥 추천</a>
+                                            <a href="#">오야꼬동 만들기<br>한그릇 덮밥 추천</a>
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div
+                                            class="product__item__pic set-bg"
+                                            data-setbg="/img/trending/trend-2.jpg"
+                                    >
+                                        <div class="ep">18 / 18</div>
+                                        <div class="comment">
+                                            <i class="fa fa-comments"></i> 11
+                                        </div>
+                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>Active</li>
+                                            <li>Movie</li>
+                                        </ul>
+                                        <h5>
+                                            <a href="#"
+                                            >Gintama Movie 2: Kanketsu-hen - Yorozuya yo Eien</a
+                                            >
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div
+                                            class="product__item__pic set-bg"
+                                            data-setbg="/img/trending/trend-3.jpg"
+                                    >
+                                        <div class="ep">18 / 18</div>
+                                        <div class="comment">
+                                            <i class="fa fa-comments"></i> 11
+                                        </div>
+                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>Active</li>
+                                            <li>Movie</li>
+                                        </ul>
+                                        <h5>
+                                            <a href="#">Shingeki no Kyojin Season 3 Part 2</a>
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div
+                                            class="product__item__pic set-bg"
+                                            data-setbg="/img/trending/trend-4.jpg"
+                                    >
+                                        <div class="ep">18 / 18</div>
+                                        <div class="comment">
+                                            <i class="fa fa-comments"></i> 11
+                                        </div>
+                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>Active</li>
+                                            <li>Movie</li>
+                                        </ul>
+                                        <h5><a href="#">Fullmetal Alchemist: Brotherhood</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div
+                                            class="product__item__pic set-bg"
+                                            data-setbg="/img/trending/trend-5.jpg"
+                                    >
+                                        <div class="ep">18 / 18</div>
+                                        <div class="comment">
+                                            <i class="fa fa-comments"></i> 11
+                                        </div>
+                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>Active</li>
+                                            <li>Movie</li>
+                                        </ul>
+                                        <h5><a href="#">Shiratorizawa Gakuen Koukou</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div
+                                            class="product__item__pic set-bg"
+                                            data-setbg="/img/trending/trend-6.jpg"
+                                    >
+                                        <div class="ep">18 / 18</div>
+                                        <div class="comment">
+                                            <i class="fa fa-comments"></i> 11
+                                        </div>
+                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>Active</li>
+                                            <li>Movie</li>
+                                        </ul>
+                                        <h5>
+                                            <a href="#">Code Geass: Hangyaku no Lelouch R2</a>
                                         </h5>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        </c:forEach>
-
-<%--                        <c:forEach var="obj" items="${clist}">--%>
-<%--                            <div class="col-lg-4 col-md-6 col-sm-12 pb-1">--%>
-
-<%--                                <div class="card product-item border-0 mb-4">--%>
-
-<%--                                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">--%>
-<%--                                        <a href="#" data-toggle="modal" data-target="#target${obj.id}">--%>
-<%--                                            <img class="img-fluid w-100" src="/uimg/${obj.imgname}" alt="">--%>
-<%--                                        </a>--%>
-<%--                                    </div>--%>
-<%--                                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">--%>
-<%--                                        <h6 class="text-truncate mb-3">${obj.name}</h6>--%>
-<%--                                        <div class="d-flex justify-content-center">--%>
-<%--                                            <h6><fmt:formatNumber type="number" pattern="###,###원" value="${obj.price}"/></h6>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                    <div class="card-footer d-flex justify-content-between bg-light border">--%>
-<%--                                        <a href="/item/detail?id=${obj.id}" class="btn btn-sm text-dark p-0"><i--%>
-<%--                                                class="fas fa-eye text-primary mr-1"></i>View--%>
-<%--                                            Detail</a>--%>
-<%--                                        <form id="cart_form_${obj.id}" class="cart_form">--%>
-<%--                                            <input type="hidden" name="cust_id" value="${logincust.id}">--%>
-<%--                                            <input type="hidden" name="item_id" value="${obj.id}">--%>
-<%--                                            <input type="hidden" name="detail_cnt" value=0>--%>
-<%--                                            <input type="hidden" name="cnt" value=1>--%>
-<%--                                            <button type="button" class="btn btn-sm text-dark p-0 cartplus_btn"--%>
-<%--                                                    id="cartplus_btn_${obj.id}">--%>
-<%--                                                <i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart--%>
-<%--                                            </button>--%>
-<%--                                        </form>--%>
-<%--                                    </div>--%>
-
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </c:forEach>--%>
-
-
+                    </div>
+                    <div class="popular__product">
+                        <div class="row">
+                            <div class="col-lg-8 col-md-8 col-sm-8">
+                                <div class="section-title">
+                                    <h4>Popular Shows</h4>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                <div class="btn__all">
+                                    <a href="#" class="primary-btn"
+                                    >View All <span class="arrow_right"></span
+                                    ></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div
+                                            class="product__item__pic set-bg"
+                                            data-setbg="/img/popular/popular-1.jpg"
+                                    >
+                                        <div class="ep">18 / 18</div>
+                                        <div class="comment">
+                                            <i class="fa fa-comments"></i> 11
+                                        </div>
+                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>Active</li>
+                                            <li>Movie</li>
+                                        </ul>
+                                        <h5><a href="#">Sen to Chihiro no Kamikakushi</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div
+                                            class="product__item__pic set-bg"
+                                            data-setbg="/img/popular/popular-2.jpg"
+                                    >
+                                        <div class="ep">18 / 18</div>
+                                        <div class="comment">
+                                            <i class="fa fa-comments"></i> 11
+                                        </div>
+                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>Active</li>
+                                            <li>Movie</li>
+                                        </ul>
+                                        <h5><a href="#">Kizumonogatari III: Reiket su-hen</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div
+                                            class="product__item__pic set-bg"
+                                            data-setbg="/img/popular/popular-3.jpg"
+                                    >
+                                        <div class="ep">18 / 18</div>
+                                        <div class="comment">
+                                            <i class="fa fa-comments"></i> 11
+                                        </div>
+                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>Active</li>
+                                            <li>Movie</li>
+                                        </ul>
+                                        <h5><a href="#">Shirogane Tamashii hen Kouhan sen</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div
+                                            class="product__item__pic set-bg"
+                                            data-setbg="/img/popular/popular-4.jpg"
+                                    >
+                                        <div class="ep">18 / 18</div>
+                                        <div class="comment">
+                                            <i class="fa fa-comments"></i> 11
+                                        </div>
+                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>Active</li>
+                                            <li>Movie</li>
+                                        </ul>
+                                        <h5>
+                                            <a href="#">Rurouni Kenshin: Meiji Kenkaku Romantan</a>
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div
+                                            class="product__item__pic set-bg"
+                                            data-setbg="/img/popular/popular-5.jpg"
+                                    >
+                                        <div class="ep">18 / 18</div>
+                                        <div class="comment">
+                                            <i class="fa fa-comments"></i> 11
+                                        </div>
+                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>Active</li>
+                                            <li>Movie</li>
+                                        </ul>
+                                        <h5><a href="#">Mushishi Zoku Shou 2nd Season</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div
+                                            class="product__item__pic set-bg"
+                                            data-setbg="/img/popular/popular-6.jpg"
+                                    >
+                                        <div class="ep">18 / 18</div>
+                                        <div class="comment">
+                                            <i class="fa fa-comments"></i> 11
+                                        </div>
+                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>Active</li>
+                                            <li>Movie</li>
+                                        </ul>
+                                        <h5><a href="#">Monogatari Series: Second Season</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-8">
