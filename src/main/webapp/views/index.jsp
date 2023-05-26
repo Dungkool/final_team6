@@ -47,7 +47,7 @@
             <div class="col-lg-2">
                 <div class="header__logo">
                     <a href="/">
-                        <img style="width: 50px" src="/img/logo.png" alt="" />
+                        <img style="width: 125px" src="/img/logo.png" alt="" />
                     </a>
                 </div>
             </div>
@@ -55,7 +55,7 @@
                 <div class="header__nav">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li class="active"><a href="/recipe">Recipe</a></li>
+                            <li class="active"><a href="/recipe/all">Recipe</a></li>
                             <li>
                                 <a href="/class">Class</a>
                                 <ul class="dropdown">
@@ -908,14 +908,14 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="footer__logo">
-                    <a href="/"><img style="width: 50px" src="/img/logo.png" alt="" /></a>
+                    <a href="/"><img style="width: 125px" src="/img/logo.png" alt="" /></a>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="footer__nav">
                     <ul>
                         <li class="active"><a href="/">Homepage</a></li>
-                        <li><a href="/recipe">Recipe</a></li>
+                        <li><a href="/recipe/all">Recipe</a></li>
                         <li><a href="/class">Class</a></li>
                         <li><a href="/contacts">Contacts</a></li>
                     </ul>
