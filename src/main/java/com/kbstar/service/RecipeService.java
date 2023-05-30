@@ -54,7 +54,8 @@ public class RecipeService implements KBService<Integer, RecipeBasic> {
     }
 
     public Page<RecipeBasic> getPage(int pageNo) throws Exception {
-        PageHelper.startPage(pageNo, 6); // 9: 한화면에 출력되는 개수
+        PageHelper.startPage(pageNo, 6); // 6: 한화면에 출력되는 개수
         return mapper.getpage();
     }
+
 }
