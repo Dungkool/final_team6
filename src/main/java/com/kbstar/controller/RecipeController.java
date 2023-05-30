@@ -34,8 +34,8 @@ public class RecipeController {
         PageInfo<RecipeBasic> p;
         List<RecipeBasic> recipeList = null;
         try {
-            p = new PageInfo<>(recipeService.getPage(pageNo), 5);
-            recipeList = recipeService.get();
+            p = new PageInfo<>(recipeService.getPage(pageNo), 3);
+            recipeList = p.getList();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

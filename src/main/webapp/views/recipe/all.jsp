@@ -73,8 +73,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+
 
     <section class="product spad">
         <div class="container">
@@ -116,66 +115,64 @@
                             </div>
                         </c:forEach>
                         </div>
+
                         <!-- pagination start -->
-                        <div class="col-12 pb-1">
-                            <nav aria-label="Page navigation">
-                                <ul class="pagination justify-content-center mb-3">
-                                    <c:choose>
-                                        <c:when test="${cpage.getPrePage() != 0}">
-                                            <li class="page-item">
-                                                <a class="page-link" href="/recipe/all?pageNo=${cpage.getPrePage()}"
-                                                   aria-label="Previous">
-                                                    <span aria-hidden="true">&laquo;</span>
-                                                    <span class="sr-only">Previous</span>
-                                                </a>
-                                            </li>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <li class="page-item disabled">
-                                                <a class="page-link" href="#" aria-label="Previous">
-                                                    <span aria-hidden="true">&laquo;</span>
-                                                    <span class="sr-only">Previous</span>
-                                                </a>
-                                            </li>
-                                        </c:otherwise>
-                                    </c:choose>
-                                    <c:forEach begin="${cpage.getNavigateFirstPage() }" end="${cpage.getNavigateLastPage() }"
-                                               var="page">
+                        <div class="row">
+                            <div class="col-lg-12 text-center">
+                                <div class="pagination-wrap">
+                                    <ul>
                                         <c:choose>
-                                            <c:when test="${cpage.getPageNum() == page}">
-                                                <li class="page-item active">
-                                                    <a class="page-link" href="/recipe/all?pageNo=${page}">${page}</a>
+                                            <c:when test="${cpage.getPrePage() != 0}">
+                                                <li class="pagination-wrap">
+                                                    <a class="page-link" href="/recipe/all?pageNo=${cpage.getPrePage()}" aria-label="Previous">
+                                                        <span>Prev</span>
+                                                    </a>
                                                 </li>
                                             </c:when>
                                             <c:otherwise>
-                                                <li>
-                                                    <a class="page-link" href="/recipe/all?pageNo=${page}">${page}</a>
+                                                <li class="pagination-wrap disabled">
+                                                    <a class="page-link" href="#" aria-label="Previous">
+                                                        <span>Prev</span>
+                                                    </a>
                                                 </li>
                                             </c:otherwise>
                                         </c:choose>
-                                    </c:forEach>
-                                    <c:choose>
-                                        <c:when test="${cpage.getNextPage() != 0}">
-                                            <li class="page-item">
-                                                <a class="page-link" href="/recipe/all?pageNo=${cpage.getNextPage()}"
-                                                   aria-label="Next">
-                                                    <span aria-hidden="true">&raquo;</span>
-                                                    <span class="sr-only">Next</span>
-                                                </a>
-                                            </li>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <li class="page-item disabled">
-                                                <a class="page-link" href="#" aria-label="Next">
-                                                    <span aria-hidden="true">&raquo;</span>
-                                                    <span class="sr-only">Next</span>
-                                                </a>
-                                            </li>
-                                        </c:otherwise>
-                                    </c:choose>
 
-                                </ul>
-                            </nav>
+                                        <c:forEach begin="${cpage.getNavigateFirstPage() }" end="${cpage.getNavigateLastPage() }" var="page">
+                                            <c:choose>
+                                                <c:when test="${cpage.getPageNum() == page}">
+                                                    <li class="pagination-wrap active">
+                                                        <a class="page-link" href="/recipe/all?pageNo=${page}">${page}</a>
+                                                    </li>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <li>
+                                                        <a class="page-link" href="/recipe/all?pageNo=${page}">${page}</a>
+                                                    </li>
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </c:forEach>
+
+                                        <c:choose>
+                                            <c:when test="${cpage.getNextPage() != 0}">
+                                                <li class="pagination-wrap">
+                                                    <a class="page-link" href="/recipe/all?pageNo=${cpage.getNextPage()}"
+                                                       aria-label="Next">
+                                                        <span>Next</span>
+                                                    </a>
+                                                </li>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <li class="pagination-wrap disabled">
+                                                    <a class="page-link" href="#" aria-label="Next">
+                                                        <span>Next</span>
+                                                    </a>
+                                                </li>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                         <!-- pagination end -->
 
@@ -313,6 +310,7 @@
             </div>
         </div>
     </section>
-
+            </div>
+        </div>
 
 </body>
