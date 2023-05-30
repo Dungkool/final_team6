@@ -59,7 +59,7 @@
                             <li>
                                 <a href="/cookingclass/class">Class</a>
                                 <ul class="dropdown">
-                                    <li><a href="./categories.html">Categories</a></li>
+                                    <li><a href="/cookingclass/class">Categories</a></li>
                                     <li><a href="./anime-details.html">Anime Details</a></li>
                                     <li>
                                         <a href="./anime-watching.html">Anime Watching</a>
