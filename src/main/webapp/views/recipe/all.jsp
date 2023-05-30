@@ -2,48 +2,79 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content="Anime Template" />
-    <meta name="keywords" content="Anime, unica, creative, html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Colly on the Table | Template</title>
-
-    <!-- Google Font -->
-    <link
-            href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap"
-            rel="stylesheet"
-    />
-    <link
-            href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
-            rel="stylesheet"
-    />
-
-    <!-- Css Styles -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css" />
-    <link rel="stylesheet" href="/css/elegant-icons.css" type="text/css" />
-    <link rel="stylesheet" href="/css/plyr.css" type="text/css" />
-    <link rel="stylesheet" href="/css/nice-select.css" type="text/css" />
-    <link rel="stylesheet" href="/css/owl.carousel.min.css" type="text/css" />
-    <link rel="stylesheet" href="/css/slicknav.min.css" type="text/css" />
-    <link rel="stylesheet" href="/css/style.css" type="text/css" />
+    <!-- google font -->
+    <%--    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">--%>
+    <%--    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">--%>
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="/css/all.min.css">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <!-- owl carousel -->
+    <link rel="stylesheet" href="/css/owl.carousel.css">
+    <!-- magnific popup -->
+    <link rel="stylesheet" href="/css/magnific-popup.css">
+    <!-- animate css -->
+    <link rel="stylesheet" href="/css/animate.css">
+    <!-- mean menu css -->
+    <link rel="stylesheet" href="/css/meanmenu.min.css">
+    <!-- main style -->
+    <link rel="stylesheet" href="/css/main.css">
+    <!-- responsive -->
+    <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="/css/style.css" type="text/css"/>
 </head>
 
 <body>
-    <div>
-        <h1>Recipe</h1>
-    </div>
+        <!-- Normal Breadcrumb Begin -->
+        <section class="normal-breadcrumb set-bg" data-setbg="/uimg/recipemain.jpg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <div class="normal__breadcrumb__text">
+                            <h2>RECIPES ALL OVER THE WORLD</h2>
+                            <p>Welcome to RECIPES</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Normal Breadcrumb End -->
 
-    <div>
-        <div>
-            <h3>종류별</h3> <button>한식</button><button>한식</button><button>한식</button><button>한식</button>
+        <div class="product-section mt-150 mb-150">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="product-filters">
+                            <ul>
+                                <li class="active" data-filter="*">지역별</li>
+                                <li data-filter="#">서울</li>
+                                <li data-filter="#">인천</li>
+                                <li data-filter="#">경기</li>
+                                <li data-filter="#">대전</li>
+                                <li data-filter="#">충청</li>
+                                <li data-filter="#">부산</li>
+                                <li data-filter="#">대구</li>
+                                <li data-filter="#">울산</li>
+                                <li data-filter="#">경상</li>
+                                <li data-filter="#">광주</li>
+                                <li data-filter="#">전라</li>
+                                <li data-filter="#">강원</li>
+                                <li data-filter="#">기타</li>
+                            </ul>
+                            <ul>
+                                <li class="active" data-filter="*">종류별</li>
+                                <li data-filter="#">한식</li>
+                                <li data-filter="#">양식</li>
+                                <li data-filter="#">중식</li>
+                                <li data-filter="#">일식</li>
+                                <li data-filter="#">기타</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <h3>상황별</h3>
-        <h3>재료별</h3>
-    </div>
 
     <section class="product spad">
         <div class="container">
@@ -64,65 +95,89 @@
                                 </div>
                             </div>
                         </div>
-
-                        <c:forEach var="obj" items="${recipelist}">
-                        <div class="row">
+                        <div class="row" >
+                        <c:forEach var="obj" items="${recipeList}">
                             <div class="col-lg-4 col-md-6 col-sm-6">
                                 <div class="product__item">
-                                    <div class="product__item__pic set-bg">
-                                        <a href="#" data-toggle="modal" data-target="#target${obj.id}">
-                                            <img src="/uimg/${obj.imgname}" alt="">
-                                        </a>
-                                    </div>
+                                    <a href="/recipe/detail?recipepin=${obj.recipepin}" data-target="#target${obj.recipepin}">
+                                        <div class="product__item__pic set-bg" data-setbg="/uimg/${obj.thumbnailimg}"></div>
+<%--                                            <img src="/uimg/${obj.thumbnailimg}" alt="">--%>
+                                    </a>
                                     <div class="product__item__text">
                                         <ul>
                                             <li>Active</li>
                                             <li>Movie</li>
                                         </ul>
                                         <h5>
-                                            <a href="#">${obj.recipetitle}<br>한그릇 덮밥 추천</a>
+                                            <a href="/recipe/detail?recipepin=${obj.recipepin}">${obj.recipetitle}<br>${obj.recipedesc}</a>
                                         </h5>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         </c:forEach>
+                        </div>
+                        <!-- pagination start -->
+                        <div class="col-12 pb-1">
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination justify-content-center mb-3">
+                                    <c:choose>
+                                        <c:when test="${cpage.getPrePage() != 0}">
+                                            <li class="page-item">
+                                                <a class="page-link" href="/recipe/all?pageNo=${cpage.getPrePage()}"
+                                                   aria-label="Previous">
+                                                    <span aria-hidden="true">&laquo;</span>
+                                                    <span class="sr-only">Previous</span>
+                                                </a>
+                                            </li>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <li class="page-item disabled">
+                                                <a class="page-link" href="#" aria-label="Previous">
+                                                    <span aria-hidden="true">&laquo;</span>
+                                                    <span class="sr-only">Previous</span>
+                                                </a>
+                                            </li>
+                                        </c:otherwise>
+                                    </c:choose>
+                                    <c:forEach begin="${cpage.getNavigateFirstPage() }" end="${cpage.getNavigateLastPage() }"
+                                               var="page">
+                                        <c:choose>
+                                            <c:when test="${cpage.getPageNum() == page}">
+                                                <li class="page-item active">
+                                                    <a class="page-link" href="/recipe/all?pageNo=${page}">${page}</a>
+                                                </li>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <li>
+                                                    <a class="page-link" href="/recipe/all?pageNo=${page}">${page}</a>
+                                                </li>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </c:forEach>
+                                    <c:choose>
+                                        <c:when test="${cpage.getNextPage() != 0}">
+                                            <li class="page-item">
+                                                <a class="page-link" href="/recipe/all?pageNo=${cpage.getNextPage()}"
+                                                   aria-label="Next">
+                                                    <span aria-hidden="true">&raquo;</span>
+                                                    <span class="sr-only">Next</span>
+                                                </a>
+                                            </li>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <li class="page-item disabled">
+                                                <a class="page-link" href="#" aria-label="Next">
+                                                    <span aria-hidden="true">&raquo;</span>
+                                                    <span class="sr-only">Next</span>
+                                                </a>
+                                            </li>
+                                        </c:otherwise>
+                                    </c:choose>
 
-<%--                        <c:forEach var="obj" items="${clist}">--%>
-<%--                            <div class="col-lg-4 col-md-6 col-sm-12 pb-1">--%>
-
-<%--                                <div class="card product-item border-0 mb-4">--%>
-
-<%--                                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">--%>
-<%--                                        <a href="#" data-toggle="modal" data-target="#target${obj.id}">--%>
-<%--                                            <img class="img-fluid w-100" src="/uimg/${obj.imgname}" alt="">--%>
-<%--                                        </a>--%>
-<%--                                    </div>--%>
-<%--                                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">--%>
-<%--                                        <h6 class="text-truncate mb-3">${obj.name}</h6>--%>
-<%--                                        <div class="d-flex justify-content-center">--%>
-<%--                                            <h6><fmt:formatNumber type="number" pattern="###,###원" value="${obj.price}"/></h6>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                    <div class="card-footer d-flex justify-content-between bg-light border">--%>
-<%--                                        <a href="/item/detail?id=${obj.id}" class="btn btn-sm text-dark p-0"><i--%>
-<%--                                                class="fas fa-eye text-primary mr-1"></i>View--%>
-<%--                                            Detail</a>--%>
-<%--                                        <form id="cart_form_${obj.id}" class="cart_form">--%>
-<%--                                            <input type="hidden" name="cust_id" value="${logincust.id}">--%>
-<%--                                            <input type="hidden" name="item_id" value="${obj.id}">--%>
-<%--                                            <input type="hidden" name="detail_cnt" value=0>--%>
-<%--                                            <input type="hidden" name="cnt" value=1>--%>
-<%--                                            <button type="button" class="btn btn-sm text-dark p-0 cartplus_btn"--%>
-<%--                                                    id="cartplus_btn_${obj.id}">--%>
-<%--                                                <i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart--%>
-<%--                                            </button>--%>
-<%--                                        </form>--%>
-<%--                                    </div>--%>
-
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </c:forEach>--%>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!-- pagination end -->
 
 
                     </div>

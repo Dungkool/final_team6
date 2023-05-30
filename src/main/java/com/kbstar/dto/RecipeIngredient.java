@@ -9,8 +9,8 @@ import lombok.*;
 @Getter
 @ToString
 public class RecipeIngredient {
-    private int ingredientnumber;
-    private int recipepin;
+    private Integer ingredientnumber;
+    private Integer recipepin;
     private String name;
     private String quantity;
 }
