@@ -10,14 +10,12 @@ import org.springframework.stereotype.Repository;
 @Mapper
 public interface RecipeMapper extends KBMapper<Integer, RecipeBasic> {
 
-//    public List<RecipeBasic> search(ItemSearch csearch);
-//
-//    public List<RecipeBasic> searchcategory(ItemSearch csearch);
+//    public List<RecipeBasic> searchcategory(RecipeBasicSearch csearch);
 
     Page<RecipeBasic> getpage() throws Exception;
 
-//    Page<RecipeBasic> getpagesearch(String name) throws Exception;
-//
-//    Page<RecipeBasic> getpagecate(String name) throws Exception;
+    Page<RecipeBasic> getpagesearch(String name) throws Exception;
+
+    Page<RecipeBasic> getpagecate(String name) throws Exception;
 
 }

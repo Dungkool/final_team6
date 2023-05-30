@@ -1,12 +1,11 @@
 package com.kbstar.service;
 
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
 import com.kbstar.dto.RecipeBasic;
 import com.kbstar.frame.KBService;
 import com.kbstar.mapper.RecipeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -14,6 +13,7 @@ import java.util.List;
 public class RecipeService implements KBService<Integer, RecipeBasic> {
     @Autowired
     RecipeMapper mapper;
+
 
     /**
      * 등록 및 가입 진행
@@ -42,19 +42,9 @@ public class RecipeService implements KBService<Integer, RecipeBasic> {
         return mapper.select(recipepin);
     }
 
-//    @Transactional(readOnly = true)
+    @Transactional(readOnly = true)
     @Override
     public List<RecipeBasic> get() throws Exception {
         return mapper.selectall();
-    }
-
-    @Override
-    public List<RecipeBasic> getAllIngredient(Integer integer) throws Exception {
-        return null;
-    }
-
-    public Page<RecipeBasic> getPage(int pageNo) throws Exception {
-        PageHelper.startPage(pageNo, 6); // 9: 한화면에 출력되는 개수
-        return mapper.getpage();
     }
 }
