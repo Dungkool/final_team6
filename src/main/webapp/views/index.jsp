@@ -57,9 +57,9 @@
                         <ul>
                             <li class="active"><a href="/recipe/all">Recipe</a></li>
                             <li>
-                                <a href="/class">Class</a>
+                                <a href="/cookingclass/class">Class</a>
                                 <ul class="dropdown">
-                                    <li><a href="./categories.html">Categories</a></li>
+                                    <li><a href="/cookingclass/class">Categories</a></li>
                                     <li><a href="./anime-details.html">Anime Details</a></li>
                                     <li>
                                         <a href="./anime-watching.html">Anime Watching</a>
@@ -168,9 +168,5 @@
 <script src="/js/main.js"></script>
 </body>
 
-<style>
-    #logoimg:hover {
 
-    }
-</style>
 </html>
