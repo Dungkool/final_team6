@@ -9,12 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/cookingclass")
 public class ClassController {
-
-//    @Autowired
-//    ItemService itemService;
-//    @Autowired
-//    CartService cartService;
-
     String dir = "cookingclass/";
 
     @RequestMapping("/class")
