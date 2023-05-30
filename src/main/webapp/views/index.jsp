@@ -11,8 +11,6 @@
     <meta name="keywords" content="Anime, unica, creative, html"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <title>Colly on the Table | Template</title>
 
     <!-- Google Font -->
@@ -59,9 +57,9 @@
                         <ul>
                             <li class="active"><a href="/recipe/all">Recipe</a></li>
                             <li>
-                                <a href="/cookingclass/class">Class</a>
+                                <a href="/class">Class</a>
                                 <ul class="dropdown">
-                                    <li><a href="/cookingclass/class">Categories</a></li>
+                                    <li><a href="./categories.html">Categories</a></li>
                                     <li><a href="./anime-details.html">Anime Details</a></li>
                                     <li>
                                         <a href="./anime-watching.html">Anime Watching</a>
@@ -80,10 +78,10 @@
             <div class="col-lg-2">
                 <div class="header__right">
                     <a href="/login" class="search-switch">
-                        <span style="color: black">Login</span>
+                        <span>Login</span>
                     </a>
                     <a href="/apply">
-                        <span style="color: black">Apply</span>
+                        <span>Apply</span>
                     </a>
                 </div>
             </div>
@@ -92,7 +90,6 @@
     </div>
 </header>
 <!-- Header End -->
-
 
 <!--  Main Center Start -->
 <c:choose>
@@ -170,5 +167,9 @@
 <script src="/js/main.js"></script>
 </body>
 
+<style>
+    #logoimg:hover {
 
+    }
+</style>
 </html>
