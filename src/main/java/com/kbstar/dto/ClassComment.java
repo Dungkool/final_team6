@@ -17,5 +17,5 @@ public class ClassComment {
     private String custid;
     private String nickname;
     private String content;
-    private Date date;
+    private Date classcommentdate;
 }
