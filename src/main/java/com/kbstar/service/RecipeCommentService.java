@@ -45,7 +45,8 @@ public class RecipeCommentService implements KBService<Integer, RecipeComment> {
         return mapper.selectall();
     }
 
-    public List<RecipeComment> getAllIngredient(Integer recipepin) throws Exception {
-        return mapper.selectAllComment(recipepin);
+    @Override
+    public List<RecipeComment> getAllIngredient(Integer integer) throws Exception {
+        return null;
     }
 }

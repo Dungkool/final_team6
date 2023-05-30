@@ -34,8 +34,8 @@ public class RecipeController {
         PageInfo<RecipeBasic> p;
         List<RecipeBasic> recipeList = null;
         try {
-            p = new PageInfo<>(recipeService.getPage(pageNo), 3);
-            recipeList = p.getList();
+            p = new PageInfo<>(recipeService.getPage(pageNo), 5);
+            recipeList = recipeService.get();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -54,7 +54,7 @@ public class RecipeController {
 
         recipe = recipeService.get(recipepin);
         ingredient = ingredientService.getAllIngredient(recipepin);
-        comment = commentService.getAllIngredient(recipepin);
+        comment = commentService.get();
 
         model.addAttribute("recipedetail", recipe);
         model.addAttribute("ingredientList", ingredient);
@@ -62,4 +62,6 @@ public class RecipeController {
         model.addAttribute("center", dir + "detail");
         return "index";
     }
+
+
 }
