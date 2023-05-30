@@ -1003,7 +1003,7 @@ ol {
 }
 
 .anime__details__title h3 {
-    color: #ffffff;
+    color: #b7b7b7;
     font-weight: 700;
     margin-bottom: 13px;
 }
@@ -1044,7 +1044,7 @@ ol {
 .anime__details__widget ul li {
     list-style: none;
     font-size: 15px;
-    color: #ffffff;
+    color: #b7b7b7;
     line-height: 30px;
     position: relative;
     padding-left: 18px;

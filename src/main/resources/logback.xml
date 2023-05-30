@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <!-- directory 선언. 파일로 저장. 저장 경로 : value="./logs" 지정시, logs 폴더 생성하여 저장 -->
-    <!-- <property name="LOGS_ABSOLUTE_PATH" value="./logs" />-->
-    <!-- <property name="LOGS_CUSTINFO" value="./src/main/resources/static/logs" />-->
-    <property name="LOGS_DIR" value="/Users/jang-eunjeong/spring/logs" />
-
+        <property name="LOGS_DIR" value="c://project/logs" />
+<!--    <property name="LOGS_DIR" value="/root/logs" />-->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
             <!--<Pattern>[%d{MM-dd HH:mm:ss}][%thread] %-5level %logger{36} - %msg%n</Pattern>-->
