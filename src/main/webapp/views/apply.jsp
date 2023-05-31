@@ -7,7 +7,7 @@
     let register_form = {
         init: function () {
             $('#register_btn').prop("disabled", true);
-            $('#register_btn').css('background', 'grey');
+            $('#register_btn').css('background', '#b7b7b7');
             $("#register_btn").click(function () {
                 register_form.send();
             });
@@ -21,7 +21,7 @@
                     $('#register_btn').css('background', '#e53637');
                 } else {
                     $('#register_btn').prop("disabled", true);
-                    $('#register_btn').css('background', 'grey');
+                    $('#register_btn').css('background', '#b7b7b7');
                 }
             });
 
@@ -85,14 +85,14 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="login__form">
-                    <h3>Sign Up</h3>
+                    <h3 style="color: #b7b7b7">Sign Up</h3>
                     <form id="register_form">
                         <div class="input__item" style="margin-bottom: 0">
                             <input type="text" placeholder="Your ID" name="custid" id="custid">
                             <span class="icon_profile"></span>
                         </div>
                         <div style="height: 20px"><span id="check_id"
-                                                        style="color: grey; margin-left: 50px; font-size: 12px"></span>
+                                                        style="color: #b7b7b7; margin-left: 50px; font-size: 12px"></span>
                         </div>
                         <div class="input__item">
                             <input type="password" placeholder="Password" name="password" id="password">
@@ -104,12 +104,12 @@
                         </div>
                         <button type="button" class="site-btn" id="register_btn">Signup Now</button>
                     </form>
-                    <h5>Already have an account? <a href="/login">Log In!</a></h5>
+                    <h5 style="color: #b7b7b7">Already have an account? <a href="/login">Log In!</a></h5>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="login__social__links">
-                    <h3>Login With:</h3>
+                    <h3 style="color: #b7b7b7">Login With:</h3>
                     <ul>
                         <li><a href="#" class="facebook"><i class="fa fa-facebook"></i> Sign in With Facebook</a>
                         </li>
