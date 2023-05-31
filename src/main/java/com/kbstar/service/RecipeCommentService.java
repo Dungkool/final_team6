@@ -45,8 +45,5 @@ public class RecipeCommentService implements KBService<Integer, RecipeComment> {
         return mapper.selectall();
     }
 
-    @Override
-    public List<RecipeComment> getAllIngredient(Integer integer) throws Exception {
-        return null;
-    }
+
 }
