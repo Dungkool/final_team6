@@ -136,7 +136,7 @@
                                             <div class="product__item__text">
                                                 <ul>
                                                     <li>Active</li>
-                                                    <li>Movie</li>
+                                                    <li>Movies</li>
                                                 </ul>
                                                 <h5 style="text-align: center;">
                                                     <a href="/recipe/detail?recipepin=${obj.recipepin}">${obj.recipetitle}</a>
