@@ -31,11 +31,13 @@ public class RecipeController {
     String dir = "recipe/";
 
     @RequestMapping("/all")
-    public String main(@RequestParam(required = false, defaultValue = "1") int pageNo, Model model){
+    public String main(@RequestParam(required = false, defaultValue = "1") int pageNo, Model model) {
         PageInfo<RecipeBasic> p;
         List<RecipeBasic> recipeList = null;
         try {
+
             p = new PageInfo<>(recipeService.getPage(pageNo), 5);
+
             recipeList = p.getList();
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -43,7 +45,7 @@ public class RecipeController {
         model.addAttribute("target", "recipe");
         model.addAttribute("recipeList", recipeList);
         model.addAttribute("cpage", p);
-        model.addAttribute("center",dir + "all");
+        model.addAttribute("center", dir + "all");
         return "index";
     }
 
@@ -54,8 +56,10 @@ public class RecipeController {
         List<RecipeComment> comment = null;
 
         recipe = recipeService.get(recipepin);
+
         ingredient = ingredientService.getRecipeAllIngredient(recipepin);
         comment = commentService.getRecipeAllComment(recipepin);
+
 
         model.addAttribute("recipedetail", recipe);
         model.addAttribute("ingredientList", ingredient);
@@ -63,6 +67,7 @@ public class RecipeController {
         model.addAttribute("center", dir + "detail");
         return "index";
     }
+
 
     @RequestMapping("/search")
     public String search(@RequestParam(required = false, defaultValue = "1") int pageNo, Model model, String recipetitle) throws Exception {
@@ -90,7 +95,8 @@ public class RecipeController {
         } catch (Exception e) {
             throw new Exception("등록 오류");
         }
-        return "redirect:/recipe/detail?recipepin="+recipeComment.getRecipepin();
+        return "redirect:/recipe/detail?recipepin=" + recipeComment.getRecipepin();
     }
+
 
 }

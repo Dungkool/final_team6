@@ -79,12 +79,21 @@
             </div>
             <div class="col-lg-2">
                 <div class="header__right">
-                    <a href="/login" class="search-switch">
-                        <span style="color: black">Login</span>
-                    </a>
-                    <a href="/apply">
-                        <span style="color: black">Apply</span>
-                    </a>
+                    <c:choose>
+                        <c:when test="${logincust == null}">
+                            <a href="/login" class="search-switch">
+                                <span style="color: #b7b7b7">Login</span>
+                            </a>
+                            <a href="/apply">
+                                <span style="color: #b7b7b7">Apply</span>
+                            </a>
+                        </c:when>
+                        <c:otherwise>
+                            <a href="/apply/mypage" class="search-switch">
+                                <span style="color: #b7b7b7">My Page</span>
+                            </a>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
         </div>

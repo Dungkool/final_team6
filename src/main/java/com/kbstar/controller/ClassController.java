@@ -62,19 +62,28 @@ public class ClassController {
         return "index";
     }
 
-//    @RequestMapping("/all")
-//    public String all(Model model) throws Exception {
-//        List<ClassBasic> clist = null;
-//        try {
-//            clist = classService.get();
-//        } catch (Exception e) {
-//            throw new Exception("시스템 장애 : ER0002");
-//        }
-//
-//        model.addAttribute("allclass", clist);
-//        model.addAttribute("center", dir + "class");
-//        return "index";
-//    }
+
+    @RequestMapping("/searchlocation")
+    public String searchlocation(@RequestParam(required = false, defaultValue = "1") int pageNo, Model model, String location) throws Exception {
+        PageInfo<ClassBasic> c;
+        List<ClassBasic> clist;
+        try {
+            if (location != null && location.equals("*")) {
+                location = ""; // 선택된 지역 값이 "*"인 경우 빈 문자열로 설정하여 모든 데이터를 조회하도록 함
+            }
+            c = new PageInfo<>(classService.getLocation(pageNo, location), 5);
+            clist = c.getList();// 5:하단 네비게이션 개수
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+        model.addAttribute("target", "class");
+        model.addAttribute("clist", clist);
+        model.addAttribute("cpage", c);
+        model.addAttribute("location", location);
+        model.addAttribute("center", dir + "class");
+        return "index";
+    }
+
 
     @RequestMapping("/detail")
     public String detail(Model model) {

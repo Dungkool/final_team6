@@ -11,4 +11,5 @@ import java.util.List;
 @Mapper
 public interface RecipeCommentMapper extends KBMapper<Integer, RecipeComment> {
     List<RecipeComment> selectRecipeAllComment(Integer recipepin) throws Exception;
+
 }

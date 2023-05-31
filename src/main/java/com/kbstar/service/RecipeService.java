@@ -42,7 +42,7 @@ public class RecipeService implements KBService<Integer, RecipeBasic> {
         return mapper.select(recipepin);
     }
 
-//    @Transactional(readOnly = true)
+    //    @Transactional(readOnly = true)
     @Override
     public List<RecipeBasic> get() throws Exception {
         return mapper.selectall();

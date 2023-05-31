@@ -45,7 +45,9 @@ public class IngredientService implements KBService<Integer, RecipeIngredient> {
         return null;
     }
 
+
     public List<RecipeIngredient> getRecipeAllIngredient(Integer recipepin) throws Exception {
         return mapper.selectRecipeAllIngredient(recipepin);
+
     }
 }
