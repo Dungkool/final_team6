@@ -67,6 +67,9 @@ public class ClassController {
         PageInfo<ClassBasic> c;
         List<ClassBasic> clist;
         try {
+            if (location != null && location.equals("*")) {
+                location = ""; // 선택된 지역 값이 "*"인 경우 빈 문자열로 설정하여 모든 데이터를 조회하도록 함
+            }
             c = new PageInfo<>(classService.getLocation(pageNo, location), 5);
             clist = c.getList();// 5:하단 네비게이션 개수
         } catch (Exception e) {

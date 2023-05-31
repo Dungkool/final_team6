@@ -18,6 +18,11 @@
                 // 선택된 지역 값을 가져옴
                 let location = $(this).text();
 
+                // 선택된 지역 값이 "*"(빈 문자열)인 경우 전체 데이터 조회
+                if (location === "") {
+                    location = "*";
+                }
+
                 // 선택된 지역 값을 폼에 설정
                 $('#location_input').val(location);
 
@@ -99,7 +104,7 @@
                     <div class="product-filters">
                         <!-- location 선택 부분 -->
                         <ul id="location" name="location">
-                            <li class="active" data-filter="">지역별</li>
+                            <li class="active" data-filter="*">지역별</li>
                             <li data-filter="서울">서울</li>
                             <li data-filter="인천">인천</li>
                             <li data-filter="경기">경기</li>
