@@ -11,6 +11,8 @@
     <meta name="keywords" content="Anime, unica, creative, html"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <title>Colly on the Table | Template</title>
 
     <!-- Google Font -->

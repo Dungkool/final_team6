@@ -54,4 +54,8 @@ public class ClassService implements KBService<Integer, ClassBasic> {
         return mapper.getpage();
     }
 
+    public Page<ClassBasic> getSearch(int pageNo, String classtitle) throws Exception {
+        PageHelper.startPage(pageNo, 6); // 3: 한화면에 출력되는 개수
+        return mapper.getsearch(classtitle);
+    }
 }

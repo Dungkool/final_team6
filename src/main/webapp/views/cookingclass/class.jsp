@@ -3,6 +3,23 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 
+<script>
+    let class_search = {
+        init: function () {
+            $('#search_btn').click(function () {
+                $('#search_form').attr({
+                    method: 'post',
+                    action: '/cookingclass/search'
+                });
+                $('#search_form').submit();
+            });
+        }
+    };
+
+    $(function () {
+        class_search.init();
+    })
+</script>
 <head>
     <!-- google font -->
     <%--    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">--%>
@@ -43,8 +60,20 @@
 <!-- Normal Breadcrumb End -->
 
 <!-- products -->
-<div class="product-section mt-150 mb-150">
+<div class="product-section mt-50 mb-150">
     <div class="container">
+        <div class="row">
+            <div class="col" style="margin-bottom: 30px">
+                <form id="search_form" class="d-flex" style="float: right;">
+                    <input class="form-control me-2" type="text" placeholder="Search by class name"
+                           aria-label="Search"
+                           name="classtitle" id="classtitle" value="${classtitle}">
+                    <button id="search_btn" class="btn btn-outline" type="button"
+                            style="border: 2px solid #F28123; background-color: #F28123; color: #fff;">Search
+                    </button>
+                </form>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="product-filters">
@@ -124,7 +153,7 @@
                             <c:choose>
                                 <c:when test="${cpage.getPageNum() == page}">
                                     <li class="pagination-wrap active">
-                                        <a class="pagination-wrap"
+                                        <a class="pagination-wrap active"
                                            href="/cookingclass/class?pageNo=${page}">${page }</a>
                                     </li>
                                 </c:when>
