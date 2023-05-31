@@ -10,16 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/login")
 public class LoginController {
 
-//    @Autowired
-//    ItemService itemService;
-//    @Autowired
-//    CartService cartService;
-
-    String dir = "login/";
-
     @RequestMapping("")
-    public String main(Model model){
-        model.addAttribute("center","login");
+    public String main(Model model) {
+        model.addAttribute("center", "login");
         return "index";
     }
+
 }
