@@ -22,4 +22,5 @@ public class Cust {
     private String email;
     private String location;
     private Date signdate;
+    private String profileimgname;
 }
