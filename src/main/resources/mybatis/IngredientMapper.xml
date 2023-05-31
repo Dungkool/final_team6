@@ -18,7 +18,7 @@
 <!--        ORDER BY id DESC-->
 <!--    </select>-->
 
-    <select id="selectAllIngredient" parameterType="Integer" resultType="recipeingredient">
+    <select id="selectRecipeAllIngredient" parameterType="Integer" resultType="recipeingredient">
         SELECT *
         FROM recipe_ingredient
         WHERE recipepin = #{recipepin}

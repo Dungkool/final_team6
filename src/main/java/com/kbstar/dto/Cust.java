@@ -21,6 +21,6 @@ public class Cust {
     private String phone;
     private String email;
     private String location;
-    private Date date;
+    private Date signdate;
     private String profileimgname;
 }

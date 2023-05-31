@@ -2,6 +2,42 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+<script>
+    let register_form = {
+        init: function () {
+            $("#register_btn").click(function () {
+                <c:choose>
+                    <c:when test="${logincust != null}">
+                        $('#login_btn').prop("disabled", false);
+                        register_form.send();
+                    </c:when>
+                    <c:otherwise>
+                        $('#login_btn').prop("disabled", true);
+                        alert("로그인 후 이용해주세요.")
+                    </c:otherwise>
+                </c:choose>
+                    // register_form.send();
+            });
+        },
+        send: function () {
+            var recipepin = $('#recipepin').val();
+            var custpin = $('#custpin').val();
+            var custid = $('#custid').val();
+            var nickname = $('#nickname').val();
+            var content = $('#content').val();
+
+            $("#register_form").attr({
+                "action": "/recipe/commentImpl",
+                "method": "post"
+            });
+            $("#register_form").submit();
+        }
+    }
+    $(function () {
+        register_form.init();
+    });
+</script>
+
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Anime Template">
@@ -89,14 +125,28 @@
                         <h5>Reviews</h5>
                     </div>
 
-                        <c:forEach var="String" items="${recipeComment}">
+                        <c:forEach var="obj" items="${recipeComment}">
                             <div class="anime__review__item">
                                 <div class="anime__review__item__pic">
                                     <img src="img/anime/review-1.jpg" alt="">
                                 </div>
                                 <div class="anime__review__item__text">
-                                    <h6>${String.nickname}</h6>
-                                    <p>${String.content}</p>
+                                    <c:choose>
+                                        <c:when test="${obj.nickname != null}">
+                                            <h6>${obj.nickname}</h6>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <h6>${obj.custid}</h6>
+                                        </c:otherwise>
+                                    </c:choose>
+
+
+<%--                                    <form id="delete_form">--%>
+                                        <button type="submit" formaction="/recipe/delete" formmethod="post"
+                                            class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button>
+<%--                                    </form>--%>
+
+                                    <p>${obj.content}</p>
                                 </div>
                             </div>
                         </c:forEach>
@@ -107,9 +157,15 @@
                     <div class="section-title">
                         <h5>Your Comment</h5>
                     </div>
-                    <form action="#">
-                        <textarea placeholder="Your Comment"></textarea>
-                        <button type="submit"><i class="fa fa-location-arrow"></i> Review</button>
+                    <form id="register_form">
+
+                        <input type="hidden" name="recipepin" id="recipepin" value="${recipedetail.recipepin}">
+                        <input type="hidden" name="custpin" id="custpin" value="${logincust.custpin}">
+                        <input type="hidden" name="custid" id="custid" value="${logincust.custid}">
+                        <input type="hidden" name="nickname" id="nickname" value="${logincust.nickname}">
+                        <textarea name="content" id="content" placeholder="Your Comment"></textarea>
+                        <button type="button" id="register_btn">Register</button>
+
                     </form>
                 </div>
             </div>

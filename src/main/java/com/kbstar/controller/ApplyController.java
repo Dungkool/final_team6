@@ -28,13 +28,6 @@ public class ApplyController {
         return "index";
     }
 
-    @RequestMapping("/mypage")
-    public String mypage(Model model) {
-        model.addAttribute("center", "mypage");
-        return "index";
-    }
-
-
     @RequestMapping("/registerimpl")
     public String registerimpl(Model model, Cust cust, HttpSession session) throws Exception {
         try {
@@ -45,6 +38,7 @@ public class ApplyController {
             throw new Exception("가입 오류");
         }
 
+        model.addAttribute("rcust", cust);
         model.addAttribute("center", "center");
         return "index";
     }

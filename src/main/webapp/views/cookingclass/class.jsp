@@ -13,30 +13,12 @@
                 });
                 $('#search_form').submit();
             });
-            // 클릭 이벤트 핸들러 수정
-            $('#location li').click(function () {
-                // 선택된 지역 값을 가져옴
-                let location = $(this).text();
-
-                // 선택된 지역 값을 폼에 설정
-                $('#location_input').val(location);
-
-                // 폼을 서버로 제출
-                $('#category_form').attr({
-                    method: 'post',
-                    action: '/cookingclass/searchlocation'
-                });
-                $('#category_form').submit();
-            });
-
         }
     };
-    $(document).ready(function () {
+
+    $(function () {
         class_search.init();
-    });
-    // $(function () {
-    //     class_search.init();
-    // })
+    })
 </script>
 <head>
     <!-- google font -->
@@ -94,39 +76,32 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <form id="category_form">
-
-                    <div class="product-filters">
-                        <!-- location 선택 부분 -->
-                        <ul id="location" name="location">
-                            <li class="active" data-filter="">지역별</li>
-                            <li data-filter="서울">서울</li>
-                            <li data-filter="인천">인천</li>
-                            <li data-filter="경기">경기</li>
-                            <li data-filter="대전">대전</li>
-                            <li data-filter="충청">충청</li>
-                            <li data-filter="부산">부산</li>
-                            <li data-filter="대구">대구</li>
-                            <li data-filter="울산">울산</li>
-                            <li data-filter="경상">경상</li>
-                            <li data-filter="광주">광주</li>
-                            <li data-filter="전라">전라</li>
-                            <li data-filter="강원">강원</li>
-                            <li data-filter="기타">기타</li>
-                        </ul>
-
-
-                        <ul>
-                            <li class="active" data-filter="*">종류별</li>
-                            <li data-filter="#">한식</li>
-                            <li data-filter="#">양식</li>
-                            <li data-filter="#">중식</li>
-                            <li data-filter="#">일식</li>
-                            <li data-filter="#">기타</li>
-                        </ul>
-                    </div>
-                    <input type="hidden" id="location_input" name="location">
-                </form>
+                <div class="product-filters">
+                    <ul>
+                        <li class="active" data-filter="*">지역별</li>
+                        <li data-filter="#">서울</li>
+                        <li data-filter="#">인천</li>
+                        <li data-filter="#">경기</li>
+                        <li data-filter="#">대전</li>
+                        <li data-filter="#">충청</li>
+                        <li data-filter="#">부산</li>
+                        <li data-filter="#">대구</li>
+                        <li data-filter="#">울산</li>
+                        <li data-filter="#">경상</li>
+                        <li data-filter="#">광주</li>
+                        <li data-filter="#">전라</li>
+                        <li data-filter="#">강원</li>
+                        <li data-filter="#">기타</li>
+                    </ul>
+                    <ul>
+                        <li class="active" data-filter="*">종류별</li>
+                        <li data-filter="#">한식</li>
+                        <li data-filter="#">양식</li>
+                        <li data-filter="#">중식</li>
+                        <li data-filter="#">일식</li>
+                        <li data-filter="#">기타</li>
+                    </ul>
+                </div>
             </div>
         </div>
 

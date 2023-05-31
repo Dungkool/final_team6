@@ -10,6 +10,14 @@
         ORDER BY recipepin DESC
     </select>
 
+    <select id="getsearch" parameterType="String" resultType="recipebasic">
+        SELECT *
+        FROM recipe_basic
+        where recipetitle LIKE '%' || #{recipetitle} || '%'
+        ORDER BY recipepin DESC
+    </select>
+
+
 <!--    <select id="getpagesearch" parameterType="String" resultType="item">-->
 <!--        SELECT *-->
 <!--        FROM item-->

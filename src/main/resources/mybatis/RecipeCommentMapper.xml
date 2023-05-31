@@ -15,11 +15,17 @@
         FROM recipe_comment
     </select>
 
+    <select id="selectRecipeAllComment" parameterType="Integer" resultType="recipecomment">
+        SELECT *
+        FROM recipe_comment
+        WHERE recipepin = #{recipepin}
+        ORDER BY recipecommentpin ASC
+    </select>
 
-<!--    <insert id="insert" parameterType="recipecomment">-->
-<!--        INSERT INTO recipe_comment-->
-<!--        VALUES (recipe_comment_seq.NEXTVAL, #{content}, SYSDATE)-->
-<!--    </insert>-->
+    <insert id="insert" parameterType="recipecomment">
+        INSERT INTO recipe_comment
+        VALUES (recipe_comment_seq.NEXTVAL, #{recipepin}, #{custpin}, #{custid}, #{nickname}, #{content}, SYSDATE)
+    </insert>
 
 <!--    <update id="update" parameterType="recipebasic">-->
 <!--        UPDATE item-->
@@ -29,11 +35,12 @@
 <!--        WHERE id = #{id}-->
 <!--    </update>-->
 
-<!--    <delete id="delete" parameterType="Integer">-->
-<!--        DELETE-->
-<!--        FROM recipebasic-->
-<!--        WHERE id = #{id}-->
-<!--    </delete>-->
+    <delete id="delete" parameterType="Integer">
+        DELETE
+        FROM recipe_comment
+        WHERE recipecommentpin = #{recipecommentpin}
+    </delete>
+
 <!--    -->
 <!--    <select id="search" parameterType="recipeSearch" resultType="recipebasic">-->
 <!--        SELECT * FROM recipebasic-->

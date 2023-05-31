@@ -29,18 +29,9 @@
     <select id="getsearch" parameterType="String" resultType="ClassBasic">
         SELECT *
         FROM Class_Basic
-        WHERE classtitle LIKE '%' || #{classtitle} || '%'
+        where classtitle LIKE '%' || #{classtitle} || '%'
         ORDER BY classpin DESC
     </select>
-    <!-- MyBatis Mapper -->
-    <select id="getlocation" parameterType="String" resultType="ClassBasic">
-        SELECT *
-        FROM Class_Basic
-        WHERE location = #{location}
-        ORDER BY classpin DESC
-    </select>
-
-
     <!--    <insert id="insert" parameterType="ClassBasic">-->
     <!--        INSERT INTO adm-->
     <!--        VALUES (#{id}, #{pwd}, #{lev})-->
