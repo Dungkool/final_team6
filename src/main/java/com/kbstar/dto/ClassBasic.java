@@ -26,4 +26,5 @@ public class ClassBasic {
     private String classdesc;
     private String adderess;
     private Date classdate;
+
 }

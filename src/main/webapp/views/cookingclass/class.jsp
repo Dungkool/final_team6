@@ -4,31 +4,25 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="description" content="Anime Template"/>
-    <meta name="keywords" content="Anime, unica, creative, html"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>Colly on the Table | Template</title>
-
-    <!-- Google Font -->
-    <link
-            href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap"
-            rel="stylesheet"
-    />
-    <link
-            href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
-            rel="stylesheet"
-    />
-
-    <!-- Css Styles -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css"/>
-    <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css"/>
-    <link rel="stylesheet" href="/css/elegant-icons.css" type="text/css"/>
-    <link rel="stylesheet" href="/css/plyr.css" type="text/css"/>
-    <link rel="stylesheet" href="/css/nice-select.css" type="text/css"/>
-    <link rel="stylesheet" href="/css/owl.carousel.min.css" type="text/css"/>
-    <link rel="stylesheet" href="/css/slicknav.min.css" type="text/css"/>
+    <!-- google font -->
+    <%--    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">--%>
+    <%--    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">--%>
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="/css/all.min.css">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <!-- owl carousel -->
+    <link rel="stylesheet" href="/css/owl.carousel.css">
+    <!-- magnific popup -->
+    <link rel="stylesheet" href="/css/magnific-popup.css">
+    <!-- animate css -->
+    <link rel="stylesheet" href="/css/animate.css">
+    <!-- mean menu css -->
+    <link rel="stylesheet" href="/css/meanmenu.min.css">
+    <!-- main style -->
+    <link rel="stylesheet" href="/css/main.css">
+    <!-- responsive -->
+    <link rel="stylesheet" href="/css/responsive.css">
     <link rel="stylesheet" href="/css/style.css" type="text/css"/>
 </head>
 
@@ -39,8 +33,8 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="normal__breadcrumb__text">
-                    <h2>Our Blog</h2>
-                    <p>Welcome to the official Anime blog.</p>
+                    <h2>COOKING CLASS</h2>
+                    <p>Welcome to the cookingclass</p>
                 </div>
             </div>
         </div>
@@ -48,167 +42,123 @@
 </section>
 <!-- Normal Breadcrumb End -->
 
-<div class="container">
-    <div class="row">
-        <div class="col-lg-6">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div id="id_search_category" style="display: block;" class="rcp_m_cate">
-                        <table style="width: 100%; cellspacing: 0; cellpadding: 0">
-                            <colgroup>
-                                <col style="width: 100px">
-                                <col>
-                            </colgroup>
-                            <tbody>
-                            <tr>
-                                <th style="padding-top: 10px;">
-                                    <span>지역별</span>
-                                    <span>종류별</span>
-                                </th>
-                                <td>
-                                    <div class="rcp_cate st3">
-                                        <div class="cate_list">
-                                            <a href="javascript:goSearchRecipe('cat4','')" class="active">전체</a><a
-                                                href="javascript:goSearchRecipe('cat4','63')">서울</a><a
-                                                href="javascript:goSearchRecipe('cat4','56')">경기</a><a
-                                                href="javascript:goSearchRecipe('cat4','54')">강원</a><a
-                                                href="javascript:goSearchRecipe('cat4','55')">충북</a><a
-                                                href="javascript:goSearchRecipe('cat4','60')">충남</a><a
-                                                href="javascript:goSearchRecipe('cat4','53')">경북</a><a
-                                                href="javascript:goSearchRecipe('cat4','52')">경남</a><a
-                                                href="javascript:goSearchRecipe('cat4','53')">전북</a><a
-                                                href="javascript:goSearchRecipe('cat4','52')">전남</a><a
-                                                href="javascript:goSearchRecipe('cat4','62')">기타</a></div>
-                                        <div class="cate_list">
-                                            <a href="javascript:goSearchRecipe('cat2','')" class="active">전체</a><a
-                                                href="javascript:goSearchRecipe('cat2','12')">한식</a><a
-                                                href="javascript:goSearchRecipe('cat2','18')">양식</a><a
-                                                href="javascript:goSearchRecipe('cat2','13')">중식</a><a
-                                                href="javascript:goSearchRecipe('cat2','19')">일식</a><a
-                                                href="javascript:goSearchRecipe('cat2','22')">기타</a></div>
-                                    </div>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Blog Section Begin -->
-<section class="blog spad">
+<!-- products -->
+<div class="product-section mt-150 mb-150">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="blog__item set-bg" data-setbg="/uimg/card.jpg">
-                            <div class="blog__item__text">
-                                <p><span class="icon_calendar"></span> 01 March 2020</p>
-                                <h4><a href="#">Yuri Kuma Arashi Viverra Tortor Pharetra</a></h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6">
-                        <div class="blog__item small__item set-bg" data-setbg="/uimg/card1.jpg">
-                            <div class="blog__item__text">
-                                <p><span class="icon_calendar"></span> 01 March 2020</p>
-                                <h4><a href="#">Bok no Hero Academia Season 4 – 18</a></h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6">
-                        <div class="blog__item small__item set-bg" data-setbg="/uimg/card2.jpg">
-                            <div class="blog__item__text">
-                                <p><span class="icon_calendar"></span> 01 March 2020</p>
-                                <h4><a href="#">Fate/Stay Night: Untimated Blade World</a></h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="blog__item set-bg" data-setbg="/uimg/card3.jpg">
-                            <div class="blog__item__text">
-                                <p><span class="icon_calendar"></span> 01 March 2020</p>
-                                <h4><a href="#">Housekishou Richard shi no Nazo Kantei Season 08 - 20</a></h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6">
-                        <div class="blog__item small__item set-bg" data-setbg="/uimg/card.jpg">
-                            <div class="blog__item__text">
-                                <p><span class="icon_calendar"></span> 01 March 2020</p>
-                                <h4><a href="#">Fate/Stay Night: Untimated Blade World</a></h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6">
-                        <div class="blog__item small__item set-bg" data-setbg="/uimg/card.jpg">
-                            <div class="blog__item__text">
-                                <p><span class="icon_calendar"></span> 01 March 2020</p>
-                                <h4><a href="#">Building a Better LiA Drilling Down</a></h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6">
-                        <div class="blog__item small__item set-bg" data-setbg="/uimg/card.jpg">
-                            <div class="blog__item__text">
-                                <p><span class="icon_calendar"></span> 01 March 2020</p>
-                                <h4><a href="#">Fate/Stay Night: Untimated Blade World</a></h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6">
-                        <div class="blog__item small__item set-bg" data-setbg="/uimg/card3.jpg">
-                            <div class="blog__item__text">
-                                <p><span class="icon_calendar"></span> 01 March 2020</p>
-                                <h4><a href="#">Building a Better LiA Drilling Down</a></h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="blog__item set-bg" data-setbg="/uimg/card.jpg">
-                            <div class="blog__item__text">
-                                <p><span class="icon_calendar"></span> 01 March 2020</p>
-                                <h4><a href="#">Yuri Kuma Arashi Viverra Tortor Pharetra</a></h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6">
-                        <div class="blog__item small__item set-bg" data-setbg="/uimg/card.jpg">
-                            <div class="blog__item__text">
-                                <p><span class="icon_calendar"></span> 01 March 2020</p>
-                                <h4><a href="#">Bok no Hero Academia Season 4 – 18</a></h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6">
-                        <div class="blog__item small__item set-bg" data-setbg="/uimg/card.jpg">
-                            <div class="blog__item__text">
-                                <p><span class="icon_calendar"></span> 01 March 2020</p>
-                                <h4><a href="#">Fate/Stay Night: Untimated Blade World</a></h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="blog__item set-bg" data-setbg="/uimg/card.jpg">
-                            <div class="blog__item__text">
-                                <p><span class="icon_calendar"></span> 01 March 2020</p>
-                                <h4><a href="#">Yuri Kuma Arashi Viverra Tortor Pharetra</a></h4>
-                            </div>
-                        </div>
-                    </div>
+            <div class="col-md-12">
+                <div class="product-filters">
+                    <ul>
+                        <li class="active" data-filter="*">지역별</li>
+                        <li data-filter="#">서울</li>
+                        <li data-filter="#">인천</li>
+                        <li data-filter="#">경기</li>
+                        <li data-filter="#">대전</li>
+                        <li data-filter="#">충청</li>
+                        <li data-filter="#">부산</li>
+                        <li data-filter="#">대구</li>
+                        <li data-filter="#">울산</li>
+                        <li data-filter="#">경상</li>
+                        <li data-filter="#">광주</li>
+                        <li data-filter="#">전라</li>
+                        <li data-filter="#">강원</li>
+                        <li data-filter="#">기타</li>
+                    </ul>
+                    <ul>
+                        <li class="active" data-filter="*">종류별</li>
+                        <li data-filter="#">한식</li>
+                        <li data-filter="#">양식</li>
+                        <li data-filter="#">중식</li>
+                        <li data-filter="#">일식</li>
+                        <li data-filter="#">기타</li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-<!-- Blog Section End -->
 
+        <div class="row product-lists">
+            <c:forEach var="obj" items="${clist}">
+                <div class="col-lg-4 col-md-6 text-center strawberry">
+                    <div class="single-product-item">
+                        <div class="product-image">
+                            <a href="/cookingclass/detail"><img src="/uimg/${obj.thumbnailimg}" alt=""></a>
+                        </div>
+                        <h3><a href="/cookingclass/get?id=${obj.classtitle}">${obj.classtitle}</a></h3>
+                        <p>
+                            <span><fmt:formatDate value="${obj.classdate}" pattern="yyyy-MM-dd"/></span>
+                            <span>${obj.personal}</span>
+                        </p>
+                        <p class="product-price">
+                            <fmt:formatNumber value="${obj.amount}" type="currency"
+                                              currencyCode="KRW" pattern="###,###원"/></p>
+                        <a href="/cookingclass/detail" class="cart-btn"><i class="fas fa-shopping-cart"></i> 클래스 신청</a>
+                    </div>
+                </div>
+            </c:forEach>
+        </div>
+
+        <!-- pagination start -->
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="pagination-wrap">
+                    <ul>
+                        <c:choose>
+                            <c:when test="${cpage.getPrePage() != 0}">
+                                <li class="pagination-wrap">
+                                    <a class="pagination-wrap" href="/cookingclass/class?pageNo=${cpage.getPrePage()}"
+                                       aria-label="Previous">
+                                        <span>Prev</span>
+                                    </a>
+                                </li>
+                            </c:when>
+                            <c:otherwise>
+                                <li class="pagination-wrap disabled">
+                                    <a class="pagination-wrap" href="#" aria-label="Previous">
+                                        <span>Prev</span>
+                                    </a>
+                                </li>
+                            </c:otherwise>
+                        </c:choose>
+                        <c:forEach begin="${cpage.getNavigateFirstPage() }" end="${cpage.getNavigateLastPage() }"
+                                   var="page">
+                            <c:choose>
+                                <c:when test="${cpage.getPageNum() == page}">
+                                    <li class="pagination-wrap active">
+                                        <a class="pagination-wrap"
+                                           href="/cookingclass/class?pageNo=${page}">${page }</a>
+                                    </li>
+                                </c:when>
+                                <c:otherwise>
+                                    <li>
+                                        <a class="pagination-wrap"
+                                           href="/cookingclass/class?pageNo=${page}">${page }</a>
+                                    </li>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:forEach>
+                        <c:choose>
+                            <c:when test="${cpage.getNextPage() != 0}">
+                                <li class="pagination-wrap">
+                                    <a class="pagination-wrap" href="/cookingclass/class?pageNo=${cpage.getNextPage()}"
+                                       aria-label="Next">
+                                        <span>Next</span>
+                                    </a>
+                                </li>
+                            </c:when>
+                            <c:otherwise>
+                                <li class="pagination-wrap disabled">
+                                    <a class="pagination-wrap" href="#" aria-label="Next">
+                                        <span>Next</span>
+                                    </a>
+                                </li>
+                            </c:otherwise>
+                        </c:choose>
+                    </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-- pagination end -->
+        </div>
+    </div>
+    <!-- end products -->
 </body>
