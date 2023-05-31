@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kbstar.mapper.ClassMapper">
+
+    <select id="select" parameterType="String" resultType="ClassBasic">
+        SELECT *
+        FROM Class_Basic
+        WHERE classpin = #{classpin}
+    </select>
+    <select id="selectall" resultType="ClassBasic">
+        SELECT *
+        FROM Class_Basic
+    </select>
+    <select id="getpage" resultType="ClassBasic">
+        SELECT *
+        FROM Class_Basic
+        ORDER BY classpin DESC
+    </select>
+    <!--    <insert id="insert" parameterType="ClassBasic">-->
+    <!--        INSERT INTO adm-->
+    <!--        VALUES (#{id}, #{pwd}, #{lev})-->
+    <!--    </insert>-->
+    <!--    <update id="update" parameterType="ClassBasic">-->
+    <!--        UPDATE adm-->
+    <!--        SET pwd=#{pwd},-->
+    <!--            lev=#{lev}-->
+    <!--        WHERE id = #{id}-->
+    <!--    </update>-->
+    <!--    <delete id="delete" parameterType="String">-->
+    <!--        DELETE-->
+    <!--        FROM adm-->
+    <!--        WHERE id = #{id}-->
+    <!--    </delete>-->
+
+</mapper>

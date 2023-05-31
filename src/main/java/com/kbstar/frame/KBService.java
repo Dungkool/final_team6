@@ -1,8 +1,8 @@
 package com.kbstar.frame;
 
+import com.kbstar.dto.RecipeBasic;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.beans.Transient;
 import java.util.List;
 
 public interface KBService<K,V> {

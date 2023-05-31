@@ -11,7 +11,7 @@ import java.util.Date;
 @Getter
 @ToString
 public class RecipeBasic {
-    private int recipepin;
+    private Integer recipepin;
     private int custpin;
     private String custid;
     private String nickname;
