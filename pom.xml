@@ -18,7 +18,7 @@
         <java.version>11</java.version>
     </properties>
 
-    <!--    tts-->
+<!--    tts-->
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -32,11 +32,12 @@
     </dependencyManagement>
 
     <dependencies>
-        <dependency>
-            <groupId>com.google.cloud</groupId>
-            <artifactId>google-cloud-texttospeech</artifactId>
-        </dependency>
+    <dependency>
+        <groupId>com.google.cloud</groupId>
+        <artifactId>google-cloud-texttospeech</artifactId>
+    </dependency>
         <!--    tts-->
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
