@@ -62,6 +62,24 @@ public class ClassController {
         return "index";
     }
 
+    @RequestMapping("/searchlocation")
+    public String searchlocation(@RequestParam(required = false, defaultValue = "1") int pageNo, Model model, String location) throws Exception {
+        PageInfo<ClassBasic> c;
+        List<ClassBasic> clist;
+        try {
+            c = new PageInfo<>(classService.getLocation(pageNo, location), 5);
+            clist = c.getList();// 5:하단 네비게이션 개수
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+        model.addAttribute("target", "class");
+        model.addAttribute("clist", clist);
+        model.addAttribute("cpage", c);
+        model.addAttribute("location", location);
+        model.addAttribute("center", dir + "class");
+        return "index";
+    }
+
 //    @RequestMapping("/all")
 //    public String all(Model model) throws Exception {
 //        List<ClassBasic> clist = null;
