@@ -10,9 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/magic")
 public class MagicConchShellController {
+    @Value("${key}")
+    String key;
+
     @RequestMapping("")
     public String main(Model model){
         model.addAttribute("center","magicConchShell");
+        model.addAttribute("key",key);
         return "index";
     }
 }
