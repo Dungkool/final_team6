@@ -23,11 +23,23 @@
             });
         },
         send: function () {
-            $("#login_form").attr({
-                "action": "/login/loginimpl",
-                "method": "post"
+            var custid = $('#custid').val();
+            var password = $('#password').val();
+            $.ajax({
+                url: '/loginimpl',
+                data: {custid: custid, password: password},
+                success: function (result) {
+                    if (result == 1) {
+                        $("#login_form").attr({
+                            "action": "/login/loginsuccess",
+                            "method": "post"
+                        });
+                        $("#login_form").submit();
+                    } else {
+                        alert("일치하는 계정 정보가 없습니다.")
+                    }
+                }
             });
-            $("#login_form").submit();
         }
     }
 
