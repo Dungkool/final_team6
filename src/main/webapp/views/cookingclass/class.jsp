@@ -3,6 +3,41 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 
+<script>
+    let class_search = {
+        init: function () {
+            $('#search_btn').click(function () {
+                $('#search_form').attr({
+                    method: 'post',
+                    action: '/cookingclass/search'
+                });
+                $('#search_form').submit();
+            });
+            // 클릭 이벤트 핸들러 수정
+            $('#location li').click(function () {
+                // 선택된 지역 값을 가져옴
+                let location = $(this).text();
+
+                // 선택된 지역 값을 폼에 설정
+                $('#location_input').val(location);
+
+                // 폼을 서버로 제출
+                $('#category_form').attr({
+                    method: 'post',
+                    action: '/cookingclass/searchlocation'
+                });
+                $('#category_form').submit();
+            });
+
+        }
+    };
+    $(document).ready(function () {
+        class_search.init();
+    });
+    // $(function () {
+    //     class_search.init();
+    // })
+</script>
 <head>
     <!-- google font -->
     <%--    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">--%>
@@ -43,36 +78,55 @@
 <!-- Normal Breadcrumb End -->
 
 <!-- products -->
-<div class="product-section mt-150 mb-150">
+<div class="product-section mt-50 mb-150">
     <div class="container">
         <div class="row">
+            <div class="col" style="margin-bottom: 30px">
+                <form id="search_form" class="d-flex" style="float: right;">
+                    <input class="form-control me-2" type="text" placeholder="Search by class name"
+                           aria-label="Search"
+                           name="classtitle" id="classtitle" value="${classtitle}">
+                    <button id="search_btn" class="btn btn-outline" type="button"
+                            style="border: 2px solid #F28123; background-color: #F28123; color: #fff;">Search
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-12">
-                <div class="product-filters">
-                    <ul>
-                        <li class="active" data-filter="*">지역별</li>
-                        <li data-filter="#">서울</li>
-                        <li data-filter="#">인천</li>
-                        <li data-filter="#">경기</li>
-                        <li data-filter="#">대전</li>
-                        <li data-filter="#">충청</li>
-                        <li data-filter="#">부산</li>
-                        <li data-filter="#">대구</li>
-                        <li data-filter="#">울산</li>
-                        <li data-filter="#">경상</li>
-                        <li data-filter="#">광주</li>
-                        <li data-filter="#">전라</li>
-                        <li data-filter="#">강원</li>
-                        <li data-filter="#">기타</li>
-                    </ul>
-                    <ul>
-                        <li class="active" data-filter="*">종류별</li>
-                        <li data-filter="#">한식</li>
-                        <li data-filter="#">양식</li>
-                        <li data-filter="#">중식</li>
-                        <li data-filter="#">일식</li>
-                        <li data-filter="#">기타</li>
-                    </ul>
-                </div>
+                <form id="category_form">
+
+                    <div class="product-filters">
+                        <!-- location 선택 부분 -->
+                        <ul id="location" name="location">
+                            <li class="active" data-filter="">지역별</li>
+                            <li data-filter="서울">서울</li>
+                            <li data-filter="인천">인천</li>
+                            <li data-filter="경기">경기</li>
+                            <li data-filter="대전">대전</li>
+                            <li data-filter="충청">충청</li>
+                            <li data-filter="부산">부산</li>
+                            <li data-filter="대구">대구</li>
+                            <li data-filter="울산">울산</li>
+                            <li data-filter="경상">경상</li>
+                            <li data-filter="광주">광주</li>
+                            <li data-filter="전라">전라</li>
+                            <li data-filter="강원">강원</li>
+                            <li data-filter="기타">기타</li>
+                        </ul>
+
+
+                        <ul>
+                            <li class="active" data-filter="*">종류별</li>
+                            <li data-filter="#">한식</li>
+                            <li data-filter="#">양식</li>
+                            <li data-filter="#">중식</li>
+                            <li data-filter="#">일식</li>
+                            <li data-filter="#">기타</li>
+                        </ul>
+                    </div>
+                    <input type="hidden" id="location_input" name="location">
+                </form>
             </div>
         </div>
 
@@ -124,7 +178,7 @@
                             <c:choose>
                                 <c:when test="${cpage.getPageNum() == page}">
                                     <li class="pagination-wrap active">
-                                        <a class="pagination-wrap"
+                                        <a class="pagination-wrap active"
                                            href="/cookingclass/class?pageNo=${page}">${page }</a>
                                     </li>
                                 </c:when>

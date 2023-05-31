@@ -27,4 +27,13 @@ public class ClassBasic {
     private String adderess;
     private Date classdate;
 
+    public ClassBasic(int classpin, String thumbnailimg, String classtitle, Date classdate, int personal, int amount) {
+        this.classpin = classpin;
+        this.thumbnailimg = thumbnailimg;
+        this.classtitle = classtitle;
+        this.classdate = classdate;
+        this.personal = personal;
+        this.amount = amount;
+    }
+
 }
