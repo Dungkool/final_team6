@@ -10,18 +10,26 @@
         ORDER BY recipepin DESC
     </select>
 
-<!--    <select id="getpagesearch" parameterType="String" resultType="item">-->
-<!--        SELECT *-->
-<!--        FROM item-->
-<!--        where NAME LIKE '%' ||upper(#{name})|| '%'-->
-<!--        ORDER BY id DESC-->
-<!--    </select>-->
-<!--    <select id="getpagecate" parameterType="String" resultType="item">-->
-<!--        SELECT *-->
-<!--        FROM item-->
-<!--        where category = #{category}-->
-<!--        ORDER BY id DESC-->
-<!--    </select>-->
+    <select id="getsearch" parameterType="String" resultType="recipebasic">
+        SELECT *
+        FROM recipe_basic
+        where recipetitle LIKE '%' || #{recipetitle} || '%'
+        ORDER BY recipepin DESC
+    </select>
+
+
+    <!--    <select id="getpagesearch" parameterType="String" resultType="item">-->
+    <!--        SELECT *-->
+    <!--        FROM item-->
+    <!--        where NAME LIKE '%' ||upper(#{name})|| '%'-->
+    <!--        ORDER BY id DESC-->
+    <!--    </select>-->
+    <!--    <select id="getpagecate" parameterType="String" resultType="item">-->
+    <!--        SELECT *-->
+    <!--        FROM item-->
+    <!--        where category = #{category}-->
+    <!--        ORDER BY id DESC-->
+    <!--    </select>-->
 
     <select id="select" parameterType="Integer" resultType="recipebasic">
         SELECT *
@@ -36,43 +44,43 @@
 
 
     <!--    <insert id="insert" parameterType="recipebasic">-->
-<!--        INSERT INTO recipebasic-->
-<!--        VALUES (recipebasic_seq.NEXTVAL, #{name}, #{price}, #{imgname}, SYSDATE)-->
-<!--    </insert>-->
+    <!--        INSERT INTO recipebasic-->
+    <!--        VALUES (recipebasic_seq.NEXTVAL, #{name}, #{price}, #{imgname}, SYSDATE)-->
+    <!--    </insert>-->
 
-<!--    <update id="update" parameterType="recipebasic">-->
-<!--        UPDATE item-->
-<!--        SET name=#{name},-->
-<!--            price=#{price},-->
-<!--            imgname=#{imgname}-->
-<!--        WHERE id = #{id}-->
-<!--    </update>-->
+    <!--    <update id="update" parameterType="recipebasic">-->
+    <!--        UPDATE item-->
+    <!--        SET name=#{name},-->
+    <!--            price=#{price},-->
+    <!--            imgname=#{imgname}-->
+    <!--        WHERE id = #{id}-->
+    <!--    </update>-->
 
-<!--    <delete id="delete" parameterType="Integer">-->
-<!--        DELETE-->
-<!--        FROM recipebasic-->
-<!--        WHERE id = #{id}-->
-<!--    </delete>-->
-<!--    -->
-<!--    <select id="search" parameterType="recipeSearch" resultType="recipebasic">-->
-<!--        SELECT * FROM recipebasic-->
-<!--        <where>-->
-<!--            <if test="name != null and !name.equals('') ">-->
-<!--                AND name LIKE '%'||upper(#{name})||'%'-->
-<!--            </if>-->
-<!--            <if test="category != null and !category.equals('')">-->
-<!--                AND category = #{category}-->
-<!--            </if>-->
-<!--        </where>-->
-<!--    </select>-->
+    <!--    <delete id="delete" parameterType="Integer">-->
+    <!--        DELETE-->
+    <!--        FROM recipebasic-->
+    <!--        WHERE id = #{id}-->
+    <!--    </delete>-->
+    <!--    -->
+    <!--    <select id="search" parameterType="recipeSearch" resultType="recipebasic">-->
+    <!--        SELECT * FROM recipebasic-->
+    <!--        <where>-->
+    <!--            <if test="name != null and !name.equals('') ">-->
+    <!--                AND name LIKE '%'||upper(#{name})||'%'-->
+    <!--            </if>-->
+    <!--            <if test="category != null and !category.equals('')">-->
+    <!--                AND category = #{category}-->
+    <!--            </if>-->
+    <!--        </where>-->
+    <!--    </select>-->
 
-<!--    <select id="searchcategory" parameterType="recipeSearch" resultType="recipebasic">-->
-<!--        SELECT * FROM recipebasic-->
-<!--        <where>-->
-<!--            <if test="category != null and !category.equals('')">-->
-<!--                AND category = #{category}-->
-<!--            </if>-->
-<!--        </where>-->
-<!--    </select>-->
+    <!--    <select id="searchcategory" parameterType="recipeSearch" resultType="recipebasic">-->
+    <!--        SELECT * FROM recipebasic-->
+    <!--        <where>-->
+    <!--            <if test="category != null and !category.equals('')">-->
+    <!--                AND category = #{category}-->
+    <!--            </if>-->
+    <!--        </where>-->
+    <!--    </select>-->
 
 </mapper>

@@ -42,17 +42,20 @@ public class RecipeService implements KBService<Integer, RecipeBasic> {
         return mapper.select(recipepin);
     }
 
-//    @Transactional(readOnly = true)
+    //    @Transactional(readOnly = true)
     @Override
     public List<RecipeBasic> get() throws Exception {
         return mapper.selectall();
     }
 
-
-
     public Page<RecipeBasic> getPage(int pageNo) throws Exception {
-        PageHelper.startPage(pageNo, 6); // 6: 한화면에 출력되는 개수
+        PageHelper.startPage(pageNo, 6); // 6 : 한화면에 출력되는 개수
         return mapper.getpage();
+    }
+
+    public Page<RecipeBasic> getSearch(int pageNo, String recipetitle) throws Exception {
+        PageHelper.startPage(pageNo, 6); // 6 : 한화면에 출력되는 개수
+        return mapper.getsearch(recipetitle);
     }
 
 }

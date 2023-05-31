@@ -62,6 +62,7 @@ public class ClassController {
         return "index";
     }
 
+
     @RequestMapping("/searchlocation")
     public String searchlocation(@RequestParam(required = false, defaultValue = "1") int pageNo, Model model, String location) throws Exception {
         PageInfo<ClassBasic> c;
@@ -80,19 +81,6 @@ public class ClassController {
         return "index";
     }
 
-//    @RequestMapping("/all")
-//    public String all(Model model) throws Exception {
-//        List<ClassBasic> clist = null;
-//        try {
-//            clist = classService.get();
-//        } catch (Exception e) {
-//            throw new Exception("시스템 장애 : ER0002");
-//        }
-//
-//        model.addAttribute("allclass", clist);
-//        model.addAttribute("center", dir + "class");
-//        return "index";
-//    }
 
     @RequestMapping("/detail")
     public String detail(Model model) {

@@ -63,4 +63,5 @@ public class ClassService implements KBService<Integer, ClassBasic> {
         PageHelper.startPage(pageNo, 6); // 3: 한화면에 출력되는 개수
         return mapper.getlocation(location);
     }
+
 }

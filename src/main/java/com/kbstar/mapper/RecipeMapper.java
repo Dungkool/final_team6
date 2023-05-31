@@ -9,19 +9,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+
 @Repository
 @Mapper
 public interface RecipeMapper extends KBMapper<Integer, RecipeBasic> {
 
-//    public List<RecipeBasic> search(ItemSearch csearch);
-//
-//    public List<RecipeBasic> searchcategory(ItemSearch csearch);
-
     Page<RecipeBasic> getpage() throws Exception;
 
-//    Page<RecipeBasic> getpagesearch(String name) throws Exception;
-//
-//    Page<RecipeBasic> getpagecate(String name) throws Exception;
+    Page<RecipeBasic> getsearch(String recipetitle) throws Exception;
+
 
     @Transactional(readOnly = true)
     public List<RecipeBasic> getAllIngredient(Integer integer) throws Exception;
