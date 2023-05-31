@@ -48,10 +48,7 @@ public class RecipeService implements KBService<Integer, RecipeBasic> {
         return mapper.selectall();
     }
 
-    @Override
-    public List<RecipeBasic> getAllIngredient(Integer integer) throws Exception {
-        return null;
-    }
+
 
     public Page<RecipeBasic> getPage(int pageNo) throws Exception {
         PageHelper.startPage(pageNo, 6); // 6: 한화면에 출력되는 개수
