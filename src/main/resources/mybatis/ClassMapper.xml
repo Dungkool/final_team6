@@ -18,6 +18,20 @@
         FROM Class_Basic
         ORDER BY classpin DESC
     </select>
+    <select id="search" parameterType="String" resultType="ClassBasic">
+        SELECT * FROM Class_Basic
+        <where>
+            <if test="classtitle != null and !classtitle.equals('') ">
+                AND classtitle LIKE '%'||upper(#{classtitle})||'%'
+            </if>
+        </where>
+    </select>
+    <select id="getsearch" parameterType="String" resultType="ClassBasic">
+        SELECT *
+        FROM Class_Basic
+        where classtitle LIKE '%' || #{classtitle} || '%'
+        ORDER BY classpin DESC
+    </select>
     <!--    <insert id="insert" parameterType="ClassBasic">-->
     <!--        INSERT INTO adm-->
     <!--        VALUES (#{id}, #{pwd}, #{lev})-->

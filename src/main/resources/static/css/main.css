@@ -277,12 +277,12 @@ p:last-child {
     }
 }
 
-.mt-80 {
-    margin-top: 80px;
+.mt-50 {
+    margin-top: 50px;
 }
 
 @media only screen and (max-width: 767.96px) {
-    .mt-80 {
+    .mt-50 {
         margin-top: 50px;
     }
 }
@@ -317,13 +317,13 @@ p:last-child {
     }
 }
 
-.mt-150 {
-    margin-top: 150px;
+.mt-50 {
+    margin-top: 50px;
 }
 
 @media only screen and (max-width: 767.96px) {
-    .mt-150 {
-        margin-top: 100px;
+    .mt-50 {
+        margin-top: 50px;
     }
 }
 

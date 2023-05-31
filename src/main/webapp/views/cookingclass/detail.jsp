@@ -5,8 +5,8 @@
 
 <head>
     <!-- google font -->
-    <%--    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">--%>
-    <%--    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">--%>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
     <!-- fontawesome -->
     <link rel="stylesheet" href="/css/all.min.css">
     <!-- bootstrap -->
@@ -28,7 +28,7 @@
 
 <body>
 <!-- single article section -->
-<div class="mt-150 mb-150">
+<div class="mt-50 mb-150">
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
