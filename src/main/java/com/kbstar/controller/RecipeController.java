@@ -54,7 +54,7 @@ public class RecipeController {
 
         recipe = recipeService.get(recipepin);
         ingredient = ingredientService.getAllIngredient(recipepin);
-        comment = commentService.get();
+        comment = commentService.getAllIngredient(recipepin);
 
         model.addAttribute("recipedetail", recipe);
         model.addAttribute("ingredientList", ingredient);
@@ -62,6 +62,4 @@ public class RecipeController {
         model.addAttribute("center", dir + "detail");
         return "index";
     }
-
-
 }

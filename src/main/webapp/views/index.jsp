@@ -47,7 +47,7 @@
             <div class="col-lg-2">
                 <div class="header__logo">
                     <a href="/">
-                        <img style="width: 500px" src="/img/logo.png" alt=""/>
+                        <img style="width: 125px" src="/img/logo.png" alt=""/>
                     </a>
                 </div>
             </div>
@@ -57,9 +57,9 @@
                         <ul>
                             <li class="active"><a href="/recipe/all">Recipe</a></li>
                             <li>
-                                <a href="/cookingclass/class">Class</a>
+                                <a href="/class">Class</a>
                                 <ul class="dropdown">
-                                    <li><a href="/cookingclass/class">Categories</a></li>
+                                    <li><a href="./categories.html">Categories</a></li>
                                     <li><a href="./anime-details.html">Anime Details</a></li>
                                     <li>
                                         <a href="./anime-watching.html">Anime Watching</a>
@@ -166,4 +166,10 @@
 <script src="/js/owl.carousel.min.js"></script>
 <script src="/js/main.js"></script>
 </body>
+
+<style>
+    #logoimg:hover {
+
+    }
+</style>
 </html>
