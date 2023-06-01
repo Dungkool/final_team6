@@ -57,7 +57,7 @@
                 <div class="login__form">
                     <h3 style="color: #b7b7b7">Login</h3>
                     <form id="login_form">
-                        <div class="input__item" style="margin-bottom: 0">
+                        <div class="input__item">
                             <input type="text" placeholder="Your ID" name="custid" id="custid">
                             <span class="icon_profile"></span>
                         </div>
