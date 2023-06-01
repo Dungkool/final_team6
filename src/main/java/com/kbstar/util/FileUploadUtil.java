@@ -3,6 +3,7 @@ package com.kbstar.util;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.FileOutputStream;
+
 public class FileUploadUtil {
     public static void saveFile(MultipartFile mf, String dir, String imgname) {
         byte[] data;
@@ -15,5 +16,11 @@ public class FileUploadUtil {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
+
 }
+
+
+
+
