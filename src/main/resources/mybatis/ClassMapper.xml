@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kbstar.mapper.ClassMapper">
-    <select id="select" parameterType="Integer" resultType="ClassBasic">
+    <select id="select" parameterType="String" resultType="ClassBasic">
         SELECT *
         FROM Class_Basic
         WHERE classpin = #{classpin}
@@ -27,10 +27,9 @@
             <if test="location != null and !location.equals('')">
                 AND location LIKE '%'||#{location}||'%'
             </if>
+
         </where>
-        <if test="sort != null and !sort.equals('1')">
-            ORDER BY amount DESC
-        </if>
+        ORDER BY classpin DESC
     </select>
     <select id="search" parameterType="String" resultType="ClassBasic">
         SELECT * FROM Class_Basic
@@ -46,24 +45,25 @@
         WHERE classtitle LIKE '%' || #{classtitle} || '%'
         ORDER BY classpin DESC
     </select>
-    <!--    <select id="getlocation" parameterType="String" resultType="ClassBasic">-->
-    <!--        SELECT *-->
-    <!--        FROM Class_Basic-->
-    <!--        WHERE-->
-    <!--        <if test="location != null and !location.equals('*')">-->
-    <!--            location = #{location}-->
-    <!--        </if>-->
-    <!--        ORDER BY classpin DESC-->
-    <!--    </select>-->
-    <!--    <select id="gettype" parameterType="String" resultType="ClassBasic">-->
-    <!--        SELECT *-->
-    <!--        FROM Class_Basic-->
-    <!--        WHERE-->
-    <!--        <if test="type != null and !type.equals('*')">-->
-    <!--            type = #{type}-->
-    <!--        </if>-->
-    <!--        ORDER BY classpin DESC-->
-    <!--    </select>-->
+    <select id="getlocation" parameterType="String" resultType="ClassBasic">
+        SELECT *
+        FROM Class_Basic
+        WHERE
+        <if test="location != null and !location.equals('*')">
+            location = #{location}
+        </if>
+        ORDER BY classpin DESC
+    </select>
+    <select id="gettype" parameterType="String" resultType="ClassBasic">
+        SELECT *
+        FROM Class_Basic
+        WHERE
+        <if test="type != null and !type.equals('*')">
+            type = #{type}
+        </if>
+        ORDER BY classpin DESC
+    </select>
+
     <select id="getlocationtype" parameterType="Map" resultType="ClassBasic">
         SELECT *
         FROM Class_Basic
