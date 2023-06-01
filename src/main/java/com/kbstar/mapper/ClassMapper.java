@@ -13,10 +13,15 @@ import java.util.List;
 public interface ClassMapper extends KBMapper<Integer, ClassBasic> {
     Page<ClassBasic> getpage() throws Exception;
 
+    Page<ClassBasic> getpage_category(String location, String type) throws Exception;
+
     public List<ClassBasic> search(ClassBasic csearch);
 
     Page<ClassBasic> getsearch(String classtitle) throws Exception;
 
     Page<ClassBasic> getlocation(String location) throws Exception;
+
+    Page<ClassBasic> gettype(String location) throws Exception;
+
 
 }
