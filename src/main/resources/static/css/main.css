@@ -1314,6 +1314,7 @@ ul.product-share li:hover a {
 }
 
 .single-product-item {
+    background-color: #FFFFFF;
     -webkit-transition: 0.3s;
     -o-transition: 0.3s;
     transition: 0.3s;

@@ -15,7 +15,6 @@ public class ClassService implements KBService<Integer, ClassBasic> {
     @Autowired
     ClassMapper mapper;
 
-
     /**
      * 등록 및 가입 진행
      * argument: Object
@@ -50,18 +49,30 @@ public class ClassService implements KBService<Integer, ClassBasic> {
     }
 
     public Page<ClassBasic> getPage(int pageNo) throws Exception {
-        PageHelper.startPage(pageNo, 6); // 3: 한화면에 출력되는 개수
+        PageHelper.startPage(pageNo, 6);
         return mapper.getpage();
     }
 
+    public Page<ClassBasic> getPage_category(int pageNo, String location,
+                                             String type) throws Exception {
+        PageHelper.startPage(pageNo, 6);
+        return mapper.getpage_category(location, type);
+    }
+
     public Page<ClassBasic> getSearch(int pageNo, String classtitle) throws Exception {
-        PageHelper.startPage(pageNo, 6); // 3: 한화면에 출력되는 개수
+        PageHelper.startPage(pageNo, 6);
         return mapper.getsearch(classtitle);
     }
 
     public Page<ClassBasic> getLocation(int pageNo, String location) throws Exception {
-        PageHelper.startPage(pageNo, 6); // 3: 한화면에 출력되는 개수
+        PageHelper.startPage(pageNo, 6);
         return mapper.getlocation(location);
     }
+
+    public Page<ClassBasic> getType(int pageNo, String type) throws Exception {
+        PageHelper.startPage(pageNo, 6);
+        return mapper.gettype(type);
+    }
+
 
 }
