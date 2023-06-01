@@ -4,84 +4,128 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 
 <script>
+    let register_form = {
+        init: function () {
+            $('#register_btn').prop("disabled", true);
+            $('#register_btn').css('background', '#b7b7b7');
+            $("#register_btn").click(function () {
+                register_form.send();
+            });
 
+            $('input').keyup(function () {
+                var custid = $('#custid').val();
+                var password = $('#password').val();
+                var email = $('#email').val();
+                if (custid != '' && password != '' && email != '') {
+                    $('#register_btn').prop("disabled", false);
+                    $('#register_btn').css('background', '#e53637');
+                } else {
+                    $('#register_btn').prop("disabled", true);
+                    $('#register_btn').css('background', '#b7b7b7');
+                }
+            });
+
+            $('#custid').keyup(function () {
+                var txt_id = $(this).val();
+                if (txt_id.length <= 4) {
+                    $('#check_id').text('ID는 5글자 이상입니다.');
+                    return;
+                }
+                $.ajax({
+                    url: '/checkid',
+                    data: {id: txt_id},
+                    success: function (result) {
+                        if (result == 0) {
+                            $('#check_id').text('사용가능합니다.');
+                        } else {
+                            $('#check_id').text('사용불가능합니다.')
+                        }
+                    }
+                });
+            });
+        },
+        send: function () {
+            var custid = $('#custid').val();
+            var password = $('#password').val();
+            var email = $('#email').val();
+            var emailCheck = document.getElementById("email");
+            if (custid.length <= 4) {
+                $('#check_id').text('5자리 이상이어야 합니다.');
+                $('#custid').focus();
+                return;
+            }
+            if (password == '') {
+                $('#password').focus();
+                return;
+            }
+            if (email == '') {
+                $('#email').focus();
+                return;
+            }
+            if (!(emailCheck.checkValidity())) {
+                alert("유효하지 않은 이메일 주소입니다.");
+                return;
+            }
+            $("#register_form").attr({
+                "action": "/apply/registerimpl",
+                "method": "post"
+            });
+            $("#register_form").submit();
+        }
+    }
+
+    $(function () {
+        register_form.init();
+    });
 </script>
-<c:choose>
-    <c:when test="${logincust != null && logincust.custid == mypagecust.custid}">
-        <!-- Normal Breadcrumb Begin -->
-        <a href="/apply/profilemodify">
 
-            <c:choose>
-                <c:when test="${logincust.profileimgname == null || logincust.profileimgname ==''}">
-                    <section class="normal-breadcrumb set-bg" data-setbg="/img/basic_profile.png"
-                             style="width: 300px; margin: auto; border-radius: 50%; border: 5px solid #f28123; background-size: cover">
-                    </section>
-                </c:when>
-                <c:otherwise>
-                    <section class="normal-breadcrumb set-bg" data-setbg="/uimg/${logincust.profileimgname}"
-                             style="width: 300px; margin: auto; border-radius: 50%; border: 5px solid #f28123; background-size: cover">
-                    </section>
-                </c:otherwise>
-            </c:choose>
-        </a>
-    </c:when>
-    <c:otherwise>
-        <c:choose>
-            <c:when test="${mypagecust.profileimgname == null || mypagecust.profileimgname ==''}">
-                <section class="normal-breadcrumb set-bg" data-setbg="/img/basic_profile.png"
-                         style="width: 300px; margin: auto; border-radius: 50%; border: 5px solid #f28123; background-size: cover">
-                </section>
-            </c:when>
-            <c:otherwise>
-                <section class="normal-breadcrumb set-bg" data-setbg="/uimg/${mypagecust.profileimgname}"
-                         style="width: 300px; margin: auto; border-radius: 50%; border: 5px solid #f28123; background-size: cover">
-                </section>
-            </c:otherwise>
-        </c:choose>
-    </c:otherwise>
-</c:choose>
-<!-- Anime Section Begin -->
-<section class="anime-details spad">
+<!-- Normal Breadcrumb Begin -->
+<a href="/apply/profilemodify">
+    <section class="normal-breadcrumb set-bg" data-setbg="/img/basic_profile.png"
+             style="width: 300px; margin: auto; border-radius: 50%; border: 5px solid #f28123; background-size: cover">
+        <%--        <div class="container">--%>
+        <%--            <div class="row">--%>
+        <%--                <div class="col-lg-12 text-center">--%>
+        <%--                    <div class="normal__breadcrumb__text">--%>
+        <%--                        <h2>My Profile</h2>--%>
+        <%--                        <p>Welcome to the My Profile</p>--%>
+        <%--                    </div>--%>
+        <%--                </div>--%>
+        <%--            </div>--%>
+        <%--        </div>--%>
+    </section>
+</a>
+<!-- Normal Breadcrumb End -->
+<!-- Signup Section Begin -->
+<section class="signup spad">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-md-8">
-                <div class="anime__details__review">
-                    <div class="section-title">
-                        <h5>My Recipe List</h5>
-                    </div>
-                    <div class="anime__review__item">
-                        <div class="anime__review__item__pic">
-                            <img src="img/anime/review-1.jpg" alt="">
+            <div class="col-lg-6">
+                <div class="login__form">
+                    <h3 style="color: #b7b7b7">Sign Up</h3>
+                    <form id="register_form">
+                        <div class="input__item" style="margin-bottom: 0">
+                            <input type="text" placeholder="Your ID" name="custid" id="custid">
+                            <span class="icon_profile"></span>
                         </div>
-                        <div class="anime__review__item__text">
-                            <h6>Chris Curry - <span>1 Hour ago</span></h6>
-                            <p>whachikan Just noticed that someone categorized this as belonging to the genre
-                                "demons" LOL</p>
+                        <div style="height: 20px"><span id="check_id"
+                                                        style="color: #b7b7b7; margin-left: 50px; font-size: 12px"></span>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4">
-                <div class="anime__details__sidebar">
-                    <div class="section-title">
-                        <h5>My Subcribe List</h5>
-                    </div>
-                    <div class="product__sidebar__view__item set-bg" data-setbg="img/sidebar/tv-1.jpg">
-                        <h5><a href="#">Boruto: Naruto next generations</a></h5>
-                    </div>
-                    <div class="product__sidebar__view__item set-bg" data-setbg="img/sidebar/tv-2.jpg">
-                        <h5><a href="#">The Seven Deadly Sins: Wrath of the Gods</a></h5>
-                    </div>
-                    <div class="product__sidebar__view__item set-bg" data-setbg="img/sidebar/tv-3.jpg">
-                        <h5><a href="#">Sword art online alicization war of underworld</a></h5>
-                    </div>
-                    <div class="product__sidebar__view__item set-bg" data-setbg="img/sidebar/tv-4.jpg">
-                        <h5><a href="#">Fate/stay night: Heaven's Feel I. presage flower</a></h5>
-                    </div>
+                        <div class="input__item">
+                            <input type="password" placeholder="Password" name="password" id="password">
+                            <span class="icon_lock"></span>
+                        </div>
+                        <div class="input__item">
+                            <input type="email" placeholder="Email address" name="email" id="email">
+                            <span class="icon_mail"></span>
+                        </div>
+                        <button type="button" class="site-btn" id="register_btn">Signup Now</button>
+                    </form>
+                    <h5 style="color: #b7b7b7">Already have an account? <a href="/login">Log In!</a></h5>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<!-- Anime Section End -->
+<!-- Signup Section End -->
 
