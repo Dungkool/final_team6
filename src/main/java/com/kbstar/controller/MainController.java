@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MainController {
     @RequestMapping("/")
     public String main(Model model) throws Exception {
-        model.addAttribute("center","center");
+        model.addAttribute("center", "center");
         return "index";
     }
 

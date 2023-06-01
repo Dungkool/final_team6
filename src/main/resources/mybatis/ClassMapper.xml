@@ -3,7 +3,6 @@
         PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kbstar.mapper.ClassMapper">
-
     <select id="select" parameterType="String" resultType="ClassBasic">
         SELECT *
         FROM Class_Basic
@@ -18,6 +17,20 @@
         FROM Class_Basic
         ORDER BY classpin DESC
     </select>
+    <select id="getpage_category" parameterType="String" resultType="ClassBasic">
+        SELECT *
+        FROM Class_Basic
+        <where>
+            <if test="type != null and !type.equals('')">
+                type LIKE '%'||#{type}||'%'
+            </if>
+            <if test="location != null and !location.equals('')">
+                AND location LIKE '%'||#{location}||'%'
+            </if>
+
+        </where>
+        ORDER BY classpin DESC
+    </select>
     <select id="search" parameterType="String" resultType="ClassBasic">
         SELECT * FROM Class_Basic
         <where>
@@ -29,9 +42,44 @@
     <select id="getsearch" parameterType="String" resultType="ClassBasic">
         SELECT *
         FROM Class_Basic
-        where classtitle LIKE '%' || #{classtitle} || '%'
+        WHERE classtitle LIKE '%' || #{classtitle} || '%'
         ORDER BY classpin DESC
     </select>
+    <select id="getlocation" parameterType="String" resultType="ClassBasic">
+        SELECT *
+        FROM Class_Basic
+        WHERE
+        <if test="location != null and !location.equals('*')">
+            location = #{location}
+        </if>
+        ORDER BY classpin DESC
+    </select>
+    <select id="gettype" parameterType="String" resultType="ClassBasic">
+        SELECT *
+        FROM Class_Basic
+        WHERE
+        <if test="type != null and !type.equals('*')">
+            type = #{type}
+        </if>
+        ORDER BY classpin DESC
+    </select>
+
+    <select id="getlocationtype" parameterType="Map" resultType="ClassBasic">
+        SELECT *
+        FROM Class_Basic
+        <where>
+            <if test="location != null and !location.equals('*')">
+                location = #{location}
+            </if>
+
+            <if test="type != null and !type.equals('*')">
+                AND type = #{type}
+            </if>
+        </where>
+        ORDER BY classpin DESC
+    </select>
+
+
     <!--    <insert id="insert" parameterType="ClassBasic">-->
     <!--        INSERT INTO adm-->
     <!--        VALUES (#{id}, #{pwd}, #{lev})-->

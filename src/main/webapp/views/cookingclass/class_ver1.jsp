@@ -3,17 +3,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 
+
 <script>
     let class_search = {
         init: function () {
-            let location = "";
-            let type = "";
-            if ("${location}" != "") {
-                location = "${location}";
-            }
-            if ("${type}" != "") {
-                type = "${type}";
-            }
             $('#search_btn').click(function () {
                 $('#search_form').attr({
                     method: 'post',
@@ -21,34 +14,65 @@
                 });
                 $('#search_form').submit();
             });
-            $('#location_li li').click(function () {
+            $('#location li').click(function () {
                 // 선택된 지역 값을 가져옴
-                location = $(this).data('filter');
-                $('#location').val(location);
-                $('#type').val(type);
+                let location = $(this).data('filter');
+                // let location = $(this).text();
 
-                // 폼을 서버로 제출
-                $('#category_form').attr({
-                    method: 'post',
-                    action: '/cookingclass/searchlocationtype'
-                });
-                $('#category_form').submit();
+                // 선택된 지역 값이 "*"(빈 문자열)인 경우 전체 데이터 조회
+                if (location === "") {
+                    location = "*";
+                    // 폼을 서버로 제출
+                    $('#category_form').attr({
+                        method: 'post',
+                        action: '/cookingclass/searchlocation'
+                    });
+                    $('#category_form').submit();
+                } else {
+                    // 선택된 지역 값을 폼에 설정
+                    $('#location_input').val(location);
 
+                    // 폼을 서버로 제출
+                    $('#category_form').attr({
+                        method: 'post',
+                        action: '/cookingclass/searchlocation'
+                    });
+                    $('#category_form').submit();
+                }
             });
-            $('#type_li li').click(function () {
-                type = $(this).data('filter');
-                $('#location').val(location);
-                $('#type').val(type);
+            $('#type li').click(function () {
+                let type = $(this).data('filter');
+                // let type = $(this).text();
 
-                $('#category_form').attr({
-                    method: 'post',
-                    action: '/cookingclass/searchlocationtype'
-                });
-                $('#category_form').submit();
+                if (type === "") {
+                    type = "*";
+                    // 폼을 서버로 제출
+                    $('#category_form').attr({
+                        method: 'post',
+                        action: '/cookingclass/searchtype'
+                    });
+                    $('#category_form').submit();
+                } else {
+                    // 선택된 지역 값을 폼에 설정
+                    $('#type_input').val(type);
 
+                    // 폼을 서버로 제출
+                    $('#type_form').attr({
+                        method: 'post',
+                        action: '/cookingclass/searchtype'
+                    });
+                    $('#category_form').submit();
+                }
             });
         }
     };
+    $(document).ready(function () {
+        class_search.init();
+        $('.product-filters ul li').click(function () {
+            // 선택된 li 요소에 active 클래스를 추가하고 다른 형제 요소들의 active 클래스를 제거합니다.
+            $(this).addClass('active').siblings().removeClass('active');
+        });
+    });
     $(function () {
         class_search.init();
     })
@@ -93,7 +117,7 @@
 </section>
 <!-- Normal Breadcrumb End -->
 
-<!-- cooking class start -->
+<!-- products -->
 <div class="product-section mt-50 mb-150">
     <div class="container">
         <div class="row">
@@ -111,10 +135,10 @@
         <div class="row">
             <div class="col-md-12">
                 <form id="category_form">
+
                     <div class="product-filters">
-                        <!-- 지역별 검색 -->
-                        <ul id="location_li" name="location_li">
-                            <li class="${location == null || location eq '' ? 'active' : ''}" data-filter="">지역별</li>
+                        <ul id="location" name="location">
+                            <li class="${location eq '*' ? 'active' : ''}" data-filter="*">지역별</li>
                             <li class="${location eq '서울' ? 'active' : ''}" data-filter="서울">서울</li>
                             <li class="${location eq '인천' ? 'active' : ''}" data-filter="인천">인천</li>
                             <li class="${location eq '경기' ? 'active' : ''}" data-filter="경기">경기</li>
@@ -129,23 +153,21 @@
                             <li class="${location eq '강원' ? 'active' : ''}" data-filter="강원">강원</li>
                             <li class="${location eq '기타' ? 'active' : ''}" data-filter="기타">기타</li>
                         </ul>
-                        <!-- 종류별 검색 -->
-                        <ul id="type_li" name="type_li">
-                            <li class="${type == null || type eq ''? 'active' : ''}" data-filter="">종류별</li>
-                            <li class="${type eq '한식' ? 'active' : ''}" data-filter="한식">한식</li>
-                            <li class="${type eq '양식' ? 'active' : ''}" data-filter="양식">양식</li>
-                            <li class="${type eq '중식' ? 'active' : ''}" data-filter="중식">중식</li>
-                            <li class="${type eq '일식' ? 'active' : ''}" data-filter="일식">일식</li>
-                            <li class="${type eq '기타' ? 'active' : ''}" data-filter="기타">기타</li>
+                        <ul id="type" name="type">
+                            <li class="${type eq '*' ? 'active' : ''}" data-filter="*">종류별</li>
+                            <li class="${type eq '한식' ? 'active' : ''}" data-filter="#">한식</li>
+                            <li class="${type eq '양식' ? 'active' : ''}" data-filter="#">양식</li>
+                            <li class="${type eq '중식' ? 'active' : ''}" data-filter="#">중식</li>
+                            <li class="${type eq '일식' ? 'active' : ''}" data-filter="#">일식</li>
+                            <li class="${type eq '기타' ? 'active' : ''}" data-filter="#">기타</li>
                         </ul>
                     </div>
-                    <input type="hidden" id="location" name="location" value="${location}">
-                    <input type="hidden" id="type" name="type" value="${type}">
+                    <input type="hidden" id="location_input" name="location" value="${location}">
+                    <input type="hidden" id="type_input" name="type" value="${type}">
                 </form>
             </div>
         </div>
 
-        <!-- cooking class list start -->
         <div class="row product-lists">
             <c:forEach var="obj" items="${clist}">
                 <div class="col-lg-4 col-md-6 text-center strawberry">
@@ -153,7 +175,7 @@
                         <div class="product-image">
                             <a href="/cookingclass/detail"><img src="/uimg/${obj.thumbnailimg}" alt=""></a>
                         </div>
-                        <h3><a href="/cookingclass/get?id=${obj.classpin}">${obj.classtitle}</a></h3>
+                        <h3><a href="/cookingclass/get?id=${obj.classtitle}">${obj.classtitle}</a></h3>
                         <p class="product-price">
                             <fmt:formatNumber value="${obj.amount}" type="currency"
                                               currencyCode="KRW" pattern="###,###원"/></p>
@@ -162,7 +184,6 @@
                 </div>
             </c:forEach>
         </div>
-        <!-- cooking class list end -->
 
         <!-- pagination start -->
         <div class="row">
@@ -227,5 +248,5 @@
             <!-- pagination end -->
         </div>
     </div>
-    <!-- cooking class end -->
+    <!-- end products -->
 </body>
