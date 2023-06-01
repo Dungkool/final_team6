@@ -54,9 +54,9 @@ public class ClassService implements KBService<Integer, ClassBasic> {
     }
 
     public Page<ClassBasic> getPage_category(int pageNo, String location,
-                                             String type, String sort) throws Exception {
+                                             String type) throws Exception {
         PageHelper.startPage(pageNo, 6);
-        return mapper.getpage_category(location, type, sort);
+        return mapper.getpage_category(location, type);
     }
 
     public Page<ClassBasic> getSearch(int pageNo, String classtitle) throws Exception {
@@ -64,15 +64,15 @@ public class ClassService implements KBService<Integer, ClassBasic> {
         return mapper.getsearch(classtitle);
     }
 
-//    public Page<ClassBasic> getLocation(int pageNo, String location) throws Exception {
-//        PageHelper.startPage(pageNo, 6);
-//        return mapper.getlocation(location);
-//    }
-//
-//    public Page<ClassBasic> getType(int pageNo, String type) throws Exception {
-//        PageHelper.startPage(pageNo, 6);
-//        return mapper.gettype(type);
-//    }
+    public Page<ClassBasic> getLocation(int pageNo, String location) throws Exception {
+        PageHelper.startPage(pageNo, 6);
+        return mapper.getlocation(location);
+    }
+
+    public Page<ClassBasic> getType(int pageNo, String type) throws Exception {
+        PageHelper.startPage(pageNo, 6);
+        return mapper.gettype(type);
+    }
 
 
 }
