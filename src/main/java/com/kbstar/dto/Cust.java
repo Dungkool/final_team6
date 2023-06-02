@@ -14,10 +14,10 @@ public class Cust {
     private int custpin;
     private String custid;
     private String custname;
-    private String linkedlogin;
+    private char linkedlogin;
     private String nickname;
     private String password;
-    private String gender;
+    private char gender;
     private String phone;
     private String email;
     private String location;
