@@ -11,7 +11,7 @@ import java.util.Date;
 @Getter
 @ToString
 public class ClassBasic {
-    private int classpin;
+    private Integer classpin;
     private int custpin;
     private String custid;
     private String nickname;

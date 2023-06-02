@@ -34,13 +34,15 @@
             <div class="col-lg-8">
                 <div class="single-article-section">
                     <div class="single-article-text">
-                        <div class="single-artcile-bg"></div>
+                        <div class="single-artcile-bg">
+                            <img src="/uimg/${classdetail.thumbnailimg}" alt="">
+                        </div>
                         <p class="blog-meta">
                             <span class="author"><i class="fas fa-user"></i> 작성자</span>
                             <span class="date"><i class="fas fa-calendar"></i> 작성일자</span>
                         </p>
                         <h2>클래스 소개</h2>
-                        <p>클래스 소개 어쩌고 저쩌고~~~~~~</p>
+                        <p>${classdetail.classdesc}</p>
                     </div>
 
                     <div class="comments-list-wrap">
@@ -105,7 +107,7 @@
             <div class="col-lg-4">
                 <div class="sidebar-section">
                     <div class="recent-posts">
-                        <h4>클래스명</h4>
+                        <h4>${classdetail.classtitle}</h4>
                     </div>
                     <div class="archive-posts">
                         <h4>클래스 요약 설명</h4>

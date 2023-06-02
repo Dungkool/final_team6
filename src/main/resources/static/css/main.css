@@ -2402,6 +2402,17 @@ ul.social-link-team li a {
     color: #fff;
 }
 
+.btn-group .btn {
+    border: 1px solid #6f6f6f;
+    background-color: #f3f3f3;
+    color: #6f6f6f;
+}
+
+.btn-group .btn.active {
+    background-color: #F28123;
+    color: #fff;
+}
+
 .single-product-item {
     margin-bottom: 30px;
 }

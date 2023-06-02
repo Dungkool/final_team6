@@ -2,59 +2,78 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
-
-<script>
-    let class_search = {
-        init: function () {
-            let location = "";
-            let type = "";
-            if ("${location}" != "") {
-                location = "${location}";
-            }
-            if ("${type}" != "") {
-                type = "${type}";
-            }
-            $('#search_btn').click(function () {
-                $('#search_form').attr({
-                    method: 'post',
-                    action: '/cookingclass/search'
-                });
-                $('#search_form').submit();
-            });
-            $('#location_li li').click(function () {
-                // 선택된 지역 값을 가져옴
-                location = $(this).data('filter');
-                $('#location').val(location);
-                $('#type').val(type);
-
-                // 폼을 서버로 제출
-                $('#category_form').attr({
-                    method: 'post',
-                    action: '/cookingclass/searchlocationtype'
-                });
-                $('#category_form').submit();
-
-            });
-            $('#type_li li').click(function () {
-                type = $(this).data('filter');
-                $('#location').val(location);
-                $('#type').val(type);
-
-                $('#category_form').attr({
-                    method: 'post',
-                    action: '/cookingclass/searchlocationtype'
-                });
-                $('#category_form').submit();
-
-            });
-        }
-    };
-    $(function () {
-        class_search.init();
-    })
-</script>
-
 <head>
+    <script>
+        let class_search = {
+            init: function () {
+                let location = "";
+                let type = "";
+                if ("${location}" != "") {
+                    location = "${location}";
+                }
+                if ("${type}" != "") {
+                    type = "${type}";
+                }
+                $('#search_btn').click(function () {
+                    $('#search_form').attr({
+                        method: 'get',
+                        action: '/cookingclass/search'
+                    });
+                    $('#search_form').submit();
+                });
+                $('#location_li li').click(function () {
+                    // 선택된 지역 값을 가져옴
+                    location = $(this).data('filter');
+                    $('#location').val(location);
+                    $('#type').val(type);
+
+                    // 폼을 서버로 제출
+                    $('#category_form').attr({
+                        method: 'get',
+                        action: '/cookingclass/searchlocationtype'
+                    });
+                    $('#category_form').submit();
+
+                });
+                $('#type_li li').click(function () {
+                    type = $(this).data('filter');
+                    $('#location').val(location);
+                    $('#type').val(type);
+
+                    $('#category_form').attr({
+                        method: 'get',
+                        action: '/cookingclass/searchlocationtype'
+                    });
+                    $('#category_form').submit();
+                });
+                $('#classpin_btn').click(function () {
+                    $('.btn-group .btn').removeClass('active');
+                    $(this).addClass('active');
+                    $('#sort').val('1');
+
+                    $('#category_form').attr({
+                        method: 'get',
+                        action: '/cookingclass/searchlocationtype'
+                    });
+                    $('#category_form').submit();
+                });
+                $('#amount_btn').click(function () {
+                    $('.btn-group .btn').removeClass('active');
+                    $(this).addClass('active');
+                    $('#sort').val('0');
+
+                    $('#category_form').attr({
+                        method: 'get',
+                        action: '/cookingclass/searchlocationtype'
+                    });
+                    $('#category_form').submit();
+                });
+            }
+        };
+        $(function () {
+            class_search.init();
+        })
+    </script>
     <!-- google font -->
     <%--    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">--%>
     <%--    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">--%>
@@ -102,8 +121,8 @@
                     <input class="form-control me-2" type="text" placeholder="Search by class name"
                            aria-label="Search"
                            name="classtitle" id="classtitle" value="${classtitle}">
-                    <button id="search_btn" class="btn btn-outline" type="button"
-                            style="border: 2px solid #F28123; background-color: #F28123; color: #fff;">Search
+                    <button id="search_btn" class="btn" type="button"
+                            style="background-color: #F28123; color: #fff;">Search
                     </button>
                 </form>
             </div>
@@ -127,7 +146,7 @@
                             <li class="${location eq '광주' ? 'active' : ''}" data-filter="광주">광주</li>
                             <li class="${location eq '전라' ? 'active' : ''}" data-filter="전라">전라</li>
                             <li class="${location eq '강원' ? 'active' : ''}" data-filter="강원">강원</li>
-                            <li class="${location eq '기타' ? 'active' : ''}" data-filter="기타">기타</li>
+                            <li class="${location eq '기타' ? 'active' : ''}" data-filter="제주">제주</li>
                         </ul>
                         <!-- 종류별 검색 -->
                         <ul id="type_li" name="type_li">
@@ -139,11 +158,30 @@
                             <li class="${type eq '기타' ? 'active' : ''}" data-filter="기타">기타</li>
                         </ul>
                     </div>
+                    <div class="btn-group" style="float: right; margin-bottom: 30px">
+                        <button id="classpin_btn" type="button" class="btn">최신순</button>
+                        <button id="amount_btn" type="button" class="btn">가격순</button>
+                    </div>
                     <input type="hidden" id="location" name="location" value="${location}">
                     <input type="hidden" id="type" name="type" value="${type}">
+                    <input type="hidden" id="sort" name="sort" value="${sort}">
                 </form>
             </div>
         </div>
+        <%--        <div class="row">--%>
+        <%--            <div class="col">--%>
+        <%--                <form id="sort_form" class="d-flex" style="float: right;">--%>
+        <%--                    <div class="btn-group" style="margin-bottom: 30px">--%>
+        <%--                        <button id="classpin_btn" type="button" class="btn">최신순--%>
+        <%--                        </button>--%>
+        <%--                        <button id="amount_btn" type="button" class="btn">가격순--%>
+        <%--                        </button>--%>
+        <%--                        <input type="hidden" id="classpin" name="classpin" value="">--%>
+        <%--                        <input type="hidden" id="amount" name="amount" value="">--%>
+        <%--                    </div>--%>
+        <%--                </form>--%>
+        <%--            </div>--%>
+        <%--        </div>--%>
 
         <!-- cooking class list start -->
         <div class="row product-lists">
@@ -153,7 +191,8 @@
                         <div class="product-image">
                             <a href="/cookingclass/detail"><img src="/uimg/${obj.thumbnailimg}" alt=""></a>
                         </div>
-                        <h3><a href="/cookingclass/get?id=${obj.classpin}">${obj.classtitle}</a></h3>
+                        <h3>${obj.classpin}</h3>
+                        <h3><a href="/cookingclass/detail?classpin=${obj.classpin}">${obj.classtitle}</a></h3>
                         <p class="product-price">
                             <fmt:formatNumber value="${obj.amount}" type="currency"
                                               currencyCode="KRW" pattern="###,###원"/></p>
