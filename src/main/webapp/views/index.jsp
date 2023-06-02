@@ -27,7 +27,6 @@
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css"/>
-    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css" type="text/css"/>
     <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css"/>
     <link rel="stylesheet" href="/css/elegant-icons.css" type="text/css"/>
     <link rel="stylesheet" href="/css/plyr.css" type="text/css"/>
@@ -54,7 +53,7 @@
             <div class="col-lg-2">
                 <div class="header__logo">
                     <a href="/">
-                        <img style="width: 125px" src="/img/logo.png" alt="logo"/>
+                        <img style="width: 125px" src="/img/logo.png" alt=""/>
                     </a>
                 </div>
             </div>
@@ -62,30 +61,31 @@
                 <div class="header__nav">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li><a href="/recipe/all">Recipe</a></li>
-                            <li><a href="/cookingclass/class">Class</a></li>
-                            <li><a href="/contacts">Contacts</a></li>
+                            <li class="active"><a href="/recipe/all">Recipe</a></li>
+                            <li><a class="active" href="/cookingclass/class">Class</a></li>
+                            <li><a class="active"href="/contacts">Contacts</a></li>
+                            <li><a href="#">Spare</a></li>
                         </ul>
                     </nav>
                 </div>
             </div>
             <div class="col-lg-2">
                 <div class="header__right">
-                    <ul>
-                        <c:choose>
-                            <c:when test="${logincust == null}">
-                                <li><a href="/login" class="search-switch">Login</a></li>
-                                <li><a href="/apply">Apply</a></li>
-                            </c:when>
-                            <c:otherwise>
-                                <li><a href="" class="search-switch">Logout
-                                </a></li>
-                                <li><a href="/apply/mypage?custid=${logincust.custid}" class="search-switch">
-                                    My Page
-                                </a></li>
-                            </c:otherwise>
-                        </c:choose>
-                    </ul>
+                    <c:choose>
+                        <c:when test="${logincust == null}">
+                            <a href="/login" class="search-switch">
+                                <span style="color: #b7b7b7">Login</span>
+                            </a>
+                            <a href="/apply">
+                                <span style="color: #b7b7b7">Apply</span>
+                            </a>
+                        </c:when>
+                        <c:otherwise>
+                            <a href="/apply/mypage" class="search-switch">
+                                <span style="color: #b7b7b7">My Page</span>
+                            </a>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
         </div>
@@ -160,32 +160,8 @@
 </div>
 <!-- Search model end -->
 
-<!-- Back to Top -->
-<a href="#" class="btn back-to-top">⬆︎</a>
-<style>
-    .back-to-top {
-        box-shadow: 1px 1px 1px 1px grey;
-        background-color: #f28123;
-        position: fixed;
-        display: none;
-        right: 30px;
-        bottom: 30px;
-        z-index: 11;
-        animation: action 1s infinite alternate;
-    }
-
-    @keyframes action {
-        0% {
-            transform: translateY(0);
-        }
-        100% {
-            transform: translateY(-15px);
-        }
-    }
-</style>
-
-
 <!-- Js Plugins -->
+<script src="/js/jquery-3.3.1.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/player.js"></script>
 <script src="/js/jquery.nice-select.min.js"></script>
@@ -193,7 +169,6 @@
 <script src="/js/jquery.slicknav.js"></script>
 <script src="/js/owl.carousel.min.js"></script>
 <script src="/js/main.js"></script>
-
 </body>
 
 
