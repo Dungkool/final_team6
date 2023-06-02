@@ -58,4 +58,14 @@ public class RecipeService implements KBService<Integer, RecipeBasic> {
         return mapper.getsearch(recipetitle);
     }
 
+    public Page<RecipeBasic> getType(int pageNo, String type) throws Exception {
+        PageHelper.startPage(pageNo, 6); // 6: 한화면에 출력되는 개수
+        return mapper.gettype(type);
+    }
+
+    public Page<RecipeBasic> getSituation(int pageNo, String situation) throws Exception {
+        PageHelper.startPage(pageNo, 6); // 6: 한화면에 출력되는 개수
+        return mapper.getsituation(situation);
+    }
+
 }
