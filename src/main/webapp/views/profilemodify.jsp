@@ -16,6 +16,13 @@
     let profilemodify_form = {
         maxSize: 52428800, //50M
         init: function () {
+            console.log("${logincust.gender}")
+            if ("${logincust.gender eq M}") {
+                $("#Malebtn").css('background', '#f28123');
+            }
+            if ("${logincust.gender eq F}") {
+                $("#Femalebtn").css('background', '#f28123');
+            }
             $('.nice-select:eq(0)').css({
                 'width': '30%',
                 'height': '50px',
@@ -173,30 +180,29 @@
                         </div>
                         <div class="input__item" id="genderzone">
                             <button type="button" class="site-btn" id="Malebtn"
-                            ${logincust.gender == 'M' ? 'style="width: 49%;background-color: #f28123"' : 'style="width: 49%;background-color: #b7b7b7"'}>
-                                Male
+                                    style="width: 49%;background-color: #b7b7b7">Male
                             </button>
                             <button type="button" class="site-btn" id="Femalebtn"
-                            ${logincust.gender == 'F' ? 'style="width: 49%;background-color: #f28123"' : 'style="width: 49%;background-color: #b7b7b7"'}>
-                                Female
+                                    style="width: 49%;background-color: #b7b7b7">Female
                             </button>
                             <input type="hidden" name="gender" id="gender" value="${logincust.gender}">
                         </div>
                         <div class="input__item phonezone" style="display: flex">
                             <select name="phone_prefix" id="phone_prefix">
-                                <option value="010" ${location.phone eq '010' ? 'selected' : ''}>010</option>
-                                <option value="011" ${location.phone eq '011' ? 'selected' : ''}>011</option>
-                                <option value="016" ${location.phone eq '016' ? 'selected' : ''}>016</option>
-                                <option value="017" ${location.phone eq '017' ? 'selected' : ''}>017</option>
-                                <option value="019" ${location.phone eq '019' ? 'selected' : ''}>019</option>
+                                <option value="010" ${logincust.phone eq '010' ? 'selected' : ''}>010</option>
+                                <option value="011" ${logincust.phone eq '011' ? 'selected' : ''}>011</option>
+                                <option value="016" ${logincust.phone eq '016' ? 'selected' : ''}>016</option>
+                                <option value="017" ${logincust.phone eq '017' ? 'selected' : ''}>017</option>
+                                <option value="019" ${logincust.phone eq '019' ? 'selected' : ''}>019</option>
                             </select>
                             <div class="input__item phonezone" style="display: flex; margin-bottom: 0">
                                 <input type="text" pattern="[0-9]{4}" minlength="4" maxlength="4" placeholder="0000"
                                        name="phone_middle"
-                                       id="phone_middle" style="width: 48%;  margin: 0 1% 0 1%">
+                                       id="phone_middle" style="width: 48%;  margin: 0 1% 0 1%"
+                                       value="${logincust.phone}">
                                 <input type="text" pattern="[0-9]{4}" minlength="4" maxlength="4" placeholder="0000"
                                        name="phone_end"
-                                       id="phone_end" style="width: 48%">
+                                       id="phone_end" style="width: 48%" value="${logincust.phone}">
                             </div>
                             <input type="hidden" name="phone" id="phone" value="${logincust.phone}">
                         </div>
