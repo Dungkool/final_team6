@@ -62,6 +62,7 @@ public class ApplyController {
 
     @RequestMapping("/profilemodifyimpl")
     public String profilemodifyimpl(Model model, Cust cust, HttpSession session, MultipartFile img) throws Exception {
+        log.info("%%%%%%%%%%%%%%%%%%%%%%%%%" + cust.getPhone());
         if (img == null || img.isEmpty() || img.getOriginalFilename() == null || img.getOriginalFilename().isEmpty()) {
             cust.setProfileimgname(cust.getProfileimgname());
         } else {
