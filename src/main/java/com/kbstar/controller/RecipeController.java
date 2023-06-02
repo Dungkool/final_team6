@@ -7,7 +7,7 @@ import com.kbstar.dto.RecipeIngredient;
 import com.kbstar.service.IngredientService;
 import com.kbstar.service.RecipeCommentService;
 import com.kbstar.service.RecipeService;
-import com.kbstar.util.FileUploadUtil;
+import com.kbstar.util.util.FileUploadUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -42,26 +42,10 @@ public class RecipeController {
         try {
 
             p = new PageInfo<>(recipeService.getPage(pageNo), 5);
+
             recipeList = p.getList();
         } catch (Exception e) {
             throw new RuntimeException(e);
-        }
-        model.addAttribute("target", "recipe");
-        model.addAttribute("recipeList", recipeList);
-        model.addAttribute("cpage", p);
-        model.addAttribute("center", dir + "all");
-        return "index";
-    }
-
-    @RequestMapping("/alphabetical")
-    public String alphabetical(@RequestParam(required = false, defaultValue = "1") int pageNo, Model model) throws Exception {
-        PageInfo<RecipeBasic> p;
-        List<RecipeBasic> recipeList = null;
-        try {
-            p = new PageInfo<>(recipeService.getAlphabetical(pageNo), 5);
-            recipeList = p.getList();// 5:하단 네비게이션 개수
-        } catch (Exception e) {
-            throw new Exception(e.getMessage());
         }
         model.addAttribute("target", "recipe");
         model.addAttribute("recipeList", recipeList);
@@ -96,15 +80,15 @@ public class RecipeController {
     }
 
     @RequestMapping("/addImpl")
-    public String addImpl(Model model, RecipeBasic recipeBasic, MultipartFile img) throws Exception {
-        recipeBasic.setThumbnailimg(recipeBasic.getRecipetitle() + "_thumb.jpg");
-        recipeBasic.setFinishedimg(recipeBasic.getRecipetitle() + "fin.jpg");
-        recipeService.register(recipeBasic);
-
-        model.addAttribute("center", dir + "add");
-        FileUploadUtil.saveFile(img, imgdir, recipeBasic.getRecipetitle() + "_thumb.jpg");
-        FileUploadUtil.saveFile(img, imgdir, recipeBasic.getRecipetitle() + "_fin.jpg");
-
+    public String addImpl(RecipeBasic recipeBasic, MultipartFile mf) throws Exception {
+        try {
+            String imgname = mf.getOriginalFilename();
+            recipeBasic.setThumbnailimg(imgname);
+            recipeService.register(recipeBasic);
+            FileUploadUtil.saveFile(mf, imgdir);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return "redirect:/recipe/all";
     }
 
