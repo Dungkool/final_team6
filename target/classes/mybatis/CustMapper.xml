@@ -24,7 +24,6 @@
             profileimgname=#{profileimgname},
             custname = #{custname},
             nickname = #{nickname},
-            introduction = #{introduction},
             gender = #{gender},
             phone = #{phone},
             location = #{location}
