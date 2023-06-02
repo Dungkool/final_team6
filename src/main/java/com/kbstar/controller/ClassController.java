@@ -62,74 +62,82 @@ public class ClassController {
         return "index";
     }
 
-    @RequestMapping("/searchlocation")
-    public String searchlocation(@RequestParam(required = false, defaultValue = "1") int pageNo, Model model, String location) throws Exception {
-        PageInfo<ClassBasic> c;
-        List<ClassBasic> clist;
-        try {
-            if (location != null && location.equals("*")) {
-                clist = classService.get();
-                c = new PageInfo<>(clist, 5);
-            } else {
-                c = new PageInfo<>(classService.getLocation(pageNo, location), 5);
-                clist = c.getList();
-            }
-        } catch (Exception e) {
-            throw new Exception(e.getMessage());
-        }
-        model.addAttribute("target", "class");
-        model.addAttribute("clist", clist);
-        model.addAttribute("cpage", c);
-        model.addAttribute("location", location);
-        model.addAttribute("center", dir + "class");
-        return "index";
-    }
-
-    @RequestMapping("/searchtype")
-    public String searchtype(@RequestParam(required = false, defaultValue = "1") int pageNo, Model model, String type) throws Exception {
-        PageInfo<ClassBasic> c;
-        List<ClassBasic> clist;
-        try {
-            if (type != null && type.equals("*")) {
-                clist = classService.get();
-                c = new PageInfo<>(clist, 5);
-            } else {
-                c = new PageInfo<>(classService.getLocation(pageNo, type), 5);
-                clist = c.getList();
-            }
-        } catch (Exception e) {
-            throw new Exception(e.getMessage());
-        }
-        model.addAttribute("target", "class");
-        model.addAttribute("clist", clist);
-        model.addAttribute("cpage", c);
-        model.addAttribute("type", type);
-        model.addAttribute("center", dir + "class");
-        return "index";
-    }
+//    @RequestMapping("/searchlocation")
+//    public String searchlocation(@RequestParam(required = false, defaultValue = "1") int pageNo, Model model, String location) throws Exception {
+//        PageInfo<ClassBasic> c;
+//        List<ClassBasic> clist;
+//        try {
+//            if (location != null && location.equals("*")) {
+//                clist = classService.get();
+//                c = new PageInfo<>(clist, 5);
+//            } else {
+//                c = new PageInfo<>(classService.getLocation(pageNo, location), 5);
+//                clist = c.getList();
+//            }
+//        } catch (Exception e) {
+//            throw new Exception(e.getMessage());
+//        }
+//        model.addAttribute("target", "class");
+//        model.addAttribute("clist", clist);
+//        model.addAttribute("cpage", c);
+//        model.addAttribute("location", location);
+//        model.addAttribute("center", dir + "class");
+//        return "index";
+//    }
+//
+//    @RequestMapping("/searchtype")
+//    public String searchtype(@RequestParam(required = false, defaultValue = "1") int pageNo, Model model, String type) throws Exception {
+//        PageInfo<ClassBasic> c;
+//        List<ClassBasic> clist;
+//        try {
+//            if (type != null && type.equals("*")) {
+//                clist = classService.get();
+//                c = new PageInfo<>(clist, 5);
+//            } else {
+//                c = new PageInfo<>(classService.getLocation(pageNo, type), 5);
+//                clist = c.getList();
+//            }
+//        } catch (Exception e) {
+//            throw new Exception(e.getMessage());
+//        }
+//        model.addAttribute("target", "class");
+//        model.addAttribute("clist", clist);
+//        model.addAttribute("cpage", c);
+//        model.addAttribute("type", type);
+//        model.addAttribute("center", dir + "class");
+//        return "index";
+//    }
 
     @RequestMapping("/searchlocationtype")
-    public String searchlocationtype(@RequestParam(required = false, defaultValue = "1") int pageNo, Model model, String location, String type) throws Exception {
+    public String searchlocationtype(@RequestParam(required = false, defaultValue = "1") int pageNo, Model model, String location, String type, String sort) throws Exception {
+        log.info("aaaaaaaaaaaaa 로 들어옴 ");
         PageInfo<ClassBasic> c;
         List<ClassBasic> clist;
+        log.info("----------------------------" + sort);
         try {
-            c = new PageInfo<>(classService.getPage_category(pageNo, location, type), 5);
+            c = new PageInfo<>(classService.getPage_category(pageNo, location, type, sort), 5);
             clist = c.getList();// 5:하단 네비게이션 개수
         } catch (Exception e) {
-            throw new Exception("시스템 장애 : ER0002");
+            throw new Exception(e.getMessage());
         }
         model.addAttribute("target", "class");
         model.addAttribute("clist", clist);
         model.addAttribute("cpage", c);
         model.addAttribute("location", location);
         model.addAttribute("type", type);
+        model.addAttribute("sort", sort);
         model.addAttribute("center", dir + "class");
         return "index";
     }
 
+
     @RequestMapping("/detail")
-    public String detail(Model model) {
+    public String get(Model model, Integer classpin) throws Exception {
+        ClassBasic classBasic = null;
+        classBasic = classService.get(classpin);
+        model.addAttribute("classdetail", classBasic);
         model.addAttribute("center", dir + "detail");
         return "index";
     }
 }
+
