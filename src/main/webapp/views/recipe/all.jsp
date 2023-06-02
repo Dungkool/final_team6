@@ -168,19 +168,27 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-4">
-                                    <a href="/recipe/add">
-                                        <button id="add_Btn" class="btn btn-outline"
-                                                style="border: 2px solid #F28123; background-color: #F28123; color: #fff;">Register</button>
+                                    <form action="/recipe/alphabetical" method="post" class="d-flex" style="float: right;">
+                                        <c:url var="actionUrl" value="/recipe/alphabetical" />
+                                        <button id="alphabetical_btn" class="btn btn-outline" type="submit"
+                                                style="border: 2px solid #F28123; background-color: #F28123; color: #fff;">Alphabetical
+                                        </button>
+                                    </form>
+                                    <a href="/recipe/all">
+                                        <button class="btn btn-outline"
+                                                style="border: 2px solid #F28123; background-color: #F28123; color: #fff;">Recent
+                                        </button>
                                     </a>
                                 </div>
+
                             </div>
                             <div class="row" >
                                 <c:forEach var="obj" items="${recipeList}">
                                     <div class="col-lg-4 col-md-6 col-sm-6">
                                         <div class="product__item">
                                             <a href="/recipe/detail?recipepin=${obj.recipepin}" data-target="#target${obj.recipepin}">
-<%--                                            <div class="product__item__pic set-bg" data-setbg="/uimg/${obj.thumbnailimg}"></div>--%>
-                                                <img class="product__item__pic set-bg" src="/uimg/${obj.thumbnailimg}" alt="">
+                                                <div class="product__item__pic set-bg" data-setbg="/uimg/${obj.thumbnailimg}"></div>
+                                                    <%--                                            <img src="/uimg/${obj.thumbnailimg}" alt="">--%>
                                             </a>
                                             <div class="product__item__text">
                                                 <ul>
