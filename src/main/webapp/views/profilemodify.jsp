@@ -74,21 +74,21 @@
 </script>
 
 <!-- Normal Breadcrumb Begin -->
-<a href="/apply/profilemodify">
 
-    <c:choose>
-        <c:when test="${logincust.profileimgname == null || logincust.profileimgname ==''}">
-            <section class="normal-breadcrumb set-bg" data-setbg="/img/basic_profile.png"
-                     style="width: 300px; margin: auto; border-radius: 50%; border: 5px solid #f28123; background-size: cover">
-            </section>
-        </c:when>
-        <c:otherwise>
-            <section class="normal-breadcrumb set-bg" data-setbg="/uimg/${logincust.profileimgname}"
-                     style="width: 300px; margin: auto; border-radius: 50%; border: 5px solid #f28123; background-size: cover">
-            </section>
-        </c:otherwise>
-    </c:choose>
-</a>
+
+<c:choose>
+    <c:when test="${logincust.profileimgname == null || logincust.profileimgname ==''}">
+        <section class="normal-breadcrumb set-bg" data-setbg="/img/basic_profile.png"
+                 style="width: 300px; margin: auto; border-radius: 50%; border: 5px solid #f28123; background-size: cover">
+        </section>
+    </c:when>
+    <c:otherwise>
+        <section class="normal-breadcrumb set-bg" data-setbg="/uimg/${logincust.profileimgname}"
+                 style="width: 300px; margin: auto; border-radius: 50%; border: 5px solid #f28123; background-size: cover">
+        </section>
+    </c:otherwise>
+</c:choose>
+
 <!-- Normal Breadcrumb End -->
 <!-- Signup Section Begin -->
 <section class="signup spad">
@@ -101,7 +101,9 @@
                         <input type="hidden" name="profileimgname" value="${logincust.profileimgname}">
                         <div class="input__item">
                             <input type="file" placeholder="Your ProfileImage" name="img"
-                                   id="img">
+                                   id="img" style="display: none">
+                            <input type="button" value="Profile Image"
+                                   onclick="document.getElementById('img').click();"/>
                             <span class="icon_profile"></span>
                         </div>
                         <div class="input__item">

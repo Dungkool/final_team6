@@ -81,19 +81,19 @@
 
 <!-- Normal Breadcrumb Begin -->
 <a href="/apply/profilemodify">
-    <section class="normal-breadcrumb set-bg" data-setbg="/img/basic_profile.png"
-             style="width: 300px; margin: auto; border-radius: 50%; border: 5px solid #f28123; background-size: cover">
-        <%--        <div class="container">--%>
-        <%--            <div class="row">--%>
-        <%--                <div class="col-lg-12 text-center">--%>
-        <%--                    <div class="normal__breadcrumb__text">--%>
-        <%--                        <h2>My Profile</h2>--%>
-        <%--                        <p>Welcome to the My Profile</p>--%>
-        <%--                    </div>--%>
-        <%--                </div>--%>
-        <%--            </div>--%>
-        <%--        </div>--%>
-    </section>
+
+    <c:choose>
+        <c:when test="${logincust.profileimgname == null || logincust.profileimgname ==''}">
+            <section class="normal-breadcrumb set-bg" data-setbg="/img/basic_profile.png"
+                     style="width: 300px; margin: auto; border-radius: 50%; border: 5px solid #f28123; background-size: cover">
+            </section>
+        </c:when>
+        <c:otherwise>
+            <section class="normal-breadcrumb set-bg" data-setbg="/uimg/${logincust.profileimgname}"
+                     style="width: 300px; margin: auto; border-radius: 50%; border: 5px solid #f28123; background-size: cover">
+            </section>
+        </c:otherwise>
+    </c:choose>
 </a>
 <!-- Normal Breadcrumb End -->
 <!-- Signup Section Begin -->
