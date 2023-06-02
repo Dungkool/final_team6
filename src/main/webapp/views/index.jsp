@@ -13,7 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <title>Kolly on the Table</title>
+    <title>Kolly on the Table | Template</title>
 
     <!-- Google Font -->
     <link
@@ -34,10 +34,6 @@
     <link rel="stylesheet" href="/css/owl.carousel.min.css" type="text/css"/>
     <link rel="stylesheet" href="/css/slicknav.min.css" type="text/css"/>
     <link rel="stylesheet" href="/css/style.css" type="text/css"/>
-
-    <!-- Tab icon -->
-    <link rel="icon" href="/img/logo.png"/>
-    <link rel="apple-touch-icon" href="/img/logo.png"/>
 </head>
 
 <body>
@@ -61,7 +57,14 @@
                 <div class="header__nav">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li class="active"><a href="/recipe/all">Recipe</a></li>
+                            <c:choose>
+                                <c:when test="http://172.16.21.59/recipe/all">
+                                    <a class="active" href="/recipe/all"><li class="active">Recipe</li></a>
+                                </c:when>
+                                <c:otherwise>
+                                    <li><a href="/recipe/all">Recipe</a></li>
+                                </c:otherwise>
+                            </c:choose>
                             <li><a class="active" href="/cookingclass/class">Class</a></li>
                             <li><a class="active"href="/contacts">Contacts</a></li>
                             <li><a href="#">Spare</a></li>
