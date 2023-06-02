@@ -100,11 +100,9 @@ public class RecipeController {
         recipeBasic.setThumbnailimg(recipeBasic.getRecipetitle() + "_thumb.jpg");
         recipeBasic.setFinishedimg(recipeBasic.getRecipetitle() + "fin.jpg");
         recipeService.register(recipeBasic);
-
         model.addAttribute("center", dir + "add");
         FileUploadUtil.saveFile(img, imgdir, recipeBasic.getRecipetitle() + "_thumb.jpg");
         FileUploadUtil.saveFile(img, imgdir, recipeBasic.getRecipetitle() + "_fin.jpg");
-
         return "redirect:/recipe/all";
     }
 
