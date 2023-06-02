@@ -17,6 +17,12 @@
         ORDER BY recipepin DESC
     </select>
 
+    <select id="getalphabetical" parameterType="String" resultType="recipebasic">
+        SELECT *
+        FROM recipe_basic
+        ORDER BY recipetitle ASC
+    </select>
+
     <select id="select" parameterType="Integer" resultType="recipebasic">
         SELECT *
         FROM recipe_basic
@@ -41,13 +47,19 @@
                 #{ingredients3},
                 #{cooking},
                 #{thumbnailimg},
-                'N',
+                #{finishedimg},
                 #{time},
                 #{recipelevel},
                 #{recipetitle},
                 #{recipedesc},
                 SYSDATE)
     </insert>
+
+    <update id="imgnamechange" parameterType="recipebasic">
+        UPDATE recipe_basic SET thumbnailimg = #{thumbnailimg}, finishedimg = #{finishedimg} WHERE recipepin=#{recipepin}
+    </update>
+
+
 
     <select id="gettype" parameterType="String" resultType="recipebasic">
         SELECT *
