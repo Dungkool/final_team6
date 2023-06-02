@@ -103,6 +103,7 @@
     @media (min-width: 1200px) {
         #conchShellImg {
             width: 70vh;
+            height: 470px;
         }
     }
     :root {
