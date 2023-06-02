@@ -15,12 +15,13 @@ import java.util.List;
 public interface RecipeMapper extends KBMapper<Integer, RecipeBasic> {
 
     Page<RecipeBasic> getpage() throws Exception;
-
+    Page<RecipeBasic> getalphabetical() throws Exception;
     Page<RecipeBasic> getsearch(String recipetitle) throws Exception;
-
     Page<RecipeBasic> gettype(String type) throws Exception;
 
     Page<RecipeBasic> getsituation(String situation) throws Exception;
+
+    public void imgnamechange(RecipeBasic recipeBasic) throws Exception;
 
     @Transactional(readOnly = true)
     public List<RecipeBasic> getAllIngredient(Integer integer) throws Exception;
