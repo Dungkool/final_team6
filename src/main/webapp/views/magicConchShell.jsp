@@ -10,6 +10,20 @@
 <script>
 
     function playAnswer() {
+        $.ajax({
+            url: "/magic/ajax",
+            success: function (res) {
+                let text = (Math.random() <= 0.1) ? "굶어" : (res.title);
+                tts(text);
+                answerText.innerHTML = text;
+                (text === "굶어") ? $("#detail_url").removeAttr("href") : detail_url.href = res.url;
+            },
+            error: function (request, status, error) {
+                alert("오류", "오류가 발생하였습니다. 관리자에게 문의해주세요.");
+            }
+        });
+    }
+    function tts(text) {
         let data = {
             "voice":{
                 languageCode: 'ko-KR',
@@ -17,8 +31,7 @@
                 ssmlGender: 'FEMALE'
             },
             "input":{
-                "text": "안녕하세요"
-                // "text": $('#testInput').val()
+                "text": text
             },
             "audioConfig":{
                 "audioEncoding":"mp3"
@@ -34,11 +47,11 @@
                 var audioFile = new Audio();
                 let audioBlob = base64ToBlob(res.audioContent, "mp3");
                 audioFile.src = window.URL.createObjectURL(audioBlob);
-                audioFile.playbackRate = 1; //재생속도
+                audioFile.playbackRate = 0.8; //재생속도
                 audioFile.play();
             },
             error : function(request, status, error ) {
-                alert("오류","오류가 발생하였습니다. 관리자에게 문의해주세요.");
+                alert("tts오류","오류가 발생하였습니다. 관리자에게 문의해주세요.");
             }
         });
     };
@@ -65,27 +78,63 @@
 </script>
 
 <style>
-    @media only screen and (max-width: 479px) {
-/*나중에 반응형으로 만들기*/
+
+    @media (max-width: 768px) {
+        #conchShellImg {
+            width: 40vh;
+            height: 320px;
+        }
+    }
+
+    @media (min-width: 768px) {
+        #conchShellImg {
+            width: 50vh;
+            height: 350px;
+        }
+    }
+
+    @media (min-width: 992px) {
+        #conchShellImg {
+            width: 60vh;
+            height: 370px;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        #conchShellImg {
+            width: 70vh;
+        }
+    }
+    :root {
+        --font-size-lg: clamp(2rem, 4vw, 3.5rem);
+        --font-size-sm: clamp(1rem, 2vw, 1.5rem);
+    }
+
+    h1 {
+        font-size: var(--font-size-lg);
+    }
+
+    h4 {
+        font-size: var(--font-size-sm);
+    }
+/*반응형 구현 end*/
+
+    #bg {
+        height: 85vh;
+    }
+
+    #conchShellImg {
+        background-image: url("/uimg/conch.png");
+        /*에러뜨지만 잘 작동됩니다!*/
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+
     }
 
     #conchShell {
         display: table;
         margin: auto;
-    }
-
-    #bg {
-        height: 80vh;
-    }
-
-    #conchShellImg {
-        width: 70vh;
-        height: 50vh;
-        background-size: cover;
-        background-image: url("/uimg/conch.png");
-        /*에러뜨지만 잘 작동됩니다!*/
-        background-repeat: no-repeat;
-        background-position: center;
     }
 
     #conchShellImg:hover,#conchShellImg:active {
@@ -100,6 +149,7 @@
         color: white;
         text-shadow: 0px 0px 12px #565656;
     }
+
 </style>
 
 <div class="container">
@@ -107,11 +157,13 @@
         <h1><br>Ask the Magic Conch Shell</h1>
         <h4><br>마법의 소라고둥님, 무엇을 먹을까요?</h4>
         <div id="conchShell">
-            <a href="#" onclick="playAnswer();">
+            <a type="button" onclick="playAnswer();">
                 <div id="conchShellImg"></div>
             </a>
+            <a id="detail_url" href="">
+                <h1 id="answerText"></h1>
+            </a>
         </div>
-        <h1 id="answerText"></h1>
     </div>
 </div>
 
