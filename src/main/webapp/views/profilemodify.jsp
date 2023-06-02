@@ -17,10 +17,10 @@
         maxSize: 52428800, //50M
         init: function () {
             console.log("${logincust.gender}")
-            if ("${logincust.gender eq M}") {
+            if ("${logincust.gender}" == 'M') {
                 $("#Malebtn").css('background', '#f28123');
             }
-            if ("${logincust.gender eq F}") {
+            if ("${logincust.gender}" == 'F') {
                 $("#Femalebtn").css('background', '#f28123');
             }
             $('.nice-select:eq(0)').css({
@@ -56,11 +56,13 @@
                 $("#Femalebtn").css('background', '#f28123');
             });
             $('.phonezone select, .phonezone input[type="text"]').on('change', function () {
-                var prefix = $('.selected:first').text();
+                var prefix = $('#phone_prefix').val();
+                console.log(prefix);
                 var middle = $('#phone_middle').val();
                 var end = $('#phone_end').val();
                 var phoneNumber = prefix + middle + end;
                 $('#phone').val(phoneNumber);
+                console.log(phoneNumber);
             });
             $('.locationzone select').on('change', function () {
                 var loca = $('.selected:eq(1)').text();
@@ -189,20 +191,25 @@
                         </div>
                         <div class="input__item phonezone" style="display: flex">
                             <select name="phone_prefix" id="phone_prefix">
-                                <option value="010" ${logincust.phone eq '010' ? 'selected' : ''}>010</option>
-                                <option value="011" ${logincust.phone eq '011' ? 'selected' : ''}>011</option>
-                                <option value="016" ${logincust.phone eq '016' ? 'selected' : ''}>016</option>
-                                <option value="017" ${logincust.phone eq '017' ? 'selected' : ''}>017</option>
-                                <option value="019" ${logincust.phone eq '019' ? 'selected' : ''}>019</option>
+                                <option value="010" ${logincust.phone.substring(0, 3) eq '010' ? 'selected' : ''}>010
+                                </option>
+                                <option value="011" ${logincust.phone.substring(0, 3) eq '011' ? 'selected' : ''}>011
+                                </option>
+                                <option value="016" ${logincust.phone.substring(0, 3) eq '016' ? 'selected' : ''}>016
+                                </option>
+                                <option value="017" ${logincust.phone.substring(0, 3) eq '017' ? 'selected' : ''}>017
+                                </option>
+                                <option value="019" ${logincust.phone.substring(0, 3) eq '019' ? 'selected' : ''}>019
+                                </option>
                             </select>
                             <div class="input__item phonezone" style="display: flex; margin-bottom: 0">
                                 <input type="text" pattern="[0-9]{4}" minlength="4" maxlength="4" placeholder="0000"
                                        name="phone_middle"
                                        id="phone_middle" style="width: 48%;  margin: 0 1% 0 1%"
-                                       value="${logincust.phone}">
+                                       value="${logincust.phone.substring(3, 7)}">
                                 <input type="text" pattern="[0-9]{4}" minlength="4" maxlength="4" placeholder="0000"
                                        name="phone_end"
-                                       id="phone_end" style="width: 48%" value="${logincust.phone}">
+                                       id="phone_end" style="width: 48%" value="${logincust.phone.substring(7, 11)}">
                             </div>
                             <input type="hidden" name="phone" id="phone" value="${logincust.phone}">
                         </div>
