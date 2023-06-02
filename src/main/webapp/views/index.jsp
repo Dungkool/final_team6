@@ -61,14 +61,7 @@
                 <div class="header__nav">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <c:choose>
-                                <c:when test="http://172.16.21.59/recipe/all">
-                                    <a class="active" href="/recipe/all"><li class="active">Recipe</li></a>
-                                </c:when>
-                                <c:otherwise>
-                                    <li><a href="/recipe/all">Recipe</a></li>
-                                </c:otherwise>
-                            </c:choose>
+                            <li class="active"><a href="/recipe/all">Recipe</a></li>
                             <li><a class="active" href="/cookingclass/class">Class</a></li>
                             <li><a class="active"href="/contacts">Contacts</a></li>
                             <li><a href="#">Spare</a></li>
