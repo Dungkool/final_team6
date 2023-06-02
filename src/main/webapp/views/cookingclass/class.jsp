@@ -260,11 +260,12 @@
                             </c:otherwise>
                         </c:choose>
                     </ul>
-                    </nav>
+
                 </div>
             </div>
             <!-- pagination end -->
         </div>
+    </div>
     </div>
     <!-- cooking class end -->
 </body>

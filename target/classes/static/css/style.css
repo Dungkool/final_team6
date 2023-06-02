@@ -95,6 +95,12 @@ textarea:focus {
     outline: none;
 }
 
+a:hover,
+a:focus {
+    text-decoration: none;
+    outline: none;
+    color: #ffffff;
+}
 
 ul,
 ol {
@@ -348,14 +354,13 @@ ol {
     margin-right: 16px;
 }
 
-.activeMenu {
+.header__menu ul li.active a {
     background: #f28123;
-    color: #FFFFFF;
+    color: #ffffff;
 }
 
-.header__menu ul li a:hover {
-    background: #f28123;
-    color: #FFFFFF;
+.header__menu ul li:hover a {
+    color: #ffffff;
 }
 
 .header__menu ul li:hover .dropdown {
@@ -422,23 +427,17 @@ ol {
     padding: 20px 0 15px;
 }
 
-.header__right ul li {
-    list-style: none;
+.header__right a {
     display: inline-block;
-    position: relative;
-    margin-right: 16px;
+    font-size: 18px;
+    color: #ffffff;
+    margin-right: 30px;
 }
 
-.header__right > ul > li >a {
-    font-family: "Oswald", sans-serif;
-    font-size: 15px;
-    color: #b7b7b7;
-    display: inline-block;
-}
-
-.header__right > ul > li >a :last-child {
+.header__right a:last-child {
     margin-right: 0;
 }
+
 .slicknav_menu {
     display: none;
 }
@@ -2187,8 +2186,6 @@ ol {
         top: -42px;
         padding: 0;
     }
-
-
 
     .header__menu {
         display: none;
