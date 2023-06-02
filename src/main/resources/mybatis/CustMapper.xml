@@ -21,7 +21,12 @@
         UPDATE CUST
         SET password=#{password},
             email=#{email},
-            profileimgname=#{profileimgname}
+            profileimgname=#{profileimgname},
+            custname = #{custname},
+            nickname = #{nickname},
+            gender = #{gender},
+            phone = #{phone},
+            location = #{location}
         WHERE custid = #{custid}
     </update>
     <delete id="delete" parameterType="String">
