@@ -168,12 +168,19 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-4">
-                                    <div class="btn__all">
-                                        <a href="#" class="primary-btn"
-                                        >View All <span class="arrow_right"></span
-                                        ></a>
-                                    </div>
+                                    <form action="/recipe/alphabetical" method="post" class="d-flex" style="float: right;">
+                                        <c:url var="actionUrl" value="/recipe/alphabetical" />
+                                        <button id="alphabetical_btn" class="btn btn-outline" type="submit"
+                                                style="border: 2px solid #F28123; background-color: #F28123; color: #fff;">Alphabetical
+                                        </button>
+                                    </form>
+                                    <a href="/recipe/all">
+                                        <button class="btn btn-outline"
+                                                style="border: 2px solid #F28123; background-color: #F28123; color: #fff;">Recent
+                                        </button>
+                                    </a>
                                 </div>
+
                             </div>
                             <div class="row" >
                                 <c:forEach var="obj" items="${recipeList}">
