@@ -67,4 +67,5 @@ public class RecipeService implements KBService<Integer, RecipeBasic> {
         PageHelper.startPage(pageNo, 6); // 6: 한화면에 출력되는 개수
         return mapper.getsituation(situation);
     }
+
 }
