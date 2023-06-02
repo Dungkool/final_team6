@@ -13,7 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <title>Kolly on the Table</title>
+    <title>Kolly on the Table | Template</title>
 
     <!-- Google Font -->
     <link
@@ -34,10 +34,6 @@
     <link rel="stylesheet" href="/css/owl.carousel.min.css" type="text/css"/>
     <link rel="stylesheet" href="/css/slicknav.min.css" type="text/css"/>
     <link rel="stylesheet" href="/css/style.css" type="text/css"/>
-
-    <!-- Tab icon -->
-    <link rel="icon" href="/img/logo.png"/>
-    <link rel="apple-touch-icon" href="/img/logo.png"/>
 </head>
 
 <body>
@@ -63,16 +59,14 @@
                         <ul>
                             <c:choose>
                                 <c:when test="http://172.16.21.59/recipe/all">
-                                    <a class="active" href="/recipe/all">
-                                        <li class="active">Recipe</li>
-                                    </a>
+                                    <a class="active" href="/recipe/all"><li class="active">Recipe</li></a>
                                 </c:when>
                                 <c:otherwise>
                                     <li><a href="/recipe/all">Recipe</a></li>
                                 </c:otherwise>
                             </c:choose>
                             <li><a class="active" href="/cookingclass/class">Class</a></li>
-                            <li><a class="active" href="/contacts">Contacts</a></li>
+                            <li><a class="active"href="/contacts">Contacts</a></li>
                             <li><a href="#">Spare</a></li>
                         </ul>
                     </nav>
@@ -90,7 +84,7 @@
                             </a>
                         </c:when>
                         <c:otherwise>
-                            <a href="/apply/mypage?custid=${logincust.custid}" class="search-switch">
+                            <a href="/apply/mypage" class="search-switch">
                                 <span style="color: #b7b7b7">My Page</span>
                             </a>
                         </c:otherwise>
