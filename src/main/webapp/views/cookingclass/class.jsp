@@ -120,14 +120,13 @@
                             <li data-filter="기타">기타</li>
                         </ul>
 
-
                         <ul>
                             <li class="active" data-filter="*">종류별</li>
-                            <li data-filter="#">한식</li>
-                            <li data-filter="#">양식</li>
-                            <li data-filter="#">중식</li>
-                            <li data-filter="#">일식</li>
-                            <li data-filter="#">기타</li>
+                            <li data-filter="한식">한식</li>
+                            <li data-filter="양식">양식</li>
+                            <li data-filter="중식">중식</li>
+                            <li data-filter="일식">일식</li>
+                            <li data-filter="기타">기타</li>
                         </ul>
                     </div>
                     <input type="hidden" id="location_input" name="location">

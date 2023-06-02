@@ -33,11 +33,11 @@
             $("#register_form").submit();
         }
     }
+
     $(function () {
         register_form.init();
     });
 </script>
-
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Anime Template">
@@ -131,6 +131,7 @@
                                 <img src="img/anime/review-1.jpg" alt="">
                             </div>
                             <div class="anime__review__item__text">
+                                <div class="form-horizontal">
                                 <c:choose>
                                     <c:when test="${obj.nickname != null}">
                                         <h6>${obj.nickname}</h6>
@@ -140,17 +141,22 @@
                                     </c:otherwise>
                                 </c:choose>
 
-
-                                    <%--                                    <form id="delete_form">--%>
-                                <button type="submit" formaction="/recipe/delete" formmethod="post"
-                                        class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button>
-                                    <%--                                    </form>--%>
-
-                                <p>${obj.content}</p>
+                                <c:choose>
+                                    <c:when test="${logincust.custid == obj.custid}">
+                                    <form action="/recipe/commentDel" method="post">
+                                        <input type="hidden" name="recipecommentpin" value="${obj.recipecommentpin}">
+                                        <input type="hidden" name="recipepin" value="${obj.recipepin}">
+                                        <button type="submit" formaction="/recipe/commentDel">X</button>
+                                    </form>
+                                    </c:when>
+                                </c:choose>
+                                </div>
+                                <div>
+                                    <p>${obj.content}</p>
+                                </div>
                             </div>
                         </div>
                     </c:forEach>
-
 
                     <div class="anime__details__form">
                         <div class="section-title">
@@ -197,6 +203,7 @@
                 </div>
             </div>
         </div>
+    </div>
 </section>
 <!-- Anime Section End -->
 
