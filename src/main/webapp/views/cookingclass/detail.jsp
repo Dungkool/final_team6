@@ -2,51 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
-
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=186d9ac6e73cf3e121e11e749901f230"></script>
 <script>
-    let class_map = {
-        map: null,
-        geocoder: null,
-        init: function () {
-            var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-                mapOption = {
-                    center: new kakao.maps.LatLng(37.47, 126.98), // 지도의 중심좌표
-                    level: 3 // 지도의 확대 레벨
-                };
-
-            // 지도를 생성합니다
-            var map = new kakao.maps.Map(mapContainer, mapOption);
-
-            // 주소-좌표 변환 객체를 생성합니다
-            var geocoder = new kakao.maps.services.Geocoder();
-
-            // 주소로 좌표를 검색합니다
-            geocoder.addressSearch('서울 성동구 가람길 110', function (result, status) {
-                console.log("${classdetail.address}");
-                // 정상적으로 검색이 완료됐으면
-                if (status === kakao.maps.services.Status.OK) {
-
-                    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-
-                    // 결과값으로 받은 위치를 마커로 표시합니다
-                    var marker = new kakao.maps.Marker({
-                        map: map,
-                        position: coords
-                    });
-
-                    // 인포윈도우로 장소에 대한 설명을 표시합니다
-                    var infowindow = new kakao.maps.InfoWindow({
-                        content: '<div style="width:150px;text-align:center;padding:6px 0;">${classdetail.classtitle}</div>'
-                    });
-                    infowindow.open(map, marker);
-
-                    // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-                    map.setCenter(coords);
-                }
-            });
-
-        }
-    };
     let comment_form = {
         init: function () {
             $("#comment_btn").click(function () {
@@ -77,8 +34,8 @@
             $("#comment_form").submit();
         }
     }
+
     $(function () {
-        class_map.init();
         comment_form.init();
     });
 </script>
@@ -114,29 +71,19 @@
             <div class="col-lg-8">
                 <div class="single-article-section">
                     <div class="single-article-text" style="margin-bottom: 50px">
-                        <div class="class-bg" style="margin-bottom: 30px;">
+                        <div class="single-artcile-bg">
                             <img src="/uimg/${classdetail.thumbnailimg}" alt="">
                         </div>
-                        <h2 style="color:#F28123; font-weight: bolder">
-                            [${classdetail.location}] ${classdetail.classtitle}</h2>
                         <p class="blog-meta">
-                            <span class="author"><i class="fas fa-user"></i> 수업소요시간 : ${classdetail.classtime} 분</span>
-                            <span class="date"><i class="fas fa-calendar"></i> 지역 : ${classdetail.location}</span>
-                            <span class="date"><i class="fas fa-calendar"></i> 정원 : ${classdetail.personal} 명</span>
+                            <span class="author"><i class="fas fa-user"></i> 작성자</span>
+                            <span class="date"><i class="fas fa-calendar"></i> 작성일자</span>
                         </p>
-                    </div>
-                    <div class="class-step">
-                        <div class="section-title">
-                            <h5>클래스 소개</h5>
-                        </div>
+                        <h2>${classdetail.classtitle}</h2>
                         <p>${classdetail.classdesc}</p>
                     </div>
-                    <div class="class-step" id="classmap">
-                        <div class="section-title">
-                            <h5>위치</h5>
-                        </div>
-                        <p>${classdetail.address}</p>
-                        <div id="map" style="width:100%; height:500px; margin-top: 20px;"></div>
+                    <div class="single-article-text" id="classmap">
+                        <h2>클래스 위치</h2>
+                        <div id="map" style="width:500px;height:400px;"></div>
                     </div>
 
                     <div class="comments-list-wrap">
@@ -144,7 +91,7 @@
                             <div class="single-comment-body">
                                 <div class="anime__details__review">
                                     <div class="section-title">
-                                        <h5>Comment</h5>
+                                        <h5>Reviews</h5>
                                     </div>
 
                                     <c:forEach var="obj" items="${classComment}">
@@ -157,11 +104,11 @@
                                                      style="display: flex; justify-content: space-between">
                                                     <div>
                                                         <c:choose>
-                                                            <c:when test="${obj.profileimgname != null}">
-                                                                <img src="/uimg/${obj.custid}_profileimg.jpg">
+                                                            <c:when test="${obj.nickname != null}">
+                                                                <h6>${obj.nickname}</h6>
                                                             </c:when>
                                                             <c:otherwise>
-                                                                <img src="/img/basic_profile.png">
+                                                                <h6>${obj.custid}</h6>
                                                             </c:otherwise>
                                                         </c:choose>
                                                     </div>
@@ -217,24 +164,15 @@
             </div>
             <div class="col-lg-4">
                 <div class="sidebar-section">
-                    <div class="archive-posts">
-                        <h4>호스트 소개</h4>
-                        <div class="anime__review__item__pic">
-                            <img src="/uimg/${cbobj.profileimgname}" alt="">
-                        </div>
-                        <div>
-                            <c:choose>
-                                <c:when test="${classdetail.nickname != null}">
-                                    <h6>${classdetail.nickname}</h6>
-                                </c:when>
-                                <c:otherwise>
-                                    <h6>${classdetail.custid}</h6>
-                                </c:otherwise>
-                            </c:choose>
-                        </div>
-                    </div>
                     <div class="recent-posts">
-                        <h4>${classdetail.cooking}</h4>
+                        <h4>${classdetail.classtitle}</h4>
+                    </div>
+                    <div class="archive-posts">
+                        <h4>클래스 요약 설명</h4>
+                        <ul>
+                            <li>블라블라</li>
+                            <li>블라블라</li>
+                        </ul>
                     </div>
                     <div class="single-product-form">
                         <form action="index.html">
