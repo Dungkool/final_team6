@@ -41,7 +41,7 @@ public class MagicConchShellController {
         jo.put("title",result.getTitle());
 
         String url = (result.getType().equals("c")) ? //클래스인지 레시피인지 구분해서 url 생성
-                ("/class/detail?classpin="+result.getPin()) : ("/recipe/detail?recipepin="+result.getPin());
+                ("/cookingclass/detail?classpin="+result.getPin()) : ("/recipe/detail?recipepin="+result.getPin());
         jo.put("url",url);
 
         return jo;
