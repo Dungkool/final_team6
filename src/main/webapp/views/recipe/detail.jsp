@@ -67,8 +67,16 @@
 <!-- Anime Section Begin -->
 <section class="anime-details spad">
     <div class="container">
+        <div style="right: 0%">
+            <c:choose>
+                <c:when test="${logincust.custid == recipedetail.custid}">
+                    <a href="/recipe/amend">수정</a>
+                </c:when>
+            </c:choose>
+        </div>
         <div class="anime__details__content">
             <div class="row">
+
                 <div class="col-lg-3">
                     <div class="anime__details__pic set-bg">
                         <img src="/uimg/${recipedetail.thumbnailimg}" style="height: 80%"/>
@@ -81,13 +89,8 @@
                         </div>
                         <div class="anime__details__rating">
                             <div class="rating">
-                                <a href="#"><i class="fa fa-star"></i></a>
-                                <a href="#"><i class="fa fa-star"></i></a>
-                                <a href="#"><i class="fa fa-star"></i></a>
-                                <a href="#"><i class="fa fa-star"></i></a>
-                                <a href="#"><i class="fa fa-star-half-o"></i></a>
+                                <span>개수 Votes</span>
                             </div>
-                            <span>1.029 Votes</span>
                         </div>
                         <p>조리시간 : ${recipedetail.time}분</p>
                         <p>난이도 : ${recipedetail.recipelevel}</p>
@@ -110,9 +113,8 @@
                             </div>
                         </div>
                         <div class="anime__details__btn">
-                            <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i> Follow</a>
-                            <button class="like-btn"><span>Like</span> <i
-                                    class="fa fa-angle-right"></i></button>
+                            <button class="follow-btn" style="border: unset">Subscribe</button>
+                            <button class="follow-btn" style="border: unset">Like</button>
                         </div>
                     </div>
                 </div>
@@ -131,25 +133,35 @@
                                 <img src="img/anime/review-1.jpg" alt="">
                             </div>
                             <div class="anime__review__item__text">
-                                <div class="form-horizontal">
-                                <c:choose>
-                                    <c:when test="${obj.nickname != null}">
-                                        <h6>${obj.nickname}</h6>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <h6>${obj.custid}</h6>
-                                    </c:otherwise>
-                                </c:choose>
-
-                                <c:choose>
-                                    <c:when test="${logincust.custid == obj.custid}">
-                                    <form action="/recipe/commentDel" method="post">
-                                        <input type="hidden" name="recipecommentpin" value="${obj.recipecommentpin}">
-                                        <input type="hidden" name="recipepin" value="${obj.recipepin}">
-                                        <button type="submit" formaction="/recipe/commentDel">X</button>
-                                    </form>
-                                    </c:when>
-                                </c:choose>
+                                <div class="form-horizontal" style="display: flex; justify-content: space-between">
+                                    <div>
+                                        <c:choose>
+                                            <c:when test="${obj.nickname != null}">
+                                                <h6>${obj.nickname}</h6>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <h6>${obj.custid}</h6>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </div>
+                                    <div>
+                                        <c:choose>
+                                            <c:when test="${logincust.custid == obj.custid}">
+                                                <form action="/recipe/commentDel" method="post">
+                                                    <input type="hidden" name="recipecommentpin"
+                                                           value="${obj.recipecommentpin}">
+                                                    <input type="hidden" name="recipepin" value="${obj.recipepin}">
+                                                    <div class="anime__details__btn">
+                                                        <button type="submit" formaction="/recipe/commentDel"
+                                                                style="color: #ffffff; background-color: #f28123; font-weight: 700; letter-spacing: 2px;
+                                                                    text-transform: uppercase; border-radius: 4px;
+                                                                    border: unset">X
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </c:when>
+                                        </c:choose>
+                                    </div>
                                 </div>
                                 <div>
                                     <p>${obj.content}</p>
