@@ -114,7 +114,7 @@
                         </div>
                         <div class="anime__details__btn">
                             <button class="follow-btn" style="border: unset">Subscribe</button>
-                            <button class="follow-btn" style="border: unset">Like</button>
+                            <button class="follow-btn" style="border: unset">Like!</button>
                         </div>
                     </div>
                 </div>
