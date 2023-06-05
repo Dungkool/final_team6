@@ -130,7 +130,7 @@
                     <c:forEach var="obj" items="${recipeComment}">
                         <div class="anime__review__item">
                             <div class="anime__review__item__pic">
-                                <img src="img/anime/review-1.jpg" alt="">
+                                <img src="/uimg/${logincust.profileimgname}" alt="">
                             </div>
                             <div class="anime__review__item__text">
                                 <div class="form-horizontal" style="display: flex; justify-content: space-between">
@@ -148,15 +148,13 @@
                                         <c:choose>
                                             <c:when test="${logincust.custid == obj.custid}">
                                                 <form action="/recipe/commentDel" method="post">
-                                                    <input type="hidden" name="recipecommentpin"
-                                                           value="${obj.recipecommentpin}">
+                                                    <input type="hidden" name="recipecommentpin" value="${obj.recipecommentpin}">
                                                     <input type="hidden" name="recipepin" value="${obj.recipepin}">
                                                     <div class="anime__details__btn">
                                                         <button type="submit" formaction="/recipe/commentDel"
                                                                 style="color: #ffffff; background-color: #f28123; font-weight: 700; letter-spacing: 2px;
                                                                     text-transform: uppercase; border-radius: 4px;
-                                                                    border: unset">X
-                                                        </button>
+                                                                    border: unset">X</button>
                                                     </div>
                                                 </form>
                                             </c:when>
