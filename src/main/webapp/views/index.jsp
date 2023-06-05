@@ -13,7 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <title>Kolly on the Table</title>
+    <title>Kolly on the Table | Template</title>
 
     <!-- Google Font -->
     <link
@@ -34,10 +34,6 @@
     <link rel="stylesheet" href="/css/owl.carousel.min.css" type="text/css"/>
     <link rel="stylesheet" href="/css/slicknav.min.css" type="text/css"/>
     <link rel="stylesheet" href="/css/style.css" type="text/css"/>
-
-    <!-- Tab icon -->
-    <link rel="icon" href="/img/logo.png"/>
-    <link rel="apple-touch-icon" href="/img/logo.png"/>
 </head>
 
 <body>
