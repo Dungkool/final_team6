@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Slf4j
 @Controller
@@ -53,23 +54,6 @@ public class RecipeController {
         return "index";
     }
 
-    @RequestMapping("/alphabetical")
-    public String alphabetical(@RequestParam(required = false, defaultValue = "1") int pageNo, Model model) throws Exception {
-        PageInfo<RecipeBasic> p;
-        List<RecipeBasic> recipeList = null;
-        try {
-            p = new PageInfo<>(recipeService.getAlphabetical(pageNo), 5);
-            recipeList = p.getList();// 5:하단 네비게이션 개수
-        } catch (Exception e) {
-            throw new Exception(e.getMessage());
-        }
-        model.addAttribute("target", "recipe");
-        model.addAttribute("recipeList", recipeList);
-        model.addAttribute("cpage", p);
-        model.addAttribute("center", dir + "all");
-        return "index";
-    }
-
     @RequestMapping("/detail")
     public String get(Model model, Integer recipepin) throws Exception {
         RecipeBasic recipe = null;
@@ -80,7 +64,6 @@ public class RecipeController {
 
         ingredient = ingredientService.getRecipeAllIngredient(recipepin);
         comment = commentService.getRecipeAllComment(recipepin);
-
 
         model.addAttribute("recipedetail", recipe);
         model.addAttribute("ingredientList", ingredient);
@@ -99,10 +82,11 @@ public class RecipeController {
     public String addImpl(Model model, RecipeBasic recipeBasic, MultipartFile img) throws Exception {
         recipeBasic.setThumbnailimg(recipeBasic.getRecipetitle() + "_thumb.jpg");
         recipeBasic.setFinishedimg(recipeBasic.getRecipetitle() + "fin.jpg");
-        recipeService.register(recipeBasic);
-
         FileUploadUtil.saveFile(img, imgdir, recipeBasic.getRecipetitle() + "_thumb.jpg");
         FileUploadUtil.saveFile(img, imgdir, recipeBasic.getRecipetitle() + "_fin.jpg");
+        recipeService.register(recipeBasic);
+
+        TimeUnit.SECONDS.sleep(1);
 
         model.addAttribute("center", dir + "add");
         return "redirect:/recipe/all";
