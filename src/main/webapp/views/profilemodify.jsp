@@ -154,7 +154,7 @@
                                    id="img" style="display: none" onchange="displayImage(event)">
                             <input type="button" value="Profile Image"
                                    onclick="document.getElementById('img').click();" style="text-align: left"/>
-                            <span class="icon_image"></span>
+                            <span class="icon_profile"></span>
                         </div>
                         <div class="input__item" style="width: 90%">
                             <input type="text" placeholder="Your ID" name="custid" id="custid"
@@ -173,17 +173,12 @@
                         <div class="input__item" style="width: 90%">
                             <input type="text" placeholder="Your Name" name="custname" id="custname"
                                    value="${logincust.custname}">
-                            <span class="icon_id"></span>
+                            <span class="icon_mail"></span>
                         </div>
                         <div class="input__item" style="width: 90%">
                             <input type="text" placeholder="Your Nickname" name="nickname" id="nickname"
                                    value="${logincust.nickname}">
-                            <span class="icon_comment_alt"></span>
-                        </div>
-                        <div class="input__item" style="width: 90%">
-                            <input type="text" placeholder="Introduction" name="introduction" id="introduction"
-                                   value="${logincust.introduction}">
-                            <span class="icon_info_alt"></span>
+                            <span class="icon_mail"></span>
                         </div>
                         <div class="input__item" id="genderzone" style="width: 90%">
                             <button type="button" class="site-btn" id="Malebtn"
@@ -196,20 +191,15 @@
                         </div>
                         <div class="input__item phonezone" style="display: flex; width: 90%">
                             <select name="phone_prefix" id="phone_prefix">
-                                <option value="010" ${logincust.phone !='' && logincust.phone.substring(0, 3) eq '010' ? 'selected' : ''}>
-                                    010
+                                <option value="010" ${logincust.phone.substring(0, 3) eq '010' ? 'selected' : ''}>010
                                 </option>
-                                <option value="011" ${logincust.phone !='' &&logincust.phone.substring(0, 3) eq '011' ? 'selected' : ''}>
-                                    011
+                                <option value="011" ${logincust.phone.substring(0, 3) eq '011' ? 'selected' : ''}>011
                                 </option>
-                                <option value="016" ${logincust.phone !='' &&logincust.phone.substring(0, 3) eq '016' ? 'selected' : ''}>
-                                    016
+                                <option value="016" ${logincust.phone.substring(0, 3) eq '016' ? 'selected' : ''}>016
                                 </option>
-                                <option value="017" ${logincust.phone !='' &&logincust.phone.substring(0, 3) eq '017' ? 'selected' : ''}>
-                                    017
+                                <option value="017" ${logincust.phone.substring(0, 3) eq '017' ? 'selected' : ''}>017
                                 </option>
-                                <option value="019" ${logincust.phone !='' &&logincust.phone.substring(0, 3) eq '019' ? 'selected' : ''}>
-                                    019
+                                <option value="019" ${logincust.phone.substring(0, 3) eq '019' ? 'selected' : ''}>019
                                 </option>
                             </select>
                             <div class="input__item phonezone" style="display: flex; margin-bottom: 0; width: 90%">
@@ -217,11 +207,11 @@
                                        name="phone_middle"
                                        id="phone_middle"
                                        style="width: 48%;  margin: 0 2% 0 2%; text-align: center; padding-left: 2px"
-                                       value="${logincust.phone !='' ? logincust.phone.substring(3, 7)  : '0000'}">
+                                       value="${logincust.phone.substring(3, 7)}">
                                 <input type="text" pattern="[0-9]{4}" minlength="4" maxlength="4" placeholder="0000"
                                        name="phone_end"
                                        id="phone_end" style="width: 48%; text-align: center; padding-left: 2px"
-                                       value="${logincust.phone !='' ? logincust.phone.substring(7, 11)  : '0000'}">
+                                       value="${logincust.phone.substring(7, 11)}">
                             </div>
                             <input type="hidden" name="phone" id="phone" value="${logincust.phone}">
                         </div>
