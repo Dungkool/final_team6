@@ -89,7 +89,7 @@
                         </div>
                         <div class="anime__details__rating">
                             <div class="rating">
-                                <span>개수 Votes</span>
+                                <span>Votes</span>
                             </div>
                         </div>
                         <p>조리시간 : ${recipedetail.time}분</p>
