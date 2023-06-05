@@ -9,7 +9,11 @@
 
 <script>
 
+    let clickEvent = false;
+
     function playAnswer() {
+        changeImage('/img/conch_glow.png');
+        clickEvent = true;
         $.ajax({
             url: "/magic/ajax",
             success: function (res) {
@@ -23,35 +27,43 @@
             }
         });
     }
+
     function tts(text) {
         let data = {
-            "voice":{
+            "voice": {
                 languageCode: 'ko-KR',
                 name: 'ko-KR-Neural2-A',
                 ssmlGender: 'FEMALE'
             },
-            "input":{
-                "text": text
+            "input": {
+                "text":text
             },
-            "audioConfig":{
-                "audioEncoding":"mp3"
+            "audioConfig": {
+                "audioEncoding": "mp3"
             }
         }
         $.ajax({
-            type:'POST',
-            url: "https://texttospeech.googleapis.com/v1/text:synthesize?key="+"${key}",
+            type: 'POST',
+            url: "https://texttospeech.googleapis.com/v1/text:synthesize?key=" + "${key}",
             data: JSON.stringify(data),
             dataType: 'JSON',
             contentType: "application/json; charset=UTF-8",
-            success: function(res) {
-                var audioFile = new Audio();
+            success: function (res) {
+                let audioFile = new Audio();
                 let audioBlob = base64ToBlob(res.audioContent, "mp3");
                 audioFile.src = window.URL.createObjectURL(audioBlob);
                 audioFile.playbackRate = 0.8; //재생속도
-                audioFile.play();
+                audioFile.addEventListener('loadedmetadata', function () {
+                     let duration = (audioFile.duration)*1000; // 재생 시간(초 단위)
+                    audioFile.play();
+                    setTimeout(function () {
+                        changeImage('/img/conch.png');
+                        clickEvent = false;
+                    }, duration); // 발화시간 후에 이전 이미지로 변경합니다.
+                });
             },
-            error : function(request, status, error ) {
-                alert("tts오류","오류가 발생하였습니다. 관리자에게 문의해주세요.");
+            error: function (request, status, error) {
+                alert("tts오류", "오류가 발생하였습니다. 관리자에게 문의해주세요.");
             }
         });
     };
@@ -75,36 +87,41 @@
             type: mime
         });
     }
+
+
+    function changeImage(src) {
+        var img = document.getElementById('img');
+        img.src = src;
+    }
+
 </script>
 
 <style>
 
     @media (max-width: 768px) {
         #conchShellImg {
-            width: 40vh;
-            height: 320px;
+            height: 60%;
         }
     }
 
     @media (min-width: 768px) {
         #conchShellImg {
-            width: 50vh;
-            height: 350px;
+            height: 60%;
         }
     }
 
     @media (min-width: 992px) {
         #conchShellImg {
-            width: 60vh;
-            height: 370px;
+            height: 70%;
         }
     }
 
     @media (min-width: 1200px) {
         #conchShellImg {
-            width: 70vh;
+            height: 80%;
         }
     }
+
     :root {
         --font-size-lg: clamp(2rem, 4vw, 3.5rem);
         --font-size-sm: clamp(1rem, 2vw, 1.5rem);
@@ -117,32 +134,28 @@
     h4 {
         font-size: var(--font-size-sm);
     }
-/*반응형 구현 end*/
+
+    /*반응형 구현 end*/
 
     #bg {
         height: 85vh;
     }
 
-    #conchShellImg {
-        background-image: url("/uimg/conch.png");
-        /*에러뜨지만 잘 작동됩니다!*/
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-
+    img {
+        width: auto;
+        height: 100%;
     }
 
     #conchShell {
-        display: table;
         margin: auto;
+        width: 100%;
+        height: 85%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
-    #conchShellImg:hover,#conchShellImg:active {
-        background-image: url(/uimg/conch_glow.png);
-        /*에러뜨지만 잘 작동됩니다!*/
-    }
-
-    h1,h4 {
+    h1, h4 {
         text-align: center;
         font-family: Arial;
         font-weight: bold;
@@ -153,12 +166,14 @@
 </style>
 
 <div class="container">
-    <div class="set-bg" data-setbg="/uimg/bg.jpg" id="bg">
+    <div class="set-bg" data-setbg="/img/bg.jpg" id="bg">
         <h1><br>Ask the Magic Conch Shell</h1>
         <h4><br>마법의 소라고둥님, 무엇을 먹을까요?</h4>
         <div id="conchShell">
-            <a type="button" onclick="playAnswer();">
-                <div id="conchShellImg"></div>
+            <a id="conchShellImg" type="button" onclick="playAnswer();">
+                <img id="img" src="/img/conch.png" alt="Conch Shell"
+                     onmouseover="changeImage('/img/conch_glow.png')"
+                     onmouseout=" if (!clickEvent){changeImage('/img/conch.png');}">
             </a>
             <a id="detail_url" href="">
                 <h1 id="answerText"></h1>
