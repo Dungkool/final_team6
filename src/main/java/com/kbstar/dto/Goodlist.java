@@ -11,7 +11,7 @@ import java.util.Date;
 @Getter
 @ToString
 public class Goodlist {
-    private int custpin;
-    private int recipepin;
+    private Integer custpin;
+    private Integer recipepin;
     private Date gooddate;
 }

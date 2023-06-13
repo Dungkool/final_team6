@@ -4,11 +4,19 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kbstar.mapper.IngredientMapper">
 
-
     <select id="selectRecipeAllIngredient" parameterType="Integer" resultType="recipeingredient">
         SELECT *
         FROM recipe_ingredient
         WHERE recipepin = #{recipepin}
     </select>
+
+    <insert id="insert" parameterType="recipeingredient">
+        INSERT INTO recipe_ingredient
+        VALUES (#{ingredientnumber},
+                #{recipepin},
+                #{name},
+                #{quantity}
+                )
+    </insert>
 
 </mapper>

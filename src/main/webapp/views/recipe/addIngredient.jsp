@@ -26,23 +26,22 @@
 </head>
 
 <script>
-    let recipe_add = {
+    let recipe_addIngredient = {
         init:function(){
             $('#register_btn').click(function(){
-                recipe_add.send();
+                recipe_addIngredient.send();
             });
         },
         send:function(){
             $('#register_form').attr({
                 method:'post',
-                action:'/recipe/addImpl',
-                enctype: 'multipart/form-data'
+                action:'/recipe/addIngredientImpl',
             });
             $('#register_form').submit();
         }
     };
     $(function(){
-        recipe_add.init();
+        recipe_addIngredient.init();
     });
 </script>
 
@@ -60,40 +59,15 @@
 
                         <div>
                             <form id="register_form" class="register_form">
-
-                                <input type="hidden" name="custpin" id="custpin" value="${logincust.custpin}">
-                                <input type="hidden" name="custid" id="custid" value="${logincust.custid}">
-                                <input type="hidden" name="nickname" id="nickname" value="${logincust.nickname}">
-
-                                <input type="text" name="recipetitle" id="recipetitle" placeholder="Enter Recipe Title"><br>
-                                <input type="text" name="type" id="type" placeholder="Enter Recipe Type"><br>
-                                <input type="text" name="situation" id="situation" placeholder="Enter Recipe Situation"><br>
-                                <input type="text" name="ingredients1" id="ingredients1" placeholder="Enter Ingredient 1"><br>
-                                <input type="text" name="ingredients2" id="ingredients2" placeholder="Enter Ingredient 2"><br>
-                                <input type="text" name="ingredients3" id="ingredients3" placeholder="Enter Ingredient 3"><br>
-                                <input type="text" name="cooking" id="cooking" placeholder="Enter Cooking Name"><br>
-                                <input type="number" name="time" id="time" placeholder="Enter Cooking Time"><br>
-                                <input type="text" name="recipelevel" id="recipelevel" placeholder="Enter Cooking Level"><br>
-                                <input type="text" name="recipedesc" id="recipedesc" placeholder="Enter Recipe Description"><br>
-
-                                <div class="form-group">
-                                    <label class="control-label col-sm-2">Thumbnail Image:</label>
-                                    <div class="col-sm-10">
-                                        <input type="file" class="form-control" id="img" name="img"
-                                               placeholder="Input Thumbnail Image">
-                                        <input type="hidden" class="form-control" id="finishedimg" name="finishedimg">
-                                    </div>
-                                </div>
-
-<%--                                <div>--%>
-<%--                                    <label class="control-label col-sm-2">Finished Image:</label>--%>
-<%--                                    <div class="col-sm-10">--%>
-<%--                                        <input type="file" class="form-control" id="finishedimg" name="finishedimg"--%>
-<%--                                               placeholder="Input Finished Image">--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-
-                                <button type="button" id="register_btn">Next</button>
+                                <c:set var="counter" value="0" />
+                                    <c:forEach begin="1" end="10" step="1" varStatus="loop">
+                                        <c:set var="counter" value="${counter + 1}" />
+                                        <input type="hidden" name="ingredientnumber" id="ingredientnumber" value="${counter}">
+                                        <input type="hidden" name="recipepin" id="recipepin" value="${obj.recipepin}">
+                                        <input type="text" name="ingredient" id="ingredient" placeholder="Enter Recipe Ingredient">
+                                        <input type="text" name="quantity" id="quantity" placeholder="Enter Ingredient Quantity">
+                                        <button type="button" id="register_btn">Register</button><br>
+                                    </c:forEach>
                             </form>
                         </div>
                     </div>

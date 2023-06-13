@@ -22,7 +22,7 @@ public class IngredientService implements KBService<Integer, RecipeIngredient> {
      */
     @Override
     public void register(RecipeIngredient recipeIngredient) throws Exception {
-
+        mapper.insert(recipeIngredient);
     }
 
     @Override
