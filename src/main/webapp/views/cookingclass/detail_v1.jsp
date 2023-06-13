@@ -4,6 +4,31 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=186d9ac6e73cf3e121e11e749901f230"></script>
 
+
+<head>
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="/css/all.min.css">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <!-- owl carousel -->
+    <link rel="stylesheet" href="/css/owl.carousel.css">
+    <!-- magnific popup -->
+    <link rel="stylesheet" href="/css/magnific-popup.css">
+    <!-- animate css -->
+    <link rel="stylesheet" href="/css/animate.css">
+    <!-- mean menu css -->
+    <link rel="stylesheet" href="/css/meanmenu.min.css">
+    <!-- main style -->
+    <link rel="stylesheet" href="/css/main.css">
+    <!-- responsive -->
+    <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="/css/style.css" type="text/css"/>
+</head>
+
+<body>
 <!-- single article section -->
 <div class="mt-50 mb-150">
     <div class="container">
@@ -116,3 +141,5 @@
     </div>
 </div>
 <!-- end single article section -->
+
+</body>

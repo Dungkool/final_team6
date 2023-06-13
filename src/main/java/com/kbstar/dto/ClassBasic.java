@@ -2,6 +2,8 @@ package com.kbstar.dto;
 
 import lombok.*;
 
+import java.util.Date;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,9 +25,9 @@ public class ClassBasic {
     private String classtitle;
     private String classdesc;
     private String address;
-    private String classdate;
+    private Date classdate;
 
-    public ClassBasic(int classpin, String thumbnailimg, String location, String cooking, String classtitle, String address, String classdate, int classtime, int personal, int amount) {
+    public ClassBasic(int classpin, String thumbnailimg, String location, String cooking, String classtitle, String address, Date classdate, int classtime, int personal, int amount) {
         this.classpin = classpin;
         this.thumbnailimg = thumbnailimg;
         this.location = location;

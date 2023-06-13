@@ -2424,49 +2424,6 @@ textarea.form-control {
     margin-left: 0;
 }
 
-/*class 등록 화면 start*/
-.class-step {
-    margin-bottom: 50px;
-}
-
-/*class 등록 화면 - biz img */
-.filebox .upload-name {
-    display: inline-block;
-    height: 40px;
-    padding: 0 10px;
-    vertical-align: middle;
-    border: 1px solid #dddddd;
-    width: 78%;
-    color: #999999;
-}
-
-.filebox > label {
-    display: inline-block;
-    padding: 10px 20px;
-    color: #fff;
-    vertical-align: middle;
-    background-color: #999999;
-    cursor: pointer;
-    height: 40px;
-    margin-left: 10px;
-    margin-bottom: 0px;
-}
-
-.filebox > input[type="file"] {
-    position: absolute;
-    width: 0;
-    height: 0;
-    padding: 0;
-    overflow: hidden;
-    border: 0;
-}
-
-.image_container {
-    height: 450px;
-    margin-top: 10px;
-    margin-bottom: 30px;
-}
-
 /*class 등록 화면 radio style start*/
 .form-check-category > fieldset > label {
     font-size: 15px;
@@ -2513,30 +2470,6 @@ textarea.form-control {
 }
 
 /*class 등록 화면 radio style end*/
-
-/*class 등록 화면 input start*/
-.class__form {
-    position: relative;
-    padding-left: 145px;
-    display: block;
-    align-items: center;
-}
-
-.class__form .form-group {
-    position: relative;
-    display: block;
-    align-items: center;
-    margin-bottom: 30px;
-}
-
-.highlight {
-    font-weight: bold;
-    background: linear-gradient(to top, rgba(114, 204, 130, 0.87) 50%, transparent 50%);
-}
-
-/*class 등록 화면 input end*/
-
-/*class 등록 화면 end*/
 
 .valid-feedback {
     display: none;
