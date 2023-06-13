@@ -1,12 +1,8 @@
 package com.kbstar.controller;
 
 import com.github.pagehelper.PageInfo;
-import com.kbstar.dto.RecipeBasic;
-import com.kbstar.dto.RecipeComment;
-import com.kbstar.dto.RecipeIngredient;
-import com.kbstar.service.IngredientService;
-import com.kbstar.service.RecipeCommentService;
-import com.kbstar.service.RecipeService;
+import com.kbstar.dto.*;
+import com.kbstar.service.*;
 import com.kbstar.util.FileUploadUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 @Slf4j
 @Controller
@@ -31,7 +26,13 @@ public class RecipeController {
     @Autowired
     IngredientService ingredientService;
     @Autowired
+    RecipeStepService recipeStepService;
+    @Autowired
     RecipeCommentService commentService;
+    @Autowired
+    GoodlistService goodlistService;
+    @Autowired
+    SubscribeService subscribeService;
     String dir = "recipe/";
     @Value("${uploadimgdir}")
     String imgdir;
@@ -58,15 +59,17 @@ public class RecipeController {
     public String get(Model model, Integer recipepin) throws Exception {
         RecipeBasic recipe = null;
         List<RecipeIngredient> ingredient = null;
+        List<RecipeStep> step = null;
         List<RecipeComment> comment = null;
 
         recipe = recipeService.get(recipepin);
-
         ingredient = ingredientService.getRecipeAllIngredient(recipepin);
+        step = recipeStepService.getRecipeAllStep(recipepin);
         comment = commentService.getRecipeAllComment(recipepin);
 
         model.addAttribute("recipedetail", recipe);
         model.addAttribute("ingredientList", ingredient);
+        model.addAttribute("recipeStep", step);
         model.addAttribute("recipeComment", comment);
         model.addAttribute("center", dir + "detail");
         return "index";
@@ -78,17 +81,36 @@ public class RecipeController {
         return "index";
     }
 
+    @RequestMapping("/addIngredient")
+    public String addIngredient(Model model, RecipeBasic recipeBasic) throws Exception {
+        model.addAttribute("center", dir + "addIngredient");
+        return "index";
+    }
+
+    @RequestMapping("/addIngredientImpl")
+    public String addIngredientImpl(RecipeIngredient recipeIngredient) throws Exception {
+        ingredientService.register(recipeIngredient);
+        return "redirect:/recipe/all";
+    }
+
     @RequestMapping("/addImpl")
     public String addImpl(Model model, RecipeBasic recipeBasic, MultipartFile img) throws Exception {
-        recipeBasic.setThumbnailimg(recipeBasic.getRecipetitle() + "_thumb.jpg");
-        recipeBasic.setFinishedimg(recipeBasic.getRecipetitle() + "fin.jpg");
         FileUploadUtil.saveFile(img, imgdir, recipeBasic.getRecipetitle() + "_thumb.jpg");
         FileUploadUtil.saveFile(img, imgdir, recipeBasic.getRecipetitle() + "_fin.jpg");
+        recipeBasic.setThumbnailimg(recipeBasic.getRecipetitle() + "_thumb.jpg");
+        recipeBasic.setFinishedimg(recipeBasic.getRecipetitle() + "_fin.jpg");
+
         recipeService.register(recipeBasic);
 
-        TimeUnit.SECONDS.sleep(1);
-
         model.addAttribute("center", dir + "add");
+        return "redirect:/recipe/addIngredient";
+    }
+
+    @RequestMapping("/deleteImpl")
+    public String deleteImpl(Integer recipepinDel) throws Exception {
+        RecipeBasic recipeBasic = new RecipeBasic();
+        recipeBasic.setRecipepin(recipepinDel);
+        recipeService.remove(recipeBasic.getRecipepin());
         return "redirect:/recipe/all";
     }
 
@@ -132,7 +154,7 @@ public class RecipeController {
     }
 
     @RequestMapping("/commentImpl")
-    public String commentImpl(Model model, RecipeComment recipeComment, HttpSession session) throws Exception {
+    public String commentImpl(RecipeComment recipeComment, HttpSession session) throws Exception {
         try {
             commentService.register(recipeComment);
 //            session.setAttribute("logincust", cust);
@@ -148,4 +170,31 @@ public class RecipeController {
         return "redirect:/recipe/detail?recipepin=" + recipeBasic.getRecipepin();
     }
 
+    @RequestMapping("/likeImpl")
+    public String likeImpl(Model model, Integer custpinlike, Integer recipepinlike, HttpSession session) throws Exception {
+        try {
+            Goodlist goodlist = new Goodlist();
+            goodlist.setCustpin(custpinlike);
+            goodlist.setRecipepin(recipepinlike);
+            goodlistService.register(goodlist);
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+            // e.printStackTrace();
+        }
+        return "redirect:/recipe/detail?recipepin=" + recipepinlike;
+    }
+
+    @RequestMapping("/subImpl")
+    public String subImpl(Model model, Integer custpinmy, Integer subcustpin, HttpSession session) throws Exception {
+        try {
+            Subscribe subscribe = new Subscribe();
+            subscribe.setCustpin(custpinmy);
+            subscribe.setSubcustpin(subcustpin);
+            subscribeService.register(subscribe);
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+            // e.printStackTrace();
+        }
+        return "redirect:/apply/mypage";
+    }
 }
