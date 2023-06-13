@@ -4,10 +4,6 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 
 <script>
-    $(function () {
-        console.log("${logincust.custid}");
-        console.log("${mypagecust.custid}");
-    });
 
 </script>
 <c:choose>
