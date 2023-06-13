@@ -95,12 +95,6 @@ textarea:focus {
     outline: none;
 }
 
-a:hover,
-a:focus {
-    text-decoration: none;
-    outline: none;
-    color: #ffffff;
-}
 
 ul,
 ol {
@@ -354,13 +348,14 @@ ol {
     margin-right: 16px;
 }
 
-.header__menu ul li.active a {
+.activeMenu {
     background: #f28123;
-    color: #ffffff;
+    color: #FFFFFF;
 }
 
-.header__menu ul li:hover a {
-    color: #ffffff;
+.header__menu ul li a:hover {
+    background: #f28123;
+    color: #FFFFFF;
 }
 
 .header__menu ul li:hover .dropdown {
@@ -427,17 +422,23 @@ ol {
     padding: 20px 0 15px;
 }
 
-.header__right a {
+.header__right ul li {
+    list-style: none;
     display: inline-block;
-    font-size: 18px;
-    color: #ffffff;
-    margin-right: 30px;
+    position: relative;
+    margin-right: 16px;
 }
 
-.header__right a:last-child {
+.header__right > ul > li >a {
+    font-family: "Oswald", sans-serif;
+    font-size: 15px;
+    color: #b7b7b7;
+    display: inline-block;
+}
+
+.header__right > ul > li >a :last-child {
     margin-right: 0;
 }
-
 .slicknav_menu {
     display: none;
 }
@@ -2188,6 +2189,8 @@ ol {
         top: -42px;
         padding: 0;
     }
+
+
 
     .header__menu {
         display: none;
