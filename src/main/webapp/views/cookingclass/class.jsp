@@ -168,20 +168,6 @@
                 </form>
             </div>
         </div>
-        <%--        <div class="row">--%>
-        <%--            <div class="col">--%>
-        <%--                <form id="sort_form" class="d-flex" style="float: right;">--%>
-        <%--                    <div class="btn-group" style="margin-bottom: 30px">--%>
-        <%--                        <button id="classpin_btn" type="button" class="btn">최신순--%>
-        <%--                        </button>--%>
-        <%--                        <button id="amount_btn" type="button" class="btn">가격순--%>
-        <%--                        </button>--%>
-        <%--                        <input type="hidden" id="classpin" name="classpin" value="">--%>
-        <%--                        <input type="hidden" id="amount" name="amount" value="">--%>
-        <%--                    </div>--%>
-        <%--                </form>--%>
-        <%--            </div>--%>
-        <%--        </div>--%>
 
         <!-- cooking class list start -->
         <div class="row product-lists">
@@ -266,6 +252,6 @@
             <!-- pagination end -->
         </div>
     </div>
-    </div>
-    <!-- cooking class end -->
+</div>
+<!-- cooking class end -->
 </body>

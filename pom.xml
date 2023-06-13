@@ -9,16 +9,16 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.kbstar</groupId>
-    <artifactId>kot</artifactId>
+    <artifactId>final_team6</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>kot</name>
-    <description>kot</description>
+    <name>final_team6</name>
+    <description>final_team6</description>
     <properties>
         <java.version>11</java.version>
     </properties>
 
-<!--    tts-->
+    <!--    tts-->
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -32,12 +32,11 @@
     </dependencyManagement>
 
     <dependencies>
-    <dependency>
-        <groupId>com.google.cloud</groupId>
-        <artifactId>google-cloud-texttospeech</artifactId>
-    </dependency>
+        <dependency>
+            <groupId>com.google.cloud</groupId>
+            <artifactId>google-cloud-texttospeech</artifactId>
+        </dependency>
         <!--    tts-->
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>

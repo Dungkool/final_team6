@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 @Mapper
 public interface ClassMapper extends KBMapper<Integer, ClassBasic> {
-    
+
     Page<ClassBasic> getpage() throws Exception;
 
     Page<ClassBasic> getpage_category(String location, String type, String sort) throws Exception;
@@ -25,6 +25,5 @@ public interface ClassMapper extends KBMapper<Integer, ClassBasic> {
 //    Page<ClassBasic> getlocation(String location) throws Exception;
 //
 //    Page<ClassBasic> gettype(String location) throws Exception;
-
 
 }

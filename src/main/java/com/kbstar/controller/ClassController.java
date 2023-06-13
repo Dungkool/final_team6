@@ -2,6 +2,8 @@ package com.kbstar.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.kbstar.dto.ClassBasic;
+import com.kbstar.dto.ClassComment;
+import com.kbstar.service.ClassCommentService;
 import com.kbstar.service.ClassService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Slf4j
@@ -24,6 +27,8 @@ public class ClassController {
 
     @Autowired
     ClassService classService;
+    @Autowired
+    ClassCommentService commentService;
 
 
     @RequestMapping("/class")
@@ -134,9 +139,35 @@ public class ClassController {
     @RequestMapping("/detail")
     public String get(Model model, Integer classpin) throws Exception {
         ClassBasic classBasic = null;
+        List<ClassComment> comment = null;
         classBasic = classService.get(classpin);
+        comment = commentService.getClassAllComment(classpin);
         model.addAttribute("classdetail", classBasic);
+        model.addAttribute("classComment", comment);
         model.addAttribute("center", dir + "detail");
+        return "index";
+    }
+
+    @RequestMapping("/commentImpl")
+    public String commentImpl(Model model, ClassComment classComment, HttpSession session) throws Exception {
+        try {
+            commentService.register(classComment);
+        } catch (Exception e) {
+            throw new Exception("등록 오류");
+        }
+        return "redirect:/cookingclass/detail?classpin=" + classComment.getClasspin();
+    }
+
+    @RequestMapping("/commentDel")
+    public String commentDel(ClassComment classComment, ClassBasic classBasic) throws Exception {
+        commentService.remove(classComment.getClasscommentpin());
+        return "redirect:/cookingclass/detail?classpin=" + classBasic.getClasspin();
+    }
+
+    @RequestMapping("/add")
+    public String add(Model model) throws Exception {
+        model.addAttribute("target", "class");
+        model.addAttribute("center", dir + "add");
         return "index";
     }
 }
