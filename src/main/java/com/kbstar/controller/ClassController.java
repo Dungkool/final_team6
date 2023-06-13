@@ -163,5 +163,12 @@ public class ClassController {
         commentService.remove(classComment.getClasscommentpin());
         return "redirect:/cookingclass/detail?classpin=" + classBasic.getClasspin();
     }
+
+    @RequestMapping("/add")
+    public String add(Model model) throws Exception {
+        model.addAttribute("target", "class");
+        model.addAttribute("center", dir + "add");
+        return "index";
+    }
 }
 

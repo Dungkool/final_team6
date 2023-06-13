@@ -34,9 +34,58 @@
             $("#comment_form").submit();
         }
     }
+    let class_map = {
+        map: null,
+        init: function () {
+            var mapContainer = document.querySelector('#map');// 지도를 표시할 div
+            var mapOption = {
+                center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+                level: 3 // 지도의 확대 레벨
+            };
+            map = new kakao.maps.Map(mapContainer, mapOption);
+
+            var mapTypeControl = new kakao.maps.MapTypeControl();
+            map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+            var zoomControl = new kakao.maps.ZoomControl();
+            map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+
+            // 마커가 표시될 위치입니다
+            var markerPosition = new kakao.maps.LatLng(33.450701, 126.570667);
+            // 마커를 생성합니다
+            var marker = new kakao.maps.Marker({
+                position: markerPosition
+            });
+            // 마커가 지도 위에 표시되도록 설정합니다
+            marker.setMap(map);
+
+            // 마커에 커서가 오버됐을 때 마커 위에 표시할 인포윈도우를 생성합니다
+            var iwContent = '<img src="/img/nature.jpg" style="width:80px"><div style="padding:5px;">Hello Kakao!</div>';
+
+            // 인포윈도우를 생성합니다
+            var infowindow = new kakao.maps.InfoWindow({
+                content: iwContent
+            });
+
+            // 마커에 마우스오버 이벤트를 등록합니다
+            kakao.maps.event.addListener(marker, 'mouseover', function () {
+                // 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
+                infowindow.open(map, marker);
+            });
+
+            kakao.maps.event.addListener(marker, 'mouseout', function () {
+                // 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
+                infowindow.close();
+            });
+
+            kakao.maps.event.addListener(marker, 'click', function () {
+                location.href = 'http://www.nate.com';
+            });
+        }
+    };
 
     $(function () {
         comment_form.init();
+        class_map.init();
     });
 </script>
 
@@ -74,16 +123,24 @@
                         <div class="single-artcile-bg">
                             <img src="/uimg/${classdetail.thumbnailimg}" alt="">
                         </div>
+                        <h2 style="color:#F28123; font-weight: bolder">
+                            [${classdetail.location}] ${classdetail.classtitle}</h2>
                         <p class="blog-meta">
-                            <span class="author"><i class="fas fa-user"></i> 작성자</span>
-                            <span class="date"><i class="fas fa-calendar"></i> 작성일자</span>
+                            <span class="author"><i class="fas fa-user"></i> 수업소요시간 : ${classdetail.classtime} 분</span>
+                            <span class="date"><i class="fas fa-calendar"></i> 지역 : ${classdetail.location}</span>
+                            <span class="date"><i class="fas fa-calendar"></i> 정원 : ${classdetail.personal} 명</span>
                         </p>
-                        <h2>${classdetail.classtitle}</h2>
-                        <p>${classdetail.classdesc}</p>
                     </div>
                     <div class="single-article-text" id="classmap">
-                        <h2>클래스 위치</h2>
-                        <div id="map" style="width:500px;height:400px;"></div>
+                        <div class="section-title">
+                            <h5>클래스 소개</h5>
+                        </div>
+                        <p>${classdetail.classdesc}</p>
+                        <div class="section-title">
+                            <h5>위치</h5>
+                        </div>
+                        <p>${classdetail.address}</p>
+                        <div id="map" style="width:100%; height:500px;margin-top: 20px;"></div>
                     </div>
 
                     <div class="comments-list-wrap">
@@ -165,7 +222,7 @@
             <div class="col-lg-4">
                 <div class="sidebar-section">
                     <div class="recent-posts">
-                        <h4>${classdetail.classtitle}</h4>
+                        <h4>${classdetail.cooking}</h4>
                     </div>
                     <div class="archive-posts">
                         <h4>클래스 요약 설명</h4>
