@@ -89,20 +89,38 @@
                         </div>
                         <input type="hidden" name="custname" value="${logincust.custname}">
                         <input type="hidden" name="custpin" value="${logincust.custpin}">
-                        <button type="button" class="site-btn" id="contact_btn">Contact Now
+                        <button type="button" class="site-btn" id="contact_btn" style="margin-top: 0">Contact Now
                         </button>
                     </form>
                 </div>
             </div>
             <div class="col-lg-6">
-                <div class="login__social__links">
-                    <h3 style="color: #b7b7b7">Login With:</h3>
-                    <ul>
-                        <li><a href="#" class="facebook"><i class="fa fa-facebook"></i> Sign in With Facebook</a>
-                        </li>
-                        <li><a href="#" class="google"><i class="fa fa-google"></i> Sign in With Google</a></li>
-                        <li><a href="#" class="twitter"><i class="fa fa-twitter"></i> Sign in With Twitter</a></li>
-                    </ul>
+                <div class="login__form">
+                    <h3 style="color: #b7b7b7">Notice</h3>
+                    <table class="table table-bordered" id="dataTable"
+                           style="color: #b7b7b7;background-color: #FFFFFF; border: none">
+                        <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Date</th>
+                        </tr>
+                        <colgroup>
+                            <col style="width: 70%;">
+                            <col style="width: 30%;">
+                        </colgroup>
+                        </thead>
+                        <tbody>
+                        <c:forEach var="obj" items="${nlist.getList()}">
+                            <tr>
+                                <td><a href="/contacts/notice_detail?noticepin=${obj.noticepin}"
+                                       style="color: #b7b7b7">${obj.noticetitle}</a>
+                                </td>
+                                <td><fmt:formatDate value="${obj.noticedate}" pattern="yyyy-MM-dd"/></td>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                    <jsp:include page="page.jsp"/>
                 </div>
             </div>
         </div>
@@ -113,6 +131,17 @@
 <style>
     #textareazone::before {
         display: none;
+    }
+
+    #dataTable td {
+        border-top: 15px solid #f9f5e5;
+        border-bottom: none;
+        border-right: none;
+        border-left: none;
+    }
+
+    #dataTable th {
+        border: none;
     }
 
 </style>

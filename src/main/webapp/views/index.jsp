@@ -63,14 +63,16 @@
                         <ul>
                             <c:choose>
                                 <c:when test="http://172.16.21.59/recipe/all">
-                                    <a class="active" href="/recipe/all"><li class="active">Recipe</li></a>
+                                    <a class="active" href="/recipe/all">
+                                        <li class="active">Recipe</li>
+                                    </a>
                                 </c:when>
                                 <c:otherwise>
                                     <li><a href="/recipe/all">Recipe</a></li>
                                 </c:otherwise>
                             </c:choose>
                             <li><a class="active" href="/cookingclass/class">Class</a></li>
-                            <li><a class="active"href="/contacts">Contacts</a></li>
+                            <li><a class="active" href="/contacts">Contacts</a></li>
                             <li><a href="#">Spare</a></li>
                         </ul>
                     </nav>
@@ -78,12 +80,21 @@
             </div>
             <div class="col-lg-2">
                 <div class="header__right">
-                    <a href="/login" class="search-switch">
-                        <span style="color: black">Login</span>
-                    </a>
-                    <a href="/apply">
-                        <span style="color: black">Apply</span>
-                    </a>
+                    <c:choose>
+                        <c:when test="${logincust == null}">
+                            <a href="/login" class="search-switch">
+                                <span style="color: #b7b7b7">Login</span>
+                            </a>
+                            <a href="/apply">
+                                <span style="color: #b7b7b7">Apply</span>
+                            </a>
+                        </c:when>
+                        <c:otherwise>
+                            <a href="/apply/mypage?custid=${logincust.custid}" class="search-switch">
+                                <span style="color: #b7b7b7">My Page</span>
+                            </a>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
         </div>
