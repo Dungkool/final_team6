@@ -20,7 +20,7 @@ public class NcpController {
     String imgpath;
 
     @RequestMapping("/ocrimpl")
-    public String ocr1impl(Model model, Ncp ncp) throws ParseException {
+    public String ocrimpl(Model model, Ncp ncp) throws ParseException {
 
         // img 저장
         FileUploadUtil.saveOcrFile(ncp.getImg(), imgpath);
