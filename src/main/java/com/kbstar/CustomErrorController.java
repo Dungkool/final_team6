@@ -9,7 +9,7 @@ public class CustomErrorController {
     @ExceptionHandler(Exception.class)
     public String except(Exception e, Model model){
         e.printStackTrace();
-        model.addAttribute("msg",e.getMessage());
+        model.addAttribute("msg", e.getMessage());
         model.addAttribute("center","error/error_page1");
         return "index";
     }
