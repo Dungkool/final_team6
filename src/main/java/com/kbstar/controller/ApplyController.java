@@ -34,7 +34,9 @@ public class ApplyController {
     }
 
     @RequestMapping("/mypage")
-    public String mypage(Model model) {
+    public String mypage(Model model, Cust cust) throws Exception {
+        Cust c = custService.get(cust.getCustid());
+        model.addAttribute("mypagecust", c);
         model.addAttribute("center", "mypage");
         return "index";
     }
@@ -62,7 +64,6 @@ public class ApplyController {
 
     @RequestMapping("/profilemodifyimpl")
     public String profilemodifyimpl(Model model, Cust cust, HttpSession session, MultipartFile img) throws Exception {
-        log.info("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" + img.getOriginalFilename());
         if (img == null || img.isEmpty() || img.getOriginalFilename() == null || img.getOriginalFilename().isEmpty()) {
             cust.setProfileimgname(cust.getProfileimgname());
         } else {
