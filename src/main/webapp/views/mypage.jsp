@@ -4,12 +4,17 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 
 <script>
+    $(function () {
+        console.log("${logincust.custid}");
+        console.log("${mypagecust.custid}");
+    });
 
 </script>
 <c:choose>
     <c:when test="${logincust != null && logincust.custid == mypagecust.custid}">
         <!-- Normal Breadcrumb Begin -->
         <a href="/apply/profilemodify">
+
             <c:choose>
                 <c:when test="${logincust.profileimgname == null || logincust.profileimgname ==''}">
                     <section class="normal-breadcrumb set-bg" data-setbg="/img/basic_profile.png"
@@ -46,80 +51,37 @@
             <div class="col-lg-8 col-md-8">
                 <div class="anime__details__review">
                     <div class="section-title">
-                        <h5>
-                            <c:choose>
-                                <c:when test="${mypagecust.nickname == null || mypagecust.nickname ==''}">
-                                    ${mypagecust.custid}
-                                </c:when>
-                                <c:otherwise>
-                                    ${mypagecust.nickname}
-                                </c:otherwise>
-                            </c:choose>
-                            's Subscribe List</h5>
+                        <h5>My Recipe List</h5>
                     </div>
-                    <c:forEach var="obj" items="${mysubscribelist}">
-                        <div class="anime__review__item">
-                            <div class="anime__review__item__pic">
-                                <c:choose>
-                                    <c:when test="${obj.subcustprofileimgname == null || obj.subcustprofileimgname ==''}">
-                                        <a href="/apply/mypage?custid=${obj.subcustid}">
-                                            <img src="/img/basic_profile.png" alt=""
-                                                 style="width: 80px; height: 80px">
-                                        </a>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <a href="/apply/mypage?custid=${obj.subcustid}">
-                                            <img src="/uimg/${obj.subcustprofileimgname}" alt=""
-                                                 style="width: 80px; height: 80px">
-                                        </a>
-                                    </c:otherwise>
-                                </c:choose>
-                            </div>
-                            <a href="/apply/mypage?custid=${obj.subcustid}" style="text-decoration: none">
-                                <div class="anime__review__item__text">
-                                    <c:choose>
-                                        <c:when test="${obj.subcustnickname == null || obj.subcustnickname ==''}">
-                                            <h6>${obj.subcustid}</h6>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <h6>${obj.subcustnickname}</h6>
-                                        </c:otherwise>
-                                    </c:choose>
-                                    <c:choose>
-                                        <c:when test="${obj.subcustintroduction == null || obj.subcustintroduction ==''}">
-                                            <h6>등록된 자기소개가 없습니다.</h6>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <h6>${obj.subcustintroduction}</h6>
-                                        </c:otherwise>
-                                    </c:choose>
-                                </div>
-                            </a>
+                    <div class="anime__review__item">
+                        <div class="anime__review__item__pic">
+                            <img src="img/anime/review-1.jpg" alt="">
                         </div>
-                    </c:forEach>
-
+                        <div class="anime__review__item__text">
+                            <h6>Chris Curry - <span>1 Hour ago</span></h6>
+                            <p>whachikan Just noticed that someone categorized this as belonging to the genre
+                                "demons" LOL</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-4 col-md-4">
                 <div class="anime__details__sidebar">
                     <div class="section-title">
-                        <h5><c:choose>
-                            <c:when test="${mypagecust.nickname == null || mypagecust.nickname ==''}">
-                                ${mypagecust.custid}
-                            </c:when>
-                            <c:otherwise>
-                                ${mypagecust.nickname}
-                            </c:otherwise>
-                        </c:choose>
-                            's Recipe List</h5>
+                        <h5>My Subcribe List</h5>
                     </div>
-                    <c:forEach var="obj" items="${myrecipelist}">
-                        <div class="product__sidebar__view__item set-bg" data-setbg="/uimg/${obj.thumbnailimg}">
-                            <h5>
-                                <a href="/recipe/detail?recipepin=${obj.recipepin}">${obj.recipetitle}</a>
-                            </h5>
-                        </div>
-                    </c:forEach>
+                    <div class="product__sidebar__view__item set-bg" data-setbg="img/sidebar/tv-1.jpg">
+                        <h5><a href="#">Boruto: Naruto next generations</a></h5>
+                    </div>
+                    <div class="product__sidebar__view__item set-bg" data-setbg="img/sidebar/tv-2.jpg">
+                        <h5><a href="#">The Seven Deadly Sins: Wrath of the Gods</a></h5>
+                    </div>
+                    <div class="product__sidebar__view__item set-bg" data-setbg="img/sidebar/tv-3.jpg">
+                        <h5><a href="#">Sword art online alicization war of underworld</a></h5>
+                    </div>
+                    <div class="product__sidebar__view__item set-bg" data-setbg="img/sidebar/tv-4.jpg">
+                        <h5><a href="#">Fate/stay night: Heaven's Feel I. presage flower</a></h5>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,11 +1,7 @@
 package com.kbstar.controller;
 
 import com.kbstar.dto.Cust;
-import com.kbstar.dto.RecipeBasic;
-import com.kbstar.dto.Subscribe;
 import com.kbstar.service.CustService;
-import com.kbstar.service.RecipeService;
-import com.kbstar.service.SubscribeService;
 import com.kbstar.util.FileUploadUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 @Slf4j
 @Controller
@@ -26,10 +21,6 @@ public class ApplyController {
 
     @Autowired
     CustService custService;
-    @Autowired
-    RecipeService recipeService;
-    @Autowired
-    SubscribeService subscribeService;
     String dir = "apply/";
     @Value("${uploadimgdir}")
     String imgdir;
@@ -45,11 +36,7 @@ public class ApplyController {
     @RequestMapping("/mypage")
     public String mypage(Model model, Cust cust) throws Exception {
         Cust c = custService.get(cust.getCustid());
-        List<RecipeBasic> rlist = recipeService.getMyRecipe(cust.getCustid());
-        List<Subscribe> slist = subscribeService.getMySubscribe(cust.getCustid());
         model.addAttribute("mypagecust", c);
-        model.addAttribute("myrecipelist", rlist);
-        model.addAttribute("mysubscribelist", slist);
         model.addAttribute("center", "mypage");
         return "index";
     }
