@@ -111,7 +111,8 @@ ol {
 }
 
 .section-title h4,
-.section-title h5 {
+.section-title h5,
+.section-title h6{
     color: black;
     font-weight: 600;
     line-height: 21px;
@@ -122,7 +123,8 @@ ol {
 }
 
 .section-title h4:after,
-.section-title h5:after {
+.section-title h5:after
+.section-title h6:after{
     position: absolute;
     left: 0;
     top: -6px;
@@ -1142,6 +1144,7 @@ ol {
     border-radius: 10px;
 }
 
+
 .anime__review__item__text h6 {
     color: #ffffff;
     font-weight: 700;
@@ -1158,6 +1161,7 @@ ol {
     line-height: 23px;
     margin-bottom: 0;
 }
+
 
 .anime__details__form form textarea {
     width: 100%;
@@ -2427,4 +2431,24 @@ ol {
     .anime__review__item__text {
         padding: 18px 20px 20px;
     }
+}
+
+.step-title h5 {
+    color: black;
+    font-weight: 600;
+    line-height: 21px;
+    text-transform: uppercase;
+    padding-left: 20px;
+    position: relative;
+    font-family: "Oswald", sans-serif;
+}
+
+.step-title h5:after {
+    position: absolute;
+    left: 0;
+    top: -6px;
+    height: 32px;
+    width: 4px;
+    background: #f28123;
+    content: "";
 }

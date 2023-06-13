@@ -61,6 +61,16 @@
                             <li><a href="/recipe/all">Recipe</a></li>
                             <li><a href="/cookingclass/class">Class</a></li>
                             <li><a href="/contacts">Contacts</a></li>
+                            <c:choose>
+                                <c:when test="${logincust != null}">
+                                    <li><a href="">Register</a>
+                                        <ul class="dropdown">
+                                            <li><a href="/recipe/add">Recipe</a></li>
+                                            <li><a href="/cookingclass/add">Class</a></li>
+                                        </ul>
+                                    </li>
+                                </c:when>
+                            </c:choose>
                         </ul>
                     </nav>
                 </div>

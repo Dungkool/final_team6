@@ -90,7 +90,7 @@
             <div class="col-lg-12 text-center">
                 <div class="normal__breadcrumb__text">
                     <h2>RECIPES ALL OVER THE WORLD</h2>
-                    <p>Welcome to RECIPES</p>
+                    <p>Welcome to KOLLY'S RECIPES</p>
                 </div>
             </div>
         </div>
@@ -167,20 +167,6 @@
                                         <h4>ALL Recipes</h4>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-md-4 col-sm-4">
-                                    <form action="/recipe/alphabetical" method="post" class="d-flex" style="float: right;">
-                                        <c:url var="actionUrl" value="/recipe/alphabetical" />
-                                        <button id="alphabetical_btn" class="btn btn-outline" type="submit"
-                                                style="border: 2px solid #F28123; background-color: #F28123; color: #fff;">Alphabetical
-                                        </button>
-                                    </form>
-                                    <a href="/recipe/all">
-                                        <button class="btn btn-outline"
-                                                style="border: 2px solid #F28123; background-color: #F28123; color: #fff;">Recent
-                                        </button>
-                                    </a>
-                                </div>
-
                             </div>
                             <div class="row" >
                                 <c:forEach var="obj" items="${recipeList}">
