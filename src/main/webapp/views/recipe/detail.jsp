@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
 <script>
     let register_form = {
         init: function () {
@@ -32,12 +31,75 @@
             });
             $("#register_form").submit();
         }
-    }
+    };
+
+    let delete_form = {
+        init: function () {
+            $("#delete_btn").click(function () {
+                delete_form.send();
+            });
+        },
+        send: function () {
+            $("#delete_form").attr({
+                "action": "/recipe/deleteImpl",
+                "method": "post"
+            });
+            $("#delete_form").submit();
+        }
+    };
+
+    let like_add = {
+        init: function () {
+            $('#like_btn').click(function () {
+                <c:choose>
+                    <c:when test="${logincust != null}">
+                        like_add.send();
+                    </c:when>
+                    <c:otherwise>
+                        alert("로그인 후 이용해주세요.");
+                    </c:otherwise>
+                </c:choose>
+            });
+        },
+        send:function () {
+            $('#like_form').attr({
+                method: 'post',
+                action: '/recipe/likeImpl'
+            });
+            $('#like_form').submit();
+        }
+    };
+
+    let sub_add = {
+        init: function () {
+            $('#sub_btn').click(function () {
+                <c:choose>
+                    <c:when test="${logincust != null && logincust.custpin != recipedetail.custpin}">
+                        sub_add.send();
+                    </c:when>
+                    <c:when test="${logincust == null}">
+                        alert("로그인 후 이용해주세요.");
+                    </c:when>
+                </c:choose>
+            });
+        },
+        send:function () {
+            $('#sub_form').attr({
+                method: 'post',
+                action: '/recipe/subImpl'
+            });
+            $('#sub_form').submit();
+        }
+    };
 
     $(function () {
         register_form.init();
+        delete_form.init();
+        like_add.init();
+        sub_add.init();
     });
 </script>
+
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Anime Template">
@@ -70,9 +132,24 @@
         <div style="right: 0%">
             <c:choose>
                 <c:when test="${logincust.custid == recipedetail.custid}">
-                    <a href="/recipe/amend">수정</a>
+                        <div class="anime__details__btn">
+                            <form id="modify_form">
+                                <button type="button" id="modify_btn" class="follow-btn" style="border: unset">
+                                    Modify
+                                </button>
+                            </form>
+                        </div>
+                        <div class="anime__details__btn">
+                            <form id="delete_form">
+                                <input type="hidden" name="recipepinDel" value="${recipedetail.recipepin}">
+                                <button type="button" id="delete_btn" class="follow-btn" style="border: unset">
+                                    Delete
+                                </button>
+                            </form>
+                        </div>
                 </c:when>
             </c:choose>
+            <br>
         </div>
         <div class="anime__details__content">
             <div class="row">
@@ -112,9 +189,45 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="anime__details__btn">
-                            <button class="follow-btn" style="border: unset">Subscribe</button>
-                            <button class="follow-btn" style="border: unset">Like!</button>
+                            <div class="form-horizontal" style="display: flex; justify-content: flex-start">
+                                <div style="margin-right: 40px;">
+                                    <form style="width: 100px; margin: 0;" id="sub_form" class="sub_form">
+                                        <input type="hidden" name="custpinmy" id="custpinmy" value="${logincust.custpin}">
+                                        <input type="hidden" name="subcustpin" id="subcustpin" value="${recipedetail.custpin}">
+                                        <c:choose>
+                                            <c:when test="${logincust.custpin == recipedetail.custpin}">
+                                                <button type="button" id="sub_btn" class="follow-btn disabled" style="border: unset; background-color: #b7b7b7;)">
+                                                    Subscribe
+                                                </button>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <button type="button" id="sub_btn" class="follow-btn" style="border: unset">
+                                                    Subscribe
+                                                </button>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </form>
+                                </div>
+                                <div>
+                                    <form id="like_form" class="like_form">
+                                        <input type="hidden" name="custpinlike" id="custpinlike" value="${logincust.custpin}">
+                                        <input type="hidden" name="recipepinlike" id="recipepinlike" value="${recipedetail.recipepin}">
+                                        <c:choose>
+                                            <c:when test="${logincust.custpin == recipedetail.custpin}">
+                                                <button type="button" id="like_btn" class="follow-btn disabled" style="border: unset; background-color: #b7b7b7;">
+                                                    Like!
+                                                </button>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <button type="button" id="like_btn" class="follow-btn" style="border: unset">
+                                                    Like!
+                                                </button>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </form>
+                                </div>
                         </div>
                     </div>
                 </div>
@@ -172,16 +285,16 @@
                         <div class="section-title">
                             <h5>Your Comment</h5>
                         </div>
-                        <form id="register_form">
-
-                            <input type="hidden" name="recipepin" id="recipepin" value="${recipedetail.recipepin}">
-                            <input type="hidden" name="custpin" id="custpin" value="${logincust.custpin}">
-                            <input type="hidden" name="custid" id="custid" value="${logincust.custid}">
-                            <input type="hidden" name="nickname" id="nickname" value="${logincust.nickname}">
-                            <textarea name="content" id="content" placeholder="Your Comment"></textarea>
-                            <button type="button" id="register_btn">Register</button>
-
-                        </form>
+                        <div style="margin: 0; right: 10px;">
+                            <form id="register_form">
+                                <input type="hidden" name="recipepin" id="recipepin" value="${recipedetail.recipepin}">
+                                <input type="hidden" name="custpin" id="custpin" value="${logincust.custpin}">
+                                <input type="hidden" name="custid" id="custid" value="${logincust.custid}">
+                                <input type="hidden" name="nickname" id="nickname" value="${logincust.nickname}">
+                                <textarea name="content" id="content" placeholder="Your Comment"></textarea>
+                                <button type="button" id="register_btn">Register</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

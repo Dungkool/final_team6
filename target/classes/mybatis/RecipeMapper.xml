@@ -41,13 +41,19 @@
                 #{ingredients3},
                 #{cooking},
                 #{thumbnailimg},
-                'N',
+                #{finishedimg},
                 #{time},
                 #{recipelevel},
                 #{recipetitle},
                 #{recipedesc},
                 SYSDATE)
     </insert>
+
+    <delete id="delete" parameterType="Integer">
+        DELETE
+        FROM recipe_basic
+        WHERE recipepin = #{recipepin}
+    </delete>
 
     <select id="gettype" parameterType="String" resultType="recipebasic">
         SELECT *

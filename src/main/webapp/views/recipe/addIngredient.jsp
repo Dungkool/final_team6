@@ -26,40 +26,24 @@
 </head>
 
 <script>
-    // 값 증가 함수
-    function increaseCount() {
-        var countInput = document.getElementById('ingredientnumber');
-        var count = parseInt(countInput.value); // 현재 값 가져오기
-        count++;
-        countInput.value = count; // 변경된 값 설정
-        document.getElementById('register_form').submit();
-    }
-    // 버튼 클릭 시 값 증가 함수 호출
-    // document.getElementById('register_form').addEventListener();
-
+    let recipe_addIngredient = {
+        init:function(){
+            $('#register_btn').click(function(){
+                recipe_addIngredient.send();
+            });
+        },
+        send:function(){
+            $('#register_form').attr({
+                method:'post',
+                action:'/recipe/addIngredientImpl',
+            });
+            $('#register_form').submit();
+        }
+    };
+    $(function(){
+        recipe_addIngredient.init();
+    });
 </script>
-
-<%--<script>--%>
-<%--    let recipe_addIngredient = {--%>
-<%--        init:function(){--%>
-<%--            $('#register_btn').click(function(){--%>
-<%--                recipe_addIngredient.send();--%>
-<%--            });--%>
-<%--        },--%>
-<%--        send:function(){--%>
-<%--            $('#register_form').attr({--%>
-<%--                method:'post',--%>
-<%--                action:'/recipe/addIngredientImpl',--%>
-<%--            });--%>
-<%--            $('#register_form').submit();--%>
-<%--        }--%>
-<%--    };--%>
-<%--    $(function(){--%>
-<%--        recipe_addIngredient.init();--%>
-<%--    });--%>
-<%--</script>--%>
-
-
 
 <body>
 <!-- Anime Section Begin -->
@@ -67,35 +51,22 @@
     <div class="container">
         <div class="anime__details__content">
             <div class="row">
+                <div class="col-lg-3">
 
+                </div>
                 <div class="col-lg-9">
-                    <div class="login__form" style="padding-left: 0">
-                        <div>
-                            <form id="register_form" class="register_form"  action="/recipe/addIngredientImpl" method="post">
-                                <div class="section-title">
-                                    <h5>INGREDIENTS</h5>
-                                </div>
-<%--                                    <input type="hidden" name="ingredientnumber" id="ingredientnumber" value="${counter}">--%>
-                                    <input type="hidden" name="ingredientnumber" id="ingredientnumber" value="0">
-                                    <input type="hidden" name="recipepin" id="recipepin" value="${obj.recipepin}">
+                    <div class="anime__details__text">
 
-                                    <div class="form-horizontal" style="display: flex; justify-content: flex-start">
-                                        <div class="input__item" style="margin-right: 10px">
-                                            <input type="text" name="name" id="name" placeholder="Enter Recipe Ingredient">
-                                        </div>
-                                        <div class="input__item" style="margin-right: 20px">
-                                            <input type="text" name="quantity" id="quantity" placeholder="Enter Ingredient Quantity">
-                                        </div>
-                                        <div class="anime__details__btn" style="display: flex; justify-content: flex-end">
-                                            <button type="button" id="register_btn" onclick="increaseCount()" class="follow-btn" style="border: unset; margin: 0; height: 50px">
-                                                ADD
-                                            </button>
-                                        </div>
-                                    </div>
+                        <div>
+                            <form id="register_form" class="register_form">
                                 <c:set var="counter" value="0" />
                                     <c:forEach begin="1" end="10" step="1" varStatus="loop">
                                         <c:set var="counter" value="${counter + 1}" />
-
+                                        <input type="hidden" name="ingredientnumber" id="ingredientnumber" value="${counter}">
+                                        <input type="hidden" name="recipepin" id="recipepin" value="${obj.recipepin}">
+                                        <input type="text" name="ingredient" id="ingredient" placeholder="Enter Recipe Ingredient">
+                                        <input type="text" name="quantity" id="quantity" placeholder="Enter Ingredient Quantity">
+                                        <button type="button" id="register_btn">Register</button><br>
                                     </c:forEach>
                             </form>
                         </div>

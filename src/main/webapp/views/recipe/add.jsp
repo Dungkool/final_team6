@@ -36,7 +36,7 @@
             $('#register_form').attr({
                 method:'post',
                 action:'/recipe/addImpl',
-                // enctype: 'multipart/form-data'
+                enctype: 'multipart/form-data'
             });
             $('#register_form').submit();
         }
@@ -79,8 +79,9 @@
                                 <div class="form-group">
                                     <label class="control-label col-sm-2">Thumbnail Image:</label>
                                     <div class="col-sm-10">
-                                        <input type="file" class="form-control" id="thumbnailimg" name="thumbnailimg"
+                                        <input type="file" class="form-control" id="img" name="img"
                                                placeholder="Input Thumbnail Image">
+                                        <input type="hidden" class="form-control" id="finishedimg" name="finishedimg">
                                     </div>
                                 </div>
 
@@ -92,7 +93,7 @@
 <%--                                    </div>--%>
 <%--                                </div>--%>
 
-                                <button type="button" id="register_btn">Register</button>
+                                <button type="button" id="register_btn">Next</button>
                             </form>
                         </div>
                     </div>
