@@ -76,7 +76,7 @@
                             <c:otherwise>
                                 <li><a href="" class="search-switch">Logout
                                 </a></li>
-                                <li><a href="/apply/mypage" class="search-switch">
+                                <li><a href="/apply/mypage?custid=${logincust.custid}" class="search-switch">
                                     My Page
                                 </a></li>
                             </c:otherwise>
