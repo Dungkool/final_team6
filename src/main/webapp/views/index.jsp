@@ -27,6 +27,7 @@
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css"/>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css" type="text/css"/>
     <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css"/>
     <link rel="stylesheet" href="/css/elegant-icons.css" type="text/css"/>
     <link rel="stylesheet" href="/css/plyr.css" type="text/css"/>
@@ -34,10 +35,6 @@
     <link rel="stylesheet" href="/css/owl.carousel.min.css" type="text/css"/>
     <link rel="stylesheet" href="/css/slicknav.min.css" type="text/css"/>
     <link rel="stylesheet" href="/css/style.css" type="text/css"/>
-
-    <!-- Tab icon -->
-    <link rel="icon" href="/img/logo.png"/>
-    <link rel="apple-touch-icon" href="/img/logo.png"/>
 </head>
 
 <body>
@@ -53,7 +50,7 @@
             <div class="col-lg-2">
                 <div class="header__logo">
                     <a href="/">
-                        <img style="width: 125px" src="/img/logo.png" alt=""/>
+                        <img style="width: 125px" src="/img/logo.png" alt="logo"/>
                     </a>
                 </div>
             </div>
@@ -61,40 +58,30 @@
                 <div class="header__nav">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <c:choose>
-                                <c:when test="http://172.16.21.59/recipe/all">
-                                    <a class="active" href="/recipe/all">
-                                        <li class="active">Recipe</li>
-                                    </a>
-                                </c:when>
-                                <c:otherwise>
-                                    <li><a href="/recipe/all">Recipe</a></li>
-                                </c:otherwise>
-                            </c:choose>
-                            <li><a class="active" href="/cookingclass/class">Class</a></li>
-                            <li><a class="active" href="/contacts">Contacts</a></li>
-                            <li><a href="#">Spare</a></li>
+                            <li><a href="/recipe/all">Recipe</a></li>
+                            <li><a href="/cookingclass/class">Class</a></li>
+                            <li><a href="/contacts">Contacts</a></li>
                         </ul>
                     </nav>
                 </div>
             </div>
             <div class="col-lg-2">
                 <div class="header__right">
-                    <c:choose>
-                        <c:when test="${logincust == null}">
-                            <a href="/login" class="search-switch">
-                                <span style="color: #b7b7b7">Login</span>
-                            </a>
-                            <a href="/apply">
-                                <span style="color: #b7b7b7">Apply</span>
-                            </a>
-                        </c:when>
-                        <c:otherwise>
-                            <a href="/apply/mypage?custid=${logincust.custid}" class="search-switch">
-                                <span style="color: #b7b7b7">My Page</span>
-                            </a>
-                        </c:otherwise>
-                    </c:choose>
+                    <ul>
+                        <c:choose>
+                            <c:when test="${logincust == null}">
+                                <li><a href="/login" class="search-switch">Login</a></li>
+                                <li><a href="/apply">Apply</a></li>
+                            </c:when>
+                            <c:otherwise>
+                                <li><a href="" class="search-switch">Logout
+                                </a></li>
+                                <li><a href="/apply/mypage" class="search-switch">
+                                    My Page
+                                </a></li>
+                            </c:otherwise>
+                        </c:choose>
+                    </ul>
                 </div>
             </div>
         </div>

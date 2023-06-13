@@ -24,14 +24,18 @@ public class ClassBasic {
     private int personal;
     private String classtitle;
     private String classdesc;
-    private String adderess;
+    private String address;
     private Date classdate;
 
-    public ClassBasic(int classpin, String thumbnailimg, String classtitle, Date classdate, int personal, int amount) {
+    public ClassBasic(int classpin, String thumbnailimg, String location, String cooking, String classtitle, String address, Date classdate, int classtime, int personal, int amount) {
         this.classpin = classpin;
         this.thumbnailimg = thumbnailimg;
+        this.location = location;
+        this.cooking = cooking;
         this.classtitle = classtitle;
+        this.address = address;
         this.classdate = classdate;
+        this.classtime = classtime;
         this.personal = personal;
         this.amount = amount;
     }

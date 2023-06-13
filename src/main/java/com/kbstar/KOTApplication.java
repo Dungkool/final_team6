@@ -9,10 +9,10 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @SpringBootApplication
 @EnableWebSecurity
-public class COTApplication {
+public class KOTApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(COTApplication.class, args);
+        SpringApplication.run(KOTApplication.class, args);
     }
 
     @Bean
