@@ -80,10 +80,29 @@
     </select>
 
 
-    <!--    <insert id="insert" parameterType="ClassBasic">-->
-    <!--        INSERT INTO adm-->
-    <!--        VALUES (#{id}, #{pwd}, #{lev})-->
-    <!--    </insert>-->
+    <insert id="insert" parameterType="ClassBasic">
+        INSERT INTO Class_Basic (classpin, custpin, custid, nickname, type, classtitle, cooking, thumbnailimg, personal,
+                                 classtime, location, address, classdesc, amount, classdate)
+        VALUES (class_basic_seq.NEXTVAL,
+                #{custpin},
+                #{custid},
+                #{nickname},
+                #{type},
+                #{classtitle},
+                #{cooking},
+                class_basic_seq.CURRVAL || '_thumb.jpg',
+                #{personal},
+                #{classtime},
+                #{location},
+                #{address},
+                #{classdesc},
+                #{amount},
+                TO_DATE(#{classdate}, 'YYYY-MM-DD'))
+    </insert>
+    <select id="pingetter" resultType="Integer">
+        SELECT class_basic_seq.CURRVAL
+        FROM dual
+    </select>
     <!--    <update id="update" parameterType="ClassBasic">-->
     <!--        UPDATE adm-->
     <!--        SET pwd=#{pwd},-->
