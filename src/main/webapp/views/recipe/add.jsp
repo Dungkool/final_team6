@@ -362,9 +362,6 @@
 <%--                                        </div>--%>
 <%--                                    </div>--%>
 <%--                                    </form>--%>
-
-
-
                                 <div class="anime__details__btn" style="display: flex; justify-content: flex-end">
                                     <button type="button" id="register_btn" class="follow-btn" style="border: unset;">
                                         Register
