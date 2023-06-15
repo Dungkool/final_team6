@@ -1,6 +1,5 @@
 package com.kbstar.frame;
 
-import com.kbstar.dto.RecipeBasic;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;

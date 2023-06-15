@@ -123,7 +123,7 @@ ol {
 }
 
 .section-title h4:after,
-.section-title h5:after
+.section-title h5:after,
 .section-title h6:after{
     position: absolute;
     left: 0;

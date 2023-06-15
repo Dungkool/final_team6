@@ -16,10 +16,18 @@
     </select>
 
     <select id="selectRecipeAllComment" parameterType="Integer" resultType="recipecomment">
-        SELECT *
+        SELECT recipe_comment.recipecommentpin,
+               recipe_comment.RECIPEPIN,
+               recipe_comment.custpin,
+               recipe_comment.custid,
+               recipe_comment.nickname,
+               recipe_comment.content,
+               recipe_comment.RECIPECOMMENTDATE,
+               cust.profileimgname
         FROM recipe_comment
-        WHERE recipepin = #{recipepin}
-        ORDER BY recipecommentpin ASC
+                 INNER JOIN cust ON recipe_comment.custpin = cust.custpin
+        WHERE recipepin= #{recipepin}
+        ORDER BY recipe_comment.recipecommentpin ASC
     </select>
 
     <insert id="insert" parameterType="recipecomment">

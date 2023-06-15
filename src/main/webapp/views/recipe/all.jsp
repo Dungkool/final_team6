@@ -13,50 +13,41 @@
                 });
                 $('#search_form').submit();
             });
-            // 클릭 이벤트 핸들러 수정
-            $('#type li').click(function () {
+
+            $('#ingredients1_li li').click(function () {
                 // 선택된 지역 값을 가져옴
-                let type = $(this).text();
-
-                // 선택된 지역 값이 "*"(빈 문자열)인 경우 전체 데이터 조회
-                if (type === "") {
-                    type = "*";
-                }
-
-                // 선택된 지역 값을 폼에 설정
-                $('#type_input').val(type);
+                ingredients1 = $(this).data('filter');
+                $('#ingredients1').val(ingredients1);
+                $('#type').val(type);
 
                 // 폼을 서버로 제출
                 $('#category_form').attr({
-                    method: 'post',
-                    action: '/recipe/searchType'
+                    method: 'get',
+                    action: '/recipe/searchIngreType'
                 });
                 $('#category_form').submit();
             });
 
-            $('#situation li').click(function () {
-                let situation = $(this).text();
-                if (situation === "") {
-                    situation = "*";
-                }
-                $('#situation_input').val(situation);
+            $('#type_li li').click(function () {
+                type = $(this).data('filter');
+                $('#ingredients1').val(ingredients1);
+                $('#type').val(type);
 
                 // 폼을 서버로 제출
                 $('#category_form').attr({
                     method: 'post',
-                    action: '/recipe/searchSituation'
+                    action: '/recipe/searchIngreType'
                 });
                 $('#category_form').submit();
             });
         }
     };
-    $(document).ready(function () {
+    // $(document).ready(function () {
+    //     recipe_search.init();
+    // });
+    $(function () {
         recipe_search.init();
     });
-
-    // $(function () {
-    //     recipe_search.init();
-    // })
 </script>
 
 <head>
@@ -115,43 +106,33 @@
         <div class="row">
             <div class="col-md-12">
                 <form id="category_form">
-                <div class="product-filters">
-                    <ul>
-                        <li class="active" data-filter="*">지역별</li>
-                        <li data-filter="서울">서울</li>
-                        <li data-filter="인천">인천</li>
-                        <li data-filter="경기">경기</li>
-                        <li data-filter="대전">대전</li>
-                        <li data-filter="충청">충청</li>
-                        <li data-filter="부산">부산</li>
-                        <li data-filter="대구">대구</li>
-                        <li data-filter="울산">울산</li>
-                        <li data-filter="경상">경상</li>
-                        <li data-filter="광주">광주</li>
-                        <li data-filter="전라">전라</li>
-                        <li data-filter="강원">강원</li>
-                        <li data-filter="기타">기타</li>
-                    </ul>
-
-                    <ul id="type" name="type">
-                        <li class="active" data-filter="*">종류별</li>
-                        <li data-filter="한식">한식</li>
-                        <li data-filter="양식">양식</li>
-                        <li data-filter="중식">중식</li>
-                        <li data-filter="일식">일식</li>
-                        <li data-filter="기타">기타</li>
-                    </ul>
-
-                    <ul id="situation" name="situation">
-                        <li class="active" data-filter="*">상황별</li>
-                        <li data-filter="간식">간식</li>
-                        <li data-filter="집들이">집들이</li>
-                        <li data-filter="생일">생일</li>
-                        <li data-filter="기타">기타</li>
-                    </ul>
-                </div>
-                    <input type="hidden" id="type_input" name="type">
-                    <input type="hidden" id="situation_input" name="situation">
+                    <div class="product-filters">
+                        <!-- 지역별 검색 -->
+                        <ul id="ingredients1_li" name="ingredients1_li">
+                            <li class="${ingredients1 == null || ingredients1 eq '' ? 'active' : ''}" data-filter="">재료별</li>
+                            <li class="${ingredients1 eq '소고기' ? 'active' : ''}" data-filter="소고기">소고기</li>
+                            <li class="${ingredients1 eq '돼지고기' ? 'active' : ''}" data-filter="돼지고기">돼지고기</li>
+                            <li class="${ingredients1 eq '닭고기' ? 'active' : ''}" data-filter="닭고기">닭고기</li>
+                            <li class="${ingredients1 eq '생선' ? 'active' : ''}" data-filter="생선">생선</li>
+                            <li class="${ingredients1 eq '오징어' ? 'active' : ''}" data-filter="오징어">오징어</li>
+                            <li class="${ingredients1 eq '면' ? 'active' : ''}" data-filter="면">면</li>
+                            <li class="${ingredients1 eq '떡' ? 'active' : ''}" data-filter="떡">떡</li>
+                            <li class="${ingredients1 eq '김치' ? 'active' : ''}" data-filter="김치">김치</li>
+                        </ul>
+                        <!-- 종류별 검색 -->
+                        <ul id="type_li" name="type_li">
+                            <li class="${type == null || type eq ''? 'active' : ''}" data-filter="">종류별</li>
+                            <li class="${type eq '한식' ? 'active' : ''}" data-filter="한식">한식</li>
+                            <li class="${type eq '양식' ? 'active' : ''}" data-filter="양식">양식</li>
+                            <li class="${type eq '중식' ? 'active' : ''}" data-filter="중식">중식</li>
+                            <li class="${type eq '월남식' ? 'active' : ''}" data-filter="월남식">월남식</li>
+                            <li class="${type eq '일식' ? 'active' : ''}" data-filter="일식">일식</li>
+                            <li class="${type eq '카자흐식' ? 'active' : ''}" data-filter="카자흐식">카자흐식</li>
+                            <li class="${type eq '기타' ? 'active' : ''}" data-filter="기타">기타</li>
+                        </ul>
+                    </div>
+                    <input type="hidden" id="ingredients1" name="ingredients1" value="${ingredients1}">
+                    <input type="hidden" id="type" name="type" value="${type}">
                 </form>
             </div>
         </div>
@@ -173,8 +154,7 @@
                                     <div class="col-lg-4 col-md-6 col-sm-6">
                                         <div class="product__item">
                                             <a href="/recipe/detail?recipepin=${obj.recipepin}" data-target="#target${obj.recipepin}">
-                                                <div class="product__item__pic set-bg" data-setbg="/uimg/${obj.thumbnailimg}"></div>
-                                                    <%--                                            <img src="/uimg/${obj.thumbnailimg}" alt="">--%>
+                                                <img class="product__item__pic set-bg" src="/uimg/${obj.thumbnailimg}" alt="">
                                             </a>
                                             <div class="product__item__text">
                                                 <ul>

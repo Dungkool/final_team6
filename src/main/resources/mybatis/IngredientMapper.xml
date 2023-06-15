@@ -13,7 +13,7 @@
     <insert id="insert" parameterType="recipeingredient">
         INSERT INTO recipe_ingredient
         VALUES (#{ingredientnumber},
-                #{recipepin},
+                recipe_basic_seq.CURRVAL,
                 #{name},
                 #{quantity}
                 )

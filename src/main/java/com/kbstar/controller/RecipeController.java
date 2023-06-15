@@ -42,7 +42,6 @@ public class RecipeController {
         PageInfo<RecipeBasic> p;
         List<RecipeBasic> recipeList = null;
         try {
-
             p = new PageInfo<>(recipeService.getPage(pageNo), 5);
             recipeList = p.getList();
         } catch (Exception e) {
@@ -81,30 +80,56 @@ public class RecipeController {
         return "index";
     }
 
-    @RequestMapping("/addIngredient")
-    public String addIngredient(Model model, RecipeBasic recipeBasic) throws Exception {
-        model.addAttribute("center", dir + "addIngredient");
-        return "index";
-    }
+    @RequestMapping("/addImpl")
+    public String addImpl(Model model, RecipeBasic recipeBasic, MultipartFile img,
+                          RecipeIngredient recipeIngredient,
+                          Integer ingredientnumber1, String name1, String quantity1,
+                          Integer ingredientnumber2, String name2, String quantity2,
+                          Integer ingredientnumber3, String name3, String quantity3) throws Exception {
 
-    @RequestMapping("/addIngredientImpl")
-    public String addIngredientImpl(RecipeIngredient recipeIngredient) throws Exception {
+        recipeService.register(recipeBasic);
+        FileUploadUtil.saveFile(img, imgdir, recipeService.pingetter() + "_thumb.jpg");
+        FileUploadUtil.saveFile(img, imgdir, recipeService.pingetter() + "_fin.jpg");
+
+        recipeIngredient.setIngredientnumber(ingredientnumber1);
+        recipeIngredient.setIngredientnumber(ingredientnumber2);
+        recipeIngredient.setIngredientnumber(ingredientnumber3);
+
+        recipeIngredient.setName(name1);
+        recipeIngredient.setName(name2);
+        recipeIngredient.setName(name3);
+
+        recipeIngredient.setQuantity(quantity1);
+        recipeIngredient.setQuantity(quantity2);
+        recipeIngredient.setQuantity(quantity3);
+
         ingredientService.register(recipeIngredient);
+
         return "redirect:/recipe/all";
     }
 
-    @RequestMapping("/addImpl")
-    public String addImpl(Model model, RecipeBasic recipeBasic, MultipartFile img) throws Exception {
-        FileUploadUtil.saveFile(img, imgdir, recipeBasic.getRecipetitle() + "_thumb.jpg");
-        FileUploadUtil.saveFile(img, imgdir, recipeBasic.getRecipetitle() + "_fin.jpg");
-        recipeBasic.setThumbnailimg(recipeBasic.getRecipetitle() + "_thumb.jpg");
-        recipeBasic.setFinishedimg(recipeBasic.getRecipetitle() + "_fin.jpg");
-
-        recipeService.register(recipeBasic);
-
-        model.addAttribute("center", dir + "add");
-        return "redirect:/recipe/addIngredient";
-    }
+//    @RequestMapping("/ingredientImpl")
+//    public String addIngredientImpl(RecipeIngredient recipeIngredient,
+//                                    Integer ingredientnumber1, String name1, String quantity1,
+//                                    Integer ingredientnumber2, String name2, String quantity2,
+//                                    Integer ingredientnumber3, String name3, String quantity3) throws Exception {
+//
+//        recipeIngredient.setIngredientnumber(ingredientnumber1);
+//        recipeIngredient.setIngredientnumber(ingredientnumber2);
+//        recipeIngredient.setIngredientnumber(ingredientnumber3);
+//
+//        recipeIngredient.setName(name1);
+//        recipeIngredient.setName(name2);
+//        recipeIngredient.setName(name3);
+//
+//        recipeIngredient.setQuantity(quantity1);
+//        recipeIngredient.setQuantity(quantity2);
+//        recipeIngredient.setQuantity(quantity3);
+//
+//        ingredientService.register(recipeIngredient);
+//
+//        return "redirect:/recipe/all";
+//    }
 
     @RequestMapping("/deleteImpl")
     public String deleteImpl(Integer recipepinDel) throws Exception {
@@ -132,22 +157,20 @@ public class RecipeController {
         return "index";
     }
 
-    @RequestMapping("/searchType")
-    public String searchType(@RequestParam(required = false, defaultValue = "1") int pageNo, Model model, String type) throws Exception {
+    @RequestMapping("/searchIngreType")
+    public String searchIngreType(@RequestParam(required = false, defaultValue = "1") int pageNo, Model model, String ingredients1, String type) throws Exception {
+        List<RecipeBasic> l = null;
         PageInfo<RecipeBasic> p;
-        List<RecipeBasic> recipeList = null;
         try {
-            if (type != null && type.equals("*")) {
-                type = ""; // 선택된 지역 값이 "*"인 경우 빈 문자열로 설정하여 모든 데이터를 조회하도록 함
-            }
-            p = new PageInfo<>(recipeService.getType(pageNo, type), 5);
-            recipeList = p.getList();// 5:하단 네비게이션 개수
+            p = new PageInfo<>(recipeService.getPage_category(pageNo, ingredients1, type), 5);
+            l = p.getList();// 5:하단 네비게이션 개수
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
         model.addAttribute("target", "recipe");
-        model.addAttribute("recipeList", recipeList);
+        model.addAttribute("recipeList", l);
         model.addAttribute("cpage", p);
+        model.addAttribute("ingredients1", ingredients1);
         model.addAttribute("type", type);
         model.addAttribute("center", dir + "all");
         return "index";

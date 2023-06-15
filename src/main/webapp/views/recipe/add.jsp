@@ -1,6 +1,67 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<style>
+    .hidden {
+        display: none;
+    }
+
+    .input__item {
+        position: relative;
+        width: 370px;
+        margin-bottom: 20px;
+    }
+
+    .input__item:before {
+        position: absolute;
+        left: 50px;
+        top: 10px;
+        height: 30px;
+        width: 1px;
+        background: #b7b7b7;
+        content: "";
+    }
+
+    .input__item input {
+        height: 50px;
+        width: 100%;
+        font-size: 15px;
+        color: #b7b7b7;
+        background: #ffffff;
+        border: none;
+        padding-left: 76px;
+    }
+
+    .input__item input::-webkit-input-placeholder {
+        color: #b7b7b7;
+    }
+
+    .input__item input::-moz-placeholder {
+        color: #b7b7b7;
+    }
+
+    .input__item input:-ms-input-placeholder {
+        color: #b7b7b7;
+    }
+
+    .input__item input::-ms-input-placeholder {
+        color: #b7b7b7;
+    }
+
+    .input__item input::placeholder {
+        color: #b7b7b7;
+    }
+
+    .input__item span {
+        color: #b7b7b7;
+        font-size: 20px;
+        position: absolute;
+        left: 15px;
+        top: 13px;
+    }
+</style>
+
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Anime Template">
@@ -39,11 +100,46 @@
                 enctype: 'multipart/form-data'
             });
             $('#register_form').submit();
+
+            $('#ingredient_form').attr({
+                method:'post',
+                action:'/recipe/addImpl'
+            });
+            $('#ingredient_form').submit();
         }
     };
     $(function(){
         recipe_add.init();
     });
+</script>
+
+<script>
+    function toggleDivDisplay() {
+        var div = document.getElementById('myDiv2');
+        var btn = document.getElementById('myBtn2');
+        div.classList.toggle('hidden');
+        btn.classList.toggle('hidden');
+        if (!div.classList.contains('hidden')) {
+            var input1 = document.getElementById('name2');
+            var input2 = document.getElementById('quantity2');
+            input1.value = ''; // 입력값 초기화
+            input2.value = ''; // 입력값 초기화
+        }
+    };
+
+    function toggleDivDisplay2() {
+        var div = document.getElementById('myDiv3');
+        var btn = document.getElementById('myBtn3');
+        div.classList.toggle('hidden');
+        btn.classList.toggle('hidden');
+        if (!div.classList.contains('hidden')) {
+            var input1 = document.getElementById('name3');
+            var input2 = document.getElementById('quantity3');
+            input1.value = ''; // 입력값 초기화
+            input2.value = ''; // 입력값 초기화
+        }
+    };
+
 </script>
 
 <body>
@@ -158,12 +254,123 @@
 <%--                                               placeholder="Input Finished Image">--%>
 <%--                                    </div>--%>
 <%--                                </div>--%>
+                                <br>
+                            </form>
+                        </div>
+                        <div>
+
+                                <div class="section-title">
+                                    <h5>INGREDIENTS</h5>
+                                </div>
+
+
+                                <div style="display: flex; justify-content: flex-start;">
+                                    <div>
+                                        <form id="ingredient_form">
+
+                                            <div id="myDiv1">
+                                                <input type="hidden" name="ingredientnumber1" id="ingredientnumber1" value=1>
+                                                <div class="form-horizontal" style="display: flex; justify-content: flex-start;">
+                                                    <div class="input__item" style="margin-right: 10px; width: 80%;">
+                                                        <input type="text" name="name1" id="name1" placeholder="Enter Ingredient">
+                                                    </div>
+                                                    <div class="input__item" style="margin-right: 20px; width: 80%;">
+                                                        <input type="text" name="quantity1" id="quantity1" placeholder="Enter Quantity">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="hidden" id="myDiv2">
+                                                <input type="hidden" name="ingredientnumber2" id="ingredientnumber2" value=2>
+                                                <div class="form-horizontal" style="display: flex; justify-content: flex-start">
+                                                    <div class="input__item" style="margin-right: 10px; width: 80%;">
+                                                        <input type="text" name="name2" id="name2" placeholder="Enter Ingredient">
+                                                    </div>
+                                                    <div class="input__item" style="margin-right: 20px; width: 80%;">
+                                                        <input type="text" name="quantity2" id="quantity2" placeholder="Enter Quantity">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="hidden" id="myDiv3">
+                                                <input type="hidden" name="ingredientnumber3" id="ingredientnumber3" value=3>
+                                                <div class="form-horizontal" style="display: flex; justify-content: flex-start">
+                                                    <div class="input__item" style="margin-right: 10px; width: 80%;">
+                                                        <input type="text" name="name3" id="name3" placeholder="Enter Ingredient">
+                                                    </div>
+                                                    <div class="input__item" style="margin-right: 20px; width: 80%;">
+                                                        <input type="text" name="quantity3" id="quantity3" placeholder="Enter Quantity">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                    <div style="display: flex; flex-direction: column;">
+                                        <div class="anime__details__btn" style="width: 76px; height: 70px;">
+                                            <button class="follow-btn" onclick="toggleDivDisplay()" style="border: unset; margin: 0; height: 50px">
+                                                ADD
+                                            </button>
+                                        </div>
+                                        <div class="anime__details__btn hidden" id="myBtn2" style="width: 76px; height: 70px;">
+                                            <button class="follow-btn" onclick="toggleDivDisplay2()" style="border: unset; margin: 0; height: 50px">
+                                                ADD
+                                            </button>
+                                        </div>
+                                        <div class="anime__details__btn hidden" id="myBtn3" style="width: 76px; height: 70px;">
+                                            <button class="follow-btn" onclick="toggleDivDisplay3()" style="border: unset; margin: 0; height: 50px">
+                                                ADD
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                        <%--                                            </div>--%>
+
+
+<%--                                    <div class="hidden" id="myDiv4">--%>
+<%--                                        <input type="hidden" name="ingredientnumber4" id="ingredientnumber4" value=4>--%>
+<%--                                        <div class="form-horizontal" style="display: flex; justify-content: flex-start">--%>
+<%--                                            <div class="input__item" style="margin-right: 10px">--%>
+<%--                                                <input type="text" name="name4" id="name4" placeholder="Enter Recipe Ingredient">--%>
+<%--                                            </div>--%>
+<%--                                            <div class="input__item" style="margin-right: 20px">--%>
+<%--                                                <input type="text" name="quantity4" id="quantity4" placeholder="Enter Ingredient Quantity">--%>
+<%--                                            </div>--%>
+<%--                                            <div class="anime__details__btn" style="display: flex; justify-content: flex-end">--%>
+<%--                                                <button class="follow-btn" onclick="toggleDivDisplay4()" style="border: unset; margin: 0; height: 50px">--%>
+<%--                                                    ADD--%>
+<%--                                                </button>--%>
+<%--                                            </div>--%>
+<%--                                        </div>--%>
+<%--                                    </div>--%>
+
+<%--                                    <div class="hidden" id="myDiv5">--%>
+<%--                                        <input type="hidden" name="ingredientnumber5" id="ingredientnumber5" value=5>--%>
+<%--                                        <div class="form-horizontal" style="display: flex; justify-content: flex-start">--%>
+<%--                                            <div class="input__item" style="margin-right: 10px">--%>
+<%--                                                <input type="text" name="name5" id="name5" placeholder="Enter Recipe Ingredient">--%>
+<%--                                            </div>--%>
+<%--                                            <div class="input__item" style="margin-right: 20px">--%>
+<%--                                                <input type="text" name="quantity5" id="quantity5" placeholder="Enter Ingredient Quantity">--%>
+<%--                                            </div>--%>
+<%--                                            <div class="anime__details__btn" style="display: flex; justify-content: flex-end">--%>
+<%--                                                <button class="follow-btn" onclick="toggleDivDisplay5()" style="border: unset; margin: 0; height: 50px">--%>
+<%--                                                    ADD--%>
+<%--                                                </button>--%>
+<%--                                            </div>--%>
+<%--                                        </div>--%>
+<%--                                    </div>--%>
+<%--                                    </form>--%>
+
+
+
                                 <div class="anime__details__btn" style="display: flex; justify-content: flex-end">
                                     <button type="button" id="register_btn" class="follow-btn" style="border: unset;">
-                                        Next
+                                        Register
                                     </button>
                                 </div>
-                            </form>
+
                         </div>
                     </div>
                 </div>

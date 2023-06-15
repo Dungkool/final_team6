@@ -18,4 +18,5 @@ public class RecipeComment {
     private String nickname;
     private String content;
     private Date recipecommentdate;
+    private String profileimgname;
 }

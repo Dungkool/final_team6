@@ -21,6 +21,7 @@
                     });
                     $('#search_form').submit();
                 });
+
                 $('#location_li li').click(function () {
                     // 선택된 지역 값을 가져옴
                     location = $(this).data('filter');
@@ -46,6 +47,7 @@
                     });
                     $('#category_form').submit();
                 });
+
                 $('#classpin_btn').click(function () {
                     $('.btn-group .btn').removeClass('active');
                     $(this).addClass('active');
@@ -57,6 +59,7 @@
                     });
                     $('#category_form').submit();
                 });
+
                 $('#amount_btn').click(function () {
                     $('.btn-group .btn').removeClass('active');
                     $(this).addClass('active');
