@@ -41,19 +41,6 @@
         ORDER BY recipepin DESC
     </select>
 
-    <select id="getpage_category" parameterType="String" resultType="recipebasic">
-        SELECT *
-        FROM recipe_basic
-        <where>
-            <if test="type != null and !type.equals('')">
-                type LIKE '%'||#{type}||'%'
-            </if>
-            <if test="ingredients1 != null and !ingredients1.equals('')">
-                AND ingredients1 LIKE '%'||#{ingredients1}||'%'
-            </if>
-        </where>
-    </select>
-
     <select id="getsearch" parameterType="String" resultType="recipebasic">
         SELECT *
         FROM recipe_basic

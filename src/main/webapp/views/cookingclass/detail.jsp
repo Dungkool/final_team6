@@ -154,7 +154,14 @@
                                     <c:forEach var="obj" items="${classComment}">
                                         <div class="anime__review__item">
                                             <div class="anime__review__item__pic">
-                                                <img src="/uimg/${logincust.profileimgname}" alt="">
+                                                <c:choose>
+                                                    <c:when test="${obj.profileimgname != null &&  obj.profileimgname !=''}">
+                                                        <img src="/uimg/${obj.custid}_profileimg.jpg">
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <img src="/img/basic_profile.png">
+                                                    </c:otherwise>
+                                                </c:choose>
                                             </div>
                                             <div class="anime__review__item__text">
                                                 <div class="form-horizontal"

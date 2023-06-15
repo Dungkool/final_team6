@@ -59,7 +59,7 @@ public class ApplyController {
         }
 
         model.addAttribute("center", "center");
-        return "index";
+        return "redirect:/";
     }
 
     @RequestMapping("/profilemodifyimpl")
