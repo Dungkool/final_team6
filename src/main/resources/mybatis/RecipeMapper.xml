@@ -4,6 +4,37 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kbstar.mapper.RecipeMapper">
 
+    <insert id="insert" parameterType="recipebasic">
+        INSERT INTO recipe_basic
+        VALUES (recipe_basic_seq.NEXTVAL,
+                #{custpin},
+                #{custid},
+                #{nickname},
+                #{type},
+                #{situation},
+                #{ingredients1},
+                #{ingredients2},
+                #{ingredients3},
+                #{cooking},
+                recipe_basic_seq.CURRVAL || '_thumb.jpg',
+                recipe_basic_seq.CURRVAL || '_fin.jpg',
+                #{time},
+                #{recipelevel},
+                #{recipetitle},
+                #{recipedesc},
+                SYSDATE)
+    </insert>
+
+    <select id="pingetter" resultType="Integer">
+        SELECT recipe_basic_SEQ.CURRVAL
+        FROM dual
+    </select>
+
+    <delete id="delete" parameterType="Integer">
+        DELETE FROM recipe_basic
+        WHERE recipepin = #{recipepin}
+    </delete>
+
     <select id="getpage" resultType="recipebasic">
         SELECT *
         FROM recipe_basic
@@ -17,12 +48,6 @@
         ORDER BY recipepin DESC
     </select>
 
-    <select id="getalphabetical" parameterType="String" resultType="recipebasic">
-        SELECT *
-        FROM recipe_basic
-        ORDER BY recipetitle ASC
-    </select>
-
     <select id="select" parameterType="Integer" resultType="recipebasic">
         SELECT *
         FROM recipe_basic
@@ -33,27 +58,6 @@
         SELECT *
         FROM recipe_basic
     </select>
-
-    <insert id="insert" parameterType="recipebasic">
-        INSERT INTO recipe_basic
-        VALUES (recipe_basic_seq.NEXTVAL,
-                #{custpin},
-                #{custid},
-                #{nickname},
-                #{type},
-                #{situation},
-                #{ingredients1},
-                #{ingredients2},
-                #{ingredients3},
-                #{cooking},
-                #{thumbnailimg},
-                #{finishedimg},
-                #{time},
-                #{recipelevel},
-                #{recipetitle},
-                #{recipedesc},
-                SYSDATE)
-    </insert>
 
     <select id="gettype" parameterType="String" resultType="recipebasic">
         SELECT *

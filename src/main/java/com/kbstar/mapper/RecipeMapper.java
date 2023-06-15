@@ -15,7 +15,9 @@ import java.util.List;
 public interface RecipeMapper extends KBMapper<Integer, RecipeBasic> {
 
     Page<RecipeBasic> getpage() throws Exception;
-    Page<RecipeBasic> getalphabetical() throws Exception;
+
+    Page<RecipeBasic> getpage_category(String ingredients1, String type) throws Exception;
+
     Page<RecipeBasic> getsearch(String recipetitle) throws Exception;
     Page<RecipeBasic> gettype(String type) throws Exception;
 
@@ -29,6 +31,7 @@ public interface RecipeMapper extends KBMapper<Integer, RecipeBasic> {
     @Transactional(readOnly = true)
     public List<RecipeBasic> getAllIngredient(Integer integer) throws Exception;
 
+    public int pingetter() throws Exception;
     public List<RecipeBasic> getMyRecipe(String custid) throws Exception;
 
 }
