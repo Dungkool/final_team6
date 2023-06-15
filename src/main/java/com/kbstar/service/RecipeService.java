@@ -8,6 +8,7 @@ import com.kbstar.mapper.RecipeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -36,6 +37,7 @@ public class RecipeService implements KBService<Integer, RecipeBasic> {
     public void modify(RecipeBasic recipeBasic) throws Exception {
         mapper.update(recipeBasic);
     }
+
 
     @Override
     public RecipeBasic get(Integer recipepin) throws Exception {
@@ -70,6 +72,24 @@ public class RecipeService implements KBService<Integer, RecipeBasic> {
 
     public List<RecipeBasic> getMyRecipe(String custid) throws Exception {
         return mapper.getMyRecipe(custid);
+    }
+
+    //        이나은
+    public List<RecipeBasic> ranking() throws Exception {
+        List<Integer> recipepin=mapper.ranking();
+        List<RecipeBasic> recipeRanking = new ArrayList<>();
+        for (Integer pin: recipepin) {
+            recipeRanking.add(mapper.select(pin));
+        }
+        return recipeRanking;
+    }
+    public List<RecipeBasic> latestRecipe() throws Exception {
+        List<RecipeBasic> recipeList =mapper.latestRecipe();
+        return recipeList;
+    }
+    public List<RecipeBasic> subscribeRecipe() throws Exception {
+        List<RecipeBasic> subscribeList =mapper.subscribeRecipe();
+        return subscribeList;
     }
 
 }
