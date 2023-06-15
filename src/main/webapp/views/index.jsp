@@ -13,6 +13,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script type="text/javascript"
+            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=186d9ac6e73cf3e121e11e749901f230&libraries=services"></script>
     <title>Kolly on the Table</title>
 
     <!-- Google Font -->

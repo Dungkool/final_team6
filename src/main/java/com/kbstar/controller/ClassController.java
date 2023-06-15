@@ -5,6 +5,7 @@ import com.kbstar.dto.ClassBasic;
 import com.kbstar.dto.ClassComment;
 import com.kbstar.service.ClassCommentService;
 import com.kbstar.service.ClassService;
+import com.kbstar.util.FileUploadUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -48,6 +50,25 @@ public class ClassController {
         model.addAttribute("center", dir + "class");
         return "index";
     }
+
+    @RequestMapping("/add")
+    public String add(Model model, ClassBasic classBasic) {
+        model.addAttribute("center", dir + "add");
+        return "index";
+    }
+
+    @RequestMapping(value = "/addImpl")
+    public String addImpl(Model model,
+                          ClassBasic classBasic,
+                          String zipcode, String address1, String address2,
+                          MultipartFile img) throws Exception {
+        classBasic.setAddress(address1 + " " + address2);
+        classService.register(classBasic);
+        FileUploadUtil.saveFile(img, imgdir, classService.pingetter() + "_thumb.jpg");
+        model.addAttribute("center", dir + "add");
+        return "index";
+    }
+
 
     @RequestMapping("/search")
     public String search(@RequestParam(required = false, defaultValue = "1") int pageNo, Model model, String classtitle) throws Exception {
@@ -164,11 +185,19 @@ public class ClassController {
         return "redirect:/cookingclass/detail?classpin=" + classBasic.getClasspin();
     }
 
-    @RequestMapping("/add")
-    public String add(Model model) throws Exception {
-        model.addAttribute("target", "class");
-        model.addAttribute("center", dir + "add");
-        return "index";
+    @RequestMapping("/mapImpl")
+    public String mapImpl(Model model, HttpSession session) throws Exception {
+        ClassBasic classBasic = null;
+        model.addAttribute("address", classBasic.getAddress());
+        return "redirect:/cookingclass/detail";
     }
+
+
+//    @RequestMapping("/add")
+//    public String add(Model model) throws Exception {
+//        model.addAttribute("target", "class");
+//        model.addAttribute("center", dir + "add");
+//        return "index";
+//    }
 }
 

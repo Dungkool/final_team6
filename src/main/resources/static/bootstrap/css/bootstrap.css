@@ -2449,6 +2449,7 @@ textarea.form-control {
     cursor: pointer;
     height: 40px;
     margin-left: 10px;
+    margin-bottom: 0px;
 }
 
 .filebox > input[type="file"] {
@@ -2512,6 +2513,29 @@ textarea.form-control {
 }
 
 /*class 등록 화면 radio style end*/
+
+/*class 등록 화면 input start*/
+.class__form {
+    position: relative;
+    padding-left: 145px;
+    display: block;
+    align-items: center;
+}
+
+.class__form .form-group {
+    position: relative;
+    display: block;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.highlight {
+    font-weight: bold;
+    background: linear-gradient(to top, rgba(114, 204, 130, 0.87) 50%, transparent 50%);
+}
+
+/*class 등록 화면 input end*/
+
 /*class 등록 화면 end*/
 
 .valid-feedback {
