@@ -144,43 +144,48 @@
 <section class="signup spad">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <div class="login__form">
                     <h3 style="color: #b7b7b7">My Profile</h3>
                     <form id="profilemodify_form">
                         <input type="hidden" name="profileimgname" value="${logincust.profileimgname}">
-                        <div class="input__item">
+                        <div class="input__item" style="width: 90%">
                             <input type="file" placeholder="Your ProfileImage" name="img"
                                    id="img" style="display: none" onchange="displayImage(event)">
                             <input type="button" value="Profile Image"
                                    onclick="document.getElementById('img').click();" style="text-align: left"/>
-                            <span class="icon_profile"></span>
+                            <span class="icon_image"></span>
                         </div>
-                        <div class="input__item">
+                        <div class="input__item" style="width: 90%">
                             <input type="text" placeholder="Your ID" name="custid" id="custid"
                                    value="${logincust.custid}" readonly>
                             <span class="icon_profile"></span>
                         </div>
-                        <div class="input__item">
+                        <div class="input__item" style="width: 90%">
                             <input type="password" placeholder="Password" name="password" id="password">
                             <span class="icon_lock"></span>
                         </div>
-                        <div class="input__item">
+                        <div class="input__item" style="width: 90%">
                             <input type="email" placeholder="Email address" name="email" id="email"
                                    value="${logincust.email}">
                             <span class="icon_mail"></span>
                         </div>
-                        <div class="input__item">
+                        <div class="input__item" style="width: 90%">
                             <input type="text" placeholder="Your Name" name="custname" id="custname"
                                    value="${logincust.custname}">
-                            <span class="icon_mail"></span>
+                            <span class="icon_id"></span>
                         </div>
-                        <div class="input__item">
+                        <div class="input__item" style="width: 90%">
                             <input type="text" placeholder="Your Nickname" name="nickname" id="nickname"
                                    value="${logincust.nickname}">
-                            <span class="icon_mail"></span>
+                            <span class="icon_comment_alt"></span>
                         </div>
-                        <div class="input__item" id="genderzone">
+                        <div class="input__item" style="width: 90%">
+                            <input type="text" placeholder="Introduction" name="introduction" id="introduction"
+                                   value="${logincust.introduction}">
+                            <span class="icon_info_alt"></span>
+                        </div>
+                        <div class="input__item" id="genderzone" style="width: 90%">
                             <button type="button" class="site-btn" id="Malebtn"
                                     style="width: 49%;background-color: #b7b7b7">Male
                             </button>
@@ -189,31 +194,38 @@
                             </button>
                             <input type="hidden" name="gender" id="gender" value="${logincust.gender}">
                         </div>
-                        <div class="input__item phonezone" style="display: flex">
+                        <div class="input__item phonezone" style="display: flex; width: 90%">
                             <select name="phone_prefix" id="phone_prefix">
-                                <option value="010" ${logincust.phone.substring(0, 3) eq '010' ? 'selected' : ''}>010
+                                <option value="010" ${logincust.phone !='' && logincust.phone.substring(0, 3) eq '010' ? 'selected' : ''}>
+                                    010
                                 </option>
-                                <option value="011" ${logincust.phone.substring(0, 3) eq '011' ? 'selected' : ''}>011
+                                <option value="011" ${logincust.phone !='' &&logincust.phone.substring(0, 3) eq '011' ? 'selected' : ''}>
+                                    011
                                 </option>
-                                <option value="016" ${logincust.phone.substring(0, 3) eq '016' ? 'selected' : ''}>016
+                                <option value="016" ${logincust.phone !='' &&logincust.phone.substring(0, 3) eq '016' ? 'selected' : ''}>
+                                    016
                                 </option>
-                                <option value="017" ${logincust.phone.substring(0, 3) eq '017' ? 'selected' : ''}>017
+                                <option value="017" ${logincust.phone !='' &&logincust.phone.substring(0, 3) eq '017' ? 'selected' : ''}>
+                                    017
                                 </option>
-                                <option value="019" ${logincust.phone.substring(0, 3) eq '019' ? 'selected' : ''}>019
+                                <option value="019" ${logincust.phone !='' &&logincust.phone.substring(0, 3) eq '019' ? 'selected' : ''}>
+                                    019
                                 </option>
                             </select>
-                            <div class="input__item phonezone" style="display: flex; margin-bottom: 0">
+                            <div class="input__item phonezone" style="display: flex; margin-bottom: 0; width: 90%">
                                 <input type="text" pattern="[0-9]{4}" minlength="4" maxlength="4" placeholder="0000"
                                        name="phone_middle"
-                                       id="phone_middle" style="width: 48%;  margin: 0 1% 0 1%"
-                                       value="${logincust.phone.substring(3, 7)}">
+                                       id="phone_middle"
+                                       style="width: 48%;  margin: 0 2% 0 2%; text-align: center; padding-left: 2px"
+                                       value="${logincust.phone !='' ? logincust.phone.substring(3, 7)  : '0000'}">
                                 <input type="text" pattern="[0-9]{4}" minlength="4" maxlength="4" placeholder="0000"
                                        name="phone_end"
-                                       id="phone_end" style="width: 48%" value="${logincust.phone.substring(7, 11)}">
+                                       id="phone_end" style="width: 48%; text-align: center; padding-left: 2px"
+                                       value="${logincust.phone !='' ? logincust.phone.substring(7, 11)  : '0000'}">
                             </div>
                             <input type="hidden" name="phone" id="phone" value="${logincust.phone}">
                         </div>
-                        <div class="input__item locationzone" style="display: flex">
+                        <div class="input__item locationzone" style="display: flex; width: 90%">
                             <select name="location_prefix" id="location_prefix">
                                 <option value="서울" ${logincust.location eq '서울' ? 'selected' : ''}>서울</option>
                                 <option value="인천" ${logincust.location eq '인천' ? 'selected' : ''}>인천</option>
@@ -232,7 +244,9 @@
                             <input type="hidden" name="location" id="location" value="${logincust.location}">
                         </div>
 
-                        <button type="button" class="site-btn" id="profilemodify_btn">My Profile Update Now</button>
+                        <button type="button" class="site-btn" id="profilemodify_btn" style="width: 90%">My Profile
+                            Update Now
+                        </button>
                     </form>
                 </div>
             </div>

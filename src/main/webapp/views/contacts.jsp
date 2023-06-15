@@ -80,7 +80,7 @@
                         </div>
                         <div class="input__item">
                             <input type="text" placeholder="Title" name="contacttitle" id="contacttitle">
-                            <span class="icon_profile"></span>
+                            <span class="icon_comment"></span>
                         </div>
                         <div class="input__item" id="textareazone">
                             <textarea placeholder="Input content" name="contactcontent" id="contactcontent"
@@ -101,7 +101,7 @@
                            style="color: #b7b7b7;background-color: #FFFFFF; border: none">
                         <thead>
                         <tr>
-                            <th>Title</th>
+                            <th style="padding-left: 50px">Title</th>
                             <th>Date</th>
                         </tr>
                         <colgroup>
@@ -112,8 +112,9 @@
                         <tbody>
                         <c:forEach var="obj" items="${nlist.getList()}">
                             <tr>
-                                <td><a href="/contacts/notice_detail?noticepin=${obj.noticepin}"
-                                       style="color: #b7b7b7">${obj.noticetitle}</a>
+                                <td class="input__item"><span class="arrow_carrot-2down"></span><a
+                                        href="/contacts/notice_detail?noticepin=${obj.noticepin}"
+                                        style="color: #b7b7b7; padding-left: 30px">${obj.noticetitle}</a>
                                 </td>
                                 <td><fmt:formatDate value="${obj.noticedate}" pattern="yyyy-MM-dd"/></td>
                             </tr>
