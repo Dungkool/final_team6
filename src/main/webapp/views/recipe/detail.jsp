@@ -155,21 +155,21 @@
         <div class="anime__details__content">
             <div class="row">
 
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                     <div class="anime__details__pic set-bg">
                         <img class="anime__details__pic set-bg" src="/uimg/${recipedetail.thumbnailimg}" style="height: 80%"/>
                     </div>
                 </div>
-                <div class="col-lg-9">
+                <div class="col-lg-8">
                     <div class="anime__details__text">
                         <div class="anime__details__title">
                             <h3>${recipedetail.recipetitle}</h3>
                         </div>
-                        <div class="anime__details__rating">
-                            <div class="rating">
-                                <span>Votes</span>
-                            </div>
-                        </div>
+<%--                        <div class="anime__details__rating">--%>
+<%--                            <div class="rating">--%>
+<%--                                <span>Votes</span>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
                         <p>조리시간 : ${recipedetail.time}분</p>
                         <p>난이도 : ${recipedetail.recipelevel}</p>
                         <div class="anime__details__widget">
@@ -277,7 +277,15 @@
                     <c:forEach var="obj" items="${recipeComment}">
                     <div class="anime__review__item">
                         <div class="anime__review__item__pic">
-                            <img src="/uimg/${logincust.profileimgname}" alt="">
+                            <c:choose>
+                                <c:when test="${obj.profileimgname != null}">
+                                    <img src="/uimg/${obj.custid}_profileimg.jpg">
+                                </c:when>
+                                <c:otherwise>
+                                    <img src="/img/basic_profile.png">
+                                </c:otherwise>
+                            </c:choose>
+<%--                            <img src="/uimg/${obj.custid}_profileimg.jpg" alt="">--%>
                         </div>
                         <div class="anime__review__item__text">
                             <div class="form-horizontal" style="display: flex; justify-content: space-between">
@@ -314,7 +322,7 @@
                         </div>
                     </div>
                     </c:forEach>
-
+                    <br>
                     <div class="anime__details__form">
                         <div class="section-title">
                             <h5>Your Comment</h5>
