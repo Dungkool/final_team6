@@ -96,4 +96,12 @@
     <!--        WHERE id = #{id}-->
     <!--    </delete>-->
 
+
+    <!--            이나은-->
+    <select id="latestClass" resultType="ClassBasic">
+        select * from class_basic
+                 order by CLASSDATE
+    </select>
+
+
 </mapper>

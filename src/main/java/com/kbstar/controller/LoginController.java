@@ -41,7 +41,7 @@ public class LoginController {
             throw new Exception("시스템 장애 잠시후 다시 로그인 하세요");
         }
         model.addAttribute("center", "center");
-        return "index";
+        return "redirect:/";
     }
 
 }

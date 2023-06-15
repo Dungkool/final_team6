@@ -65,4 +65,21 @@
         ORDER BY recipepin DESC
     </select>
 
+<!--            이나은-->
+    <select id="ranking" resultType="int">
+        SELECT RECIPEPIN
+        FROM goodlist
+        GROUP BY RECIPEPIN
+        ORDER BY COUNT(RECIPEPIN) DESC
+    </select>
+    <select id="latestRecipe" resultType="RecipeBasic">
+        select * from recipe_basic
+        order by RECIPEDATE
+    </select>
+
+    <select id="subscribeRecipe" resultType="RecipeBasic">
+        select * from recipe_basic where CUSTPIN= (select SUBCUSTPIN from SUBSCRIBE where CUSTPIN= 10022)
+        ORDER BY RECIPEDATE DESC
+    </select>
+
 </mapper>

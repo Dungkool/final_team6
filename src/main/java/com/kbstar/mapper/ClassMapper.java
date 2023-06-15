@@ -21,6 +21,7 @@ public interface ClassMapper extends KBMapper<Integer, ClassBasic> {
     public List<ClassBasic> search(ClassBasic csearch);
 
     Page<ClassBasic> getsearch(String classtitle) throws Exception;
+    List<ClassBasic> latestClass() throws Exception;
 
 //    Page<ClassBasic> getlocation(String location) throws Exception;
 //

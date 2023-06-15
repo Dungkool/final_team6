@@ -74,5 +74,10 @@ public class ClassService implements KBService<Integer, ClassBasic> {
 //        return mapper.gettype(type);
 //    }
 
+    public List<ClassBasic> latestClass() throws Exception {
+        List<ClassBasic> classList =mapper.latestClass();
+        return classList;
+    }
+
 
 }
