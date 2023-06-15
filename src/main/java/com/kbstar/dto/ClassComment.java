@@ -18,4 +18,5 @@ public class ClassComment {
     private String nickname;
     private String content;
     private Date classcommentdate;
+    private String profileimgname;
 }
