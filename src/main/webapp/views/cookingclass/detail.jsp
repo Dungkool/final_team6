@@ -157,11 +157,11 @@
                                                      style="display: flex; justify-content: space-between">
                                                     <div>
                                                         <c:choose>
-                                                            <c:when test="${obj.nickname != null}">
-                                                                <h6>${obj.nickname}</h6>
+                                                            <c:when test="${obj.profileimgname != null}">
+                                                                <img src="/uimg/${obj.custid}_profileimg.jpg">
                                                             </c:when>
                                                             <c:otherwise>
-                                                                <h6>${obj.custid}</h6>
+                                                                <img src="/img/basic_profile.png">
                                                             </c:otherwise>
                                                         </c:choose>
                                                     </div>
