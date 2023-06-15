@@ -5,7 +5,8 @@
 
     <!-- Font Awesome CSS -->
     <!-- Font Awesome CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/fontawesome.min.css" integrity="sha512-..." crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/fontawesome.min.css"
+          integrity="sha512-..." crossorigin="anonymous"/>
 </head>
 <!-- Hero Section Begin -->
 <section class="hero">
@@ -15,19 +16,19 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <table>
-                        <tr>
-                            <th style="width: 200px">Date</th>
-                            <th style="width: 200px">Rain</th>
-                            <th style="width: 200px">Description</th>
-                        </tr>
-                        <c:forEach items="${weather.date}" var="date" varStatus="loop">
                             <tr>
-                                <td>${date}</td>
-                                <td>${weather.rain[loop.index]}</td>
-                                <td>${weather.desc[loop.index]}</td>
+                                <th style="width: 200px">Date</th>
+                                <th style="width: 200px">Rain</th>
+                                <th style="width: 200px">Description</th>
                             </tr>
-                        </c:forEach>
-                    </table>
+                            <c:forEach items="${weather.date}" var="date" varStatus="loop">
+                                <tr>
+                                    <td>${date}</td>
+                                    <td>${weather.rain[loop.index]}</td>
+                                    <td>${weather.desc[loop.index]}</td>
+                                </tr>
+                            </c:forEach>
+                        </table>
                     </div>
                 </div>
                 <div class="row">
@@ -36,13 +37,13 @@
                             <div class="label">추천</div>
                             <h2>${recipeBasic.recipetitle}</h2>
                             <p>${recipeBasic.recipedesc}</p>
-                            <a href="/recipe/detail?recipepin=+${recipeBasic.recipepin}"
+                            <a href="/recipe/detail?recipepin=${recipeBasic.recipepin}"
                             ><span>Check the recipe Now</span> </a>
                         </div>
                     </div>
                 </div>
             </div>
-            </div>
+        </div>
     </div>
 </section>
 <!-- Hero Section End -->
@@ -64,7 +65,8 @@
                         <c:choose>
                             <c:when test="${logincust == null}">
                                 <div class="col-lg-8 col-md-8 col-sm-8">
-                                    <p>로그인해서 구독한 스푸너의 최신 레시피를 확인하세요! <a href="/login" class="btn-outline-primary">Login</a></p>
+                                    <p>로그인해서 구독한 스푸너의 최신 레시피를 확인하세요! <a href="/login"
+                                                                        class="btn-outline-primary">Login</a></p>
                                 </div>
                             </c:when>
                             <c:otherwise>
@@ -193,13 +195,14 @@
                         <div class="filter__gallery">
                             <c:forEach var="recipeRanking" items="${recipeRanking}">
                                 <div
-                                    class="product__sidebar__view__item set-bg mix day years"
-                                    data-setbg="/uimg/${recipeRanking.thumbnailimg}"
-                            >
-                                <div class="ep">18 / ?</div>
-                                <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                <h5><a href="/recipe/detail?recipepin=+${recipeRanking.recipepin}" style="color: black">${recipeRanking.recipetitle}</a></h5>
-                            </div>
+                                        class="product__sidebar__view__item set-bg mix day years"
+                                        data-setbg="/uimg/${recipeRanking.thumbnailimg}"
+                                >
+                                    <div class="ep">18 / ?</div>
+                                    <div class="view"><i class="fa fa-eye"></i> 9141</div>
+                                    <h5><a href="/recipe/detail?recipepin=+${recipeRanking.recipepin}"
+                                           style="color: black">${recipeRanking.recipetitle}</a></h5>
+                                </div>
                             </c:forEach>
                         </div>
                     </div>
