@@ -138,7 +138,7 @@
     /*반응형 구현 end*/
 
     #bg {
-        height: 85vh;
+        height: 85%;
     }
 
     img {

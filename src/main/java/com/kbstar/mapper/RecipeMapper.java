@@ -22,6 +22,11 @@ public interface RecipeMapper extends KBMapper<Integer, RecipeBasic> {
 
     Page<RecipeBasic> getsituation(String situation) throws Exception;
 
+    //        이나은
+    List<Integer> ranking() throws Exception;
+    List<RecipeBasic> latestRecipe() throws Exception;
+    List<RecipeBasic> subscribeRecipe() throws Exception;
+
     @Transactional(readOnly = true)
     public List<RecipeBasic> getAllIngredient(Integer integer) throws Exception;
 
