@@ -112,7 +112,7 @@ ol {
 
 .section-title h4,
 .section-title h5,
-.section-title h6{
+.section-title h6 {
     color: black;
     font-weight: 600;
     line-height: 21px;
@@ -123,8 +123,8 @@ ol {
 }
 
 .section-title h4:after,
-.section-title h5:after
-.section-title h6:after{
+.section-title h5:after,
+.section-title h6:after {
     position: absolute;
     left: 0;
     top: -6px;
@@ -431,16 +431,17 @@ ol {
     margin-right: 16px;
 }
 
-.header__right > ul > li >a {
+.header__right > ul > li > a {
     font-family: "Oswald", sans-serif;
     font-size: 15px;
     color: #b7b7b7;
     display: inline-block;
 }
 
-.header__right > ul > li >a :last-child {
+.header__right > ul > li > a :last-child {
     margin-right: 0;
 }
+
 .slicknav_menu {
     display: none;
 }
@@ -2191,7 +2192,6 @@ ol {
         top: -42px;
         padding: 0;
     }
-
 
 
     .header__menu {

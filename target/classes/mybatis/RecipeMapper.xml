@@ -65,4 +65,10 @@
         ORDER BY recipepin DESC
     </select>
 
+    <select id="getMyRecipe" parameterType="String" resultType="recipebasic">
+        SELECT *
+        FROM recipe_basic
+        WHERE custid = #{custid}
+    </select>
+
 </mapper>

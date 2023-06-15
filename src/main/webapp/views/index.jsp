@@ -63,7 +63,7 @@
                             <li><a href="/contacts">Contacts</a></li>
                             <c:choose>
                                 <c:when test="${logincust != null}">
-                                    <li><a href="">Register</a>
+                                    <li><a>Register</a>
                                         <ul class="dropdown">
                                             <li><a href="/recipe/add">Recipe</a></li>
                                             <li><a href="/cookingclass/add">Class</a></li>
@@ -84,7 +84,7 @@
                                 <li><a href="/apply">Apply</a></li>
                             </c:when>
                             <c:otherwise>
-                                <li><a href="" class="search-switch">Logout
+                                <li><a href="/login/logout" class="search-switch">Logout
                                 </a></li>
                                 <li><a href="/apply/mypage?custid=${logincust.custid}" class="search-switch">
                                     My Page

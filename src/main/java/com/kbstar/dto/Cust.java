@@ -16,6 +16,7 @@ public class Cust {
     private String custname;
     private char linkedlogin;
     private String nickname;
+    private String introduction;
     private String password;
     private char gender;
     private String phone;

@@ -25,4 +25,6 @@ public interface RecipeMapper extends KBMapper<Integer, RecipeBasic> {
     @Transactional(readOnly = true)
     public List<RecipeBasic> getAllIngredient(Integer integer) throws Exception;
 
+    public List<RecipeBasic> getMyRecipe(String custid) throws Exception;
+
 }

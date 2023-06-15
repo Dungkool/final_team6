@@ -68,4 +68,8 @@ public class RecipeService implements KBService<Integer, RecipeBasic> {
         return mapper.getsituation(situation);
     }
 
+    public List<RecipeBasic> getMyRecipe(String custid) throws Exception {
+        return mapper.getMyRecipe(custid);
+    }
+
 }
