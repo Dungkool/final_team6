@@ -1668,10 +1668,18 @@ p.excerpt {
     margin-bottom: 30px;
 }
 
-.single-artcile-bg {
-    background-image: url(../img/latest-news/news-bg-3.jpg);
+.class-bg {
     height: 450px;
 }
+
+.class-bg > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 450px;
+}
+
 
 .pagination-wrap {
     margin-top: 40px;

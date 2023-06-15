@@ -115,11 +115,11 @@ ol {
 .section-title h6 {
     color: black;
     font-weight: 600;
+    font-family: "Oswald", sans-serif;
     line-height: 21px;
     text-transform: uppercase;
     padding-left: 20px;
     position: relative;
-    font-family: "Oswald", sans-serif;
 }
 
 .section-title h4:after,

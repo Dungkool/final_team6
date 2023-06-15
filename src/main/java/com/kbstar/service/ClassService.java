@@ -64,6 +64,11 @@ public class ClassService implements KBService<Integer, ClassBasic> {
         return mapper.getsearch(classtitle);
     }
 
+    public int pingetter() throws Exception {
+        return mapper.pingetter();
+    }
+
+
 //    public Page<ClassBasic> getLocation(int pageNo, String location) throws Exception {
 //        PageHelper.startPage(pageNo, 6);
 //        return mapper.getlocation(location);
