@@ -109,7 +109,9 @@
                     <div class="product-filters">
                         <!-- 지역별 검색 -->
                         <ul id="ingredients1_li" name="ingredients1_li">
-                            <li class="${ingredients1 == null || ingredients1 eq '' ? 'active' : ''}" data-filter="">재료별</li>
+                            <li class="${ingredients1 == null || ingredients1 eq '' ? 'active' : ''}" data-filter="">
+                                재료별
+                            </li>
                             <li class="${ingredients1 eq '소고기' ? 'active' : ''}" data-filter="소고기">소고기</li>
                             <li class="${ingredients1 eq '돼지고기' ? 'active' : ''}" data-filter="돼지고기">돼지고기</li>
                             <li class="${ingredients1 eq '닭고기' ? 'active' : ''}" data-filter="닭고기">닭고기</li>
@@ -149,12 +151,15 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row" >
+                            <div class="row">
                                 <c:forEach var="obj" items="${recipeList}">
                                     <div class="col-lg-4 col-md-6 col-sm-6">
                                         <div class="product__item">
-                                            <a href="/recipe/detail?recipepin=${obj.recipepin}" data-target="#target${obj.recipepin}">
-                                                <img class="product__item__pic set-bg" src="/uimg/${obj.thumbnailimg}" alt="">
+                                            <a href="/recipe/detail?recipepin=${obj.recipepin}"
+                                               data-target="#target${obj.recipepin}">
+                                                <div class="product__item__pic set-bg"
+                                                     data-setbg="/uimg/${obj.thumbnailimg}">
+                                                </div>
                                             </a>
                                             <div class="product__item__text">
                                                 <ul>
@@ -178,7 +183,8 @@
                                             <c:choose>
                                                 <c:when test="${cpage.getPrePage() != 0}">
                                                     <li class="pagination-wrap">
-                                                        <a href="/recipe/all?pageNo=${cpage.getPrePage()}" aria-label="Previous">
+                                                        <a href="/recipe/all?pageNo=${cpage.getPrePage()}"
+                                                           aria-label="Previous">
                                                             <span>Prev</span>
                                                         </a>
                                                     </li>
@@ -192,11 +198,13 @@
                                                 </c:otherwise>
                                             </c:choose>
 
-                                            <c:forEach begin="${cpage.getNavigateFirstPage() }" end="${cpage.getNavigateLastPage() }" var="page">
+                                            <c:forEach begin="${cpage.getNavigateFirstPage() }"
+                                                       end="${cpage.getNavigateLastPage() }" var="page">
                                                 <c:choose>
                                                     <c:when test="${cpage.getPageNum() == page}">
                                                         <li class="pagination-wrap active">
-                                                            <a class="pagination-wrap active" href="/recipe/all?pageNo=${page}">${page}</a>
+                                                            <a class="pagination-wrap active"
+                                                               href="/recipe/all?pageNo=${page}">${page}</a>
                                                         </li>
                                                     </c:when>
                                                     <c:otherwise>
@@ -306,7 +314,7 @@
                                 </div>
                                 <div class="product__sidebar__comment__item">
                                     <div class="product__sidebar__comment__item__pic">
-                                        <img src="/img/sidebar/comment-1.jpg" alt="" />
+                                        <img src="/img/sidebar/comment-1.jpg" alt=""/>
                                     </div>
                                     <div class="product__sidebar__comment__item__text">
                                         <ul>
@@ -321,7 +329,7 @@
                                 </div>
                                 <div class="product__sidebar__comment__item">
                                     <div class="product__sidebar__comment__item__pic">
-                                        <img src="/img/sidebar/comment-2.jpg" alt="" />
+                                        <img src="/img/sidebar/comment-2.jpg" alt=""/>
                                     </div>
                                     <div class="product__sidebar__comment__item__text">
                                         <ul>
@@ -334,7 +342,7 @@
                                 </div>
                                 <div class="product__sidebar__comment__item">
                                     <div class="product__sidebar__comment__item__pic">
-                                        <img src="/img/sidebar/comment-3.jpg" alt="" />
+                                        <img src="/img/sidebar/comment-3.jpg" alt=""/>
                                     </div>
                                     <div class="product__sidebar__comment__item__text">
                                         <ul>
@@ -347,7 +355,7 @@
                                 </div>
                                 <div class="product__sidebar__comment__item">
                                     <div class="product__sidebar__comment__item__pic">
-                                        <img src="/img/sidebar/comment-4.jpg" alt="" />
+                                        <img src="/img/sidebar/comment-4.jpg" alt=""/>
                                     </div>
                                     <div class="product__sidebar__comment__item__text">
                                         <ul>

@@ -35,9 +35,37 @@
     <link rel="stylesheet" href="/css/owl.carousel.min.css" type="text/css"/>
     <link rel="stylesheet" href="/css/slicknav.min.css" type="text/css"/>
     <link rel="stylesheet" href="/css/style.css" type="text/css"/>
+
+    <style>
+        .magicIcon {
+            position: fixed;
+            right: 20px;
+            bottom: 30px;
+            z-index: 11;
+            animation: action 1s infinite alternate
+        }
+
+        @keyframes action {
+            0% {
+                transform: translateY(0)
+            }
+            100% {
+                transform: translateY(-15px)
+            }
+        }
+
+        #magicIcon {
+            width: 180px;
+            height: 190px
+        }
+    </style>
 </head>
 
 <body>
+
+<div class="magicIcon">
+    <a href="/magic"><img id="magicIcon" src="/img/conch.png" alt="Conch Shell"></a>
+</div>
 <!-- Page Preloder -->
 <div id="preloder">
     <div class="loader"></div>
