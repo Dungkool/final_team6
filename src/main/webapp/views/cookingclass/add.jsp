@@ -13,6 +13,7 @@
         });
     });
 
+
     function setThumbnail(event) {
         var reader = new FileReader();
 
@@ -75,6 +76,7 @@
         }).open();
     }
 
+
     $(function () {
         classregister_form.init();
     });
@@ -109,6 +111,34 @@
             <div class="col-lg-8">
                 <div class="single-article-section">
                     <div class="login__form">
+
+                        <div class="class-step">
+                            <div class="section-title">
+                                <h5>STEP 01. 호스트 인증</h5>
+                            </div>
+                            <h2>${result.biznum}</h2>
+                            <h2>${result.bizname}</h2>
+                            <h2>${result.bizowner}</h2>
+                            <h2>${result.bizdate}</h2>
+                            <h2>${result.bizadd}</h2>
+                            <form action="/ocrimpl" method="post" enctype="multipart/form-data" id="ocr_form"
+                                  class="well"
+                                  style="margin-top: 30px">
+                                <p><span class="highlight">사업자 등록증으로 호스트님을 인증해주세요</span></p>
+                                <div class="filebox" style="align-items: center;">
+                                    <input class="upload-name" aria-label="Search"
+                                           value="사업자등록증을 등록해주세요"
+                                           placeholder="사업자등록증을 등록해주세요">
+                                    <label for="bizimg">파일 찾기</label>
+                                    <input type="file" name="bizimg"
+                                           id="bizimg" onchange="setThumbnail(event);">
+                                    <div id="image_container" class="image_container"></div>
+                                </div>
+                                <button id="ocr_btn" class="btn" type="submit"
+                                        style="background-color: #F28123; color: #fff; ">인증
+                                </button>
+                            </form>
+                        </div>
                         <form id="classregister_form">
                             <input type="hidden" name="custpin" id="custpin" value="${logincust.custpin}">
                             <input type="hidden" name="custid" id="custid" value="${logincust.custid}">
@@ -116,55 +146,28 @@
 
                             <div class="class-step">
                                 <div class="section-title">
-                                    <h5>STEP 01. 호스트 인증</h5>
-                                </div>
-                                <h2>${result.biz_num}</h2>
-                                <h2>${result.biz_name}</h2>
-                                <h2>${result.owner_name}</h2>
-                                <h2>${result.bizdate}</h2>
-                                <form action="/ocrimpl" method="post" enctype="multipart/form-data" id="ocr_form"
-                                      class="well"
-                                      style="margin-top: 30px">
-                                    <p><span class="highlight">사업자 등록증으로 호스트님을 인증해주세요</span></p>
-                                    <div class="filebox" style="align-items: center;">
-                                        <input class="upload-name" aria-label="Search"
-                                               value="사업자등록증을 등록해주세요"
-                                               placeholder="사업자등록증을 등록해주세요">
-                                        <label for="biz_image">파일 찾기</label>
-                                        <input type="file" name="biz_image"
-                                               id="biz_image" onchange="setThumbnail(event);">
-                                        <div id="image_container" class="image_container"></div>
-                                    </div>
-
-                                    <button id="ocr_btn" class="btn" type="button"
-                                            style="background-color: #F28123; color: #fff; ">인증
-                                    </button>
-                                </form>
-                            </div>
-                            <div class="class-step">
-                                <div class="section-title">
                                     <h5>STEP 02. 클래스 유형</h5>
                                     <div class="form-group" style="margin-top: 30px;">
                                         <div class="form-check-category">
                                             <fieldset>
                                                 <label>
-                                                    <input type="radio" id="type1" name="type" value="korean" checked/>&nbsp
+                                                    <input type="radio" id="type1" name="type" value="한식" checked/>&nbsp
                                                     <span>한식</span>
                                                 </label>
                                                 <label>
-                                                    <input type="radio" id="type2" name="type" value="western"/>&nbsp
+                                                    <input type="radio" id="type2" name="type" value="양식"/>&nbsp
                                                     <span>양식</span>
                                                 </label>
                                                 <label>
-                                                    <input type="radio" id="type3" name="type" value="chinese"/>&nbsp
+                                                    <input type="radio" id="type3" name="type" value="중식"/>&nbsp
                                                     <span>중식</span>
                                                 </label>
                                                 <label>
-                                                    <input type="radio" id="type4" name="type" value="japanese"/>&nbsp
+                                                    <input type="radio" id="type4" name="type" value="일식"/>&nbsp
                                                     <span>일식</span>
                                                 </label>
                                                 <label>
-                                                    <input type="radio" id="type5" name="type" value="etc"/>&nbsp
+                                                    <input type="radio" id="type5" name="type" value="기타"/>&nbsp
                                                     <span>기타</span>
                                                 </label>
                                             </fieldset>

@@ -22,6 +22,8 @@ import java.util.List;
 @Controller
 @RequestMapping("/cookingclass")
 public class ClassController {
+    @Value("${uploadimgdir}")
+    String imgpath;
     String dir = "cookingclass/";
 
     @Value("${uploadimgdir}")
@@ -192,11 +194,19 @@ public class ClassController {
         return "redirect:/cookingclass/detail";
     }
 
-
-//    @RequestMapping("/add")
-//    public String add(Model model) throws Exception {
-//        model.addAttribute("target", "class");
-//        model.addAttribute("center", dir + "add");
+//    @RequestMapping("/ocrimpl")
+//    public String ocrimpl(Model model, Ncp ncp) throws ParseException {
+//
+//        // img 저장
+//        FileUploadUtil.saveOcrFile(ncp.getImg(), imgpath);
+//        // NCP 에 요청
+//        String imgname = ncp.getImg().getOriginalFilename();
+//        JSONObject result = (JSONObject) OCRUtil.getResult(imgpath, imgname);
+//        Map map = OCRUtil.getData(result);
+//        log.info(map.values().toString());
+//
+//        model.addAttribute("result", map);
+//        model.addAttribute("center", "/cookingclass/detail");
 //        return "index";
 //    }
 }
