@@ -11,8 +11,8 @@ import java.util.List;
 @Repository
 @Mapper
 public interface ClassMapper extends KBMapper<Integer, ClassBasic> {
-    
-    Page<ClassBasic> getpage() throws Exception;
+
+    Page<ClassBasic> getpage(ClassBasic classBasic) throws Exception;
 
     Page<ClassBasic> getpage_category(String location, String type, String sort) throws Exception;
 
@@ -21,11 +21,13 @@ public interface ClassMapper extends KBMapper<Integer, ClassBasic> {
     public List<ClassBasic> search(ClassBasic csearch);
 
     Page<ClassBasic> getsearch(String classtitle) throws Exception;
+
     List<ClassBasic> latestClass() throws Exception;
+
+    public int pingetter() throws Exception;
 
 //    Page<ClassBasic> getlocation(String location) throws Exception;
 //
 //    Page<ClassBasic> gettype(String location) throws Exception;
-
 
 }
