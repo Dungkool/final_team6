@@ -34,19 +34,16 @@ public class ClassController {
 
 
     @RequestMapping("/class")
-    public String get(@RequestParam(required = false, defaultValue = "1") int pageNo, Model model) throws Exception {
+    public String get(@RequestParam(required = false, defaultValue = "1") int pageNo, Model model, ClassBasic classBasic) throws Exception {
         PageInfo<ClassBasic> c;
-        List<ClassBasic> clist;
-        //List<ClassBasic> list = classService.get();
         try {
-            c = new PageInfo<>(classService.getPage(pageNo), 5);
-            clist = c.getList();// 5:하단 네비게이션 개수
+            c = new PageInfo<>(classService.getPage(pageNo, classBasic), 5);
         } catch (Exception e) {
             throw new Exception("시스템 장애 : ER0002");
         }
         model.addAttribute("target", "class");
-        model.addAttribute("clist", clist);
-        model.addAttribute("cpage", c);
+        model.addAttribute("clist", c);
+        model.addAttribute("sortinfo", classBasic);
         model.addAttribute("center", dir + "class");
         return "index";
     }

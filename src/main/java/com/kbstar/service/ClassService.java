@@ -48,9 +48,9 @@ public class ClassService implements KBService<Integer, ClassBasic> {
         return list;
     }
 
-    public Page<ClassBasic> getPage(int pageNo) throws Exception {
+    public Page<ClassBasic> getPage(int pageNo, ClassBasic classBasic) throws Exception {
         PageHelper.startPage(pageNo, 6);
-        return mapper.getpage();
+        return mapper.getpage(classBasic);
     }
 
     public Page<ClassBasic> getPage_category(int pageNo, String location,
@@ -80,7 +80,7 @@ public class ClassService implements KBService<Integer, ClassBasic> {
 //    }
 
     public List<ClassBasic> latestClass() throws Exception {
-        List<ClassBasic> classList =mapper.latestClass();
+        List<ClassBasic> classList = mapper.latestClass();
         return classList;
     }
 

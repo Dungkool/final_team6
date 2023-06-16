@@ -24,6 +24,7 @@ public class ClassBasic {
     private String classdesc;
     private String address;
     private String classdate;
+    private int sort;
 
     public ClassBasic(int classpin, String thumbnailimg, String location, String cooking, String classtitle, String address, String classdate, int classtime, int personal, int amount) {
         this.classpin = classpin;

@@ -12,26 +12,41 @@
         SELECT *
         FROM Class_Basic
     </select>
-    <select id="getpage" resultType="ClassBasic">
+    <select id="getpage" parameterType="ClassBasic" resultType="ClassBasic">
         SELECT *
         FROM Class_Basic
-        ORDER BY classpin DESC
-    </select>
-    <select id="getpage_category" parameterType="String" resultType="ClassBasic">
-        SELECT *
-        FROM Class_Basic
-        <where>
-            <if test="type != null and !type.equals('')">
-                type LIKE '%'||#{type}||'%'
-            </if>
-            <if test="location != null and !location.equals('')">
-                AND location LIKE '%'||#{location}||'%'
-            </if>
-        </where>
-        <if test="sort != null and !sort.equals('1')">
-            ORDER BY amount DESC
+        WHERE 1=1
+        <if test="location != ''">
+            AND location LIKE '%' || #{location} || '%'
+        </if>
+        <if test="type != ''">
+            AND type LIKE '%' || #{type} || '%'
+        </if>
+        <if test="classtitle != ''">
+            AND classtitle LIKE '%' || #{classtitle} || '%'
+        </if>
+        <if test="sort == 1">
+            ORDER BY classdate DESC
+        </if>
+        <if test="sort == 0">
+            ORDER BY amount ASC
         </if>
     </select>
+    <!--    <select id="getpage_category" parameterType="String" resultType="ClassBasic">-->
+    <!--        SELECT *-->
+    <!--        FROM Class_Basic-->
+    <!--        <where>-->
+    <!--            <if test="type != null and !type.equals('')">-->
+    <!--                type LIKE '%'||#{type}||'%'-->
+    <!--            </if>-->
+    <!--            <if test="location != null and !location.equals('')">-->
+    <!--                AND location LIKE '%'||#{location}||'%'-->
+    <!--            </if>-->
+    <!--        </where>-->
+    <!--        <if test="sort != null and !sort.equals('1')">-->
+    <!--            ORDER BY amount DESC-->
+    <!--        </if>-->
+    <!--    </select>-->
     <select id="search" parameterType="String" resultType="ClassBasic">
         SELECT * FROM Class_Basic
         <where>
@@ -64,20 +79,20 @@
     <!--        </if>-->
     <!--        ORDER BY classpin DESC-->
     <!--    </select>-->
-    <select id="getlocationtype" parameterType="Map" resultType="ClassBasic">
-        SELECT *
-        FROM Class_Basic
-        <where>
-            <if test="location != null and !location.equals('*')">
-                location = #{location}
-            </if>
+    <!--    <select id="getlocationtype" parameterType="Map" resultType="ClassBasic">-->
+    <!--        SELECT *-->
+    <!--        FROM Class_Basic-->
+    <!--        <where>-->
+    <!--            <if test="location != null and !location.equals('*')">-->
+    <!--                location = #{location}-->
+    <!--            </if>-->
 
-            <if test="type != null and !type.equals('*')">
-                AND type = #{type}
-            </if>
-        </where>
-        ORDER BY classpin DESC
-    </select>
+    <!--            <if test="type != null and !type.equals('*')">-->
+    <!--                AND type = #{type}-->
+    <!--            </if>-->
+    <!--        </where>-->
+    <!--        ORDER BY classpin DESC-->
+    <!--    </select>-->
 
 
     <insert id="insert" parameterType="ClassBasic">
@@ -118,8 +133,9 @@
 
     <!--            이나은-->
     <select id="latestClass" resultType="ClassBasic">
-        select * from class_basic
-                 order by CLASSDATE
+        select *
+        from class_basic
+        order by CLASSDATE
     </select>
 
 
