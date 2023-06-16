@@ -1,5 +1,6 @@
 package com.kbstar.controller;
 
+import com.kbstar.dto.ClassBasic;
 import com.kbstar.dto.Ncp;
 import com.kbstar.util.FileUploadUtil;
 import com.kbstar.util.OCRUtil;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
 import java.util.Map;
 
 @Slf4j
@@ -20,7 +22,8 @@ public class NcpController {
     String imgpath;
 
     @RequestMapping("/ocrimpl")
-    public String ocrimpl(Model model, Ncp ncp) throws ParseException {
+    public String ocrimpl(Model model, HttpSession session, Ncp ncp) throws ParseException {
+        ClassBasic classBasic = null;
 
         // img 저장
         FileUploadUtil.saveOcrFile(ncp.getImg(), imgpath);
@@ -32,8 +35,7 @@ public class NcpController {
 
         model.addAttribute("result", map);
         model.addAttribute("center", "ocr");
-        return "index";
+        return "redirect:/cookingclass/detail";
     }
-
-
 }
+

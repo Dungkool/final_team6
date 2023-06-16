@@ -13,6 +13,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script type="text/javascript"
+            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=186d9ac6e73cf3e121e11e749901f230&libraries=services"></script>
     <title>Kolly on the Table</title>
 
     <!-- Google Font -->
@@ -35,7 +37,6 @@
     <link rel="stylesheet" href="/css/owl.carousel.min.css" type="text/css"/>
     <link rel="stylesheet" href="/css/slicknav.min.css" type="text/css"/>
     <link rel="stylesheet" href="/css/style.css" type="text/css"/>
-
     <style>
         .magicIcon {
             position: fixed;
@@ -91,7 +92,7 @@
                             <li><a href="/contacts">Contacts</a></li>
                             <c:choose>
                                 <c:when test="${logincust != null}">
-                                    <li><a href="">Register</a>
+                                    <li><a>Register</a>
                                         <ul class="dropdown">
                                             <li><a href="/recipe/add">Recipe</a></li>
                                             <li><a href="/cookingclass/add">Class</a></li>
@@ -112,7 +113,7 @@
                                 <li><a href="/apply">Apply</a></li>
                             </c:when>
                             <c:otherwise>
-                                <li><a href="/logout" class="search-switch">Logout
+                                <li><a href="/login/logout" class="search-switch">Logout
                                 </a></li>
                                 <li><a href="/apply/mypage?custid=${logincust.custid}" class="search-switch">
                                     My Page
