@@ -30,6 +30,7 @@
         ORDER BY class_comment.classcommentpin ASC
     </select>
 
+
     <insert id="insert" parameterType="classcomment">
         INSERT INTO class_comment
         VALUES (class_comment_seq.NEXTVAL, #{classpin}, #{custpin}, #{custid}, #{nickname}, #{content}, SYSDATE)

@@ -16,8 +16,8 @@ import java.util.UUID;
 public class OCRUtil {
     public static Object getResult(String imgpath, String imgname) {
         JSONObject obj = null;
-        String apiURL = "https://uhucar79op.apigw.ntruss.com/custom/v1/22519/44778d82365e4af681c40d5f0eef5cf6f5899d3f0ac335050a7ed6779cf3f674/infer";
-        String secretKey = "dlZuSkx3WnV6eW1lUFRHSHBkRXZNaFZPaWJvdFlhUFk=";
+        String apiURL = "ENC(BzbYr9dSFmTnJNickES8fXDM/yCeE/dZ8QM3QZpkBpJOBDRJUTlHHYozOT+EuA3la+BXx0MFbYtE9WGR/VLaaSED6yTwF4hr8Pv48PV73s7kVv1ZReIKLqrWChyiRHF+mEN1w++68nbQXC6l2JIZ1U7bcXNAUKwKRte4QPMKHUqvc2w/AVNH+w==)";
+        String secretKey = "ENC(cUuF3ikfr5xkeUA/1Q9ktRlRrux++VHPqEYI1AVymBYhHoOLsxfayomfZJt/ftfoY5OZXooBshE=)";
         String imageFile = imgpath + imgname;
 
         try {
@@ -115,22 +115,19 @@ public class OCRUtil {
         JSONObject jo1 = (JSONObject) images.get(0);
         JSONArray fields = (JSONArray) jo1.get("fields");
 
-        JSONObject biznum_obj = (JSONObject) fields.get(0);
-        String biznum = (String) biznum_obj.get("inferText");
-        JSONObject bizname_obj = (JSONObject) fields.get(1);
-        String bizname = (String) bizname_obj.get("inferText");
-        JSONObject bizowner_obj = (JSONObject) fields.get(2);
-        String bizowner = (String) bizowner_obj.get("inferText");
-        JSONObject bizdate_obj = (JSONObject) fields.get(3);
-        String bizdate = (String) bizdate_obj.get("inferText");
-        JSONObject bizadd_obj = (JSONObject) fields.get(4);
-        String bizadd = (String) bizadd_obj.get("inferText");
+        JSONObject biz_num_obj = (JSONObject) fields.get(0);
+        String biz_num = (String) biz_num_obj.get("inferText");
+        JSONObject biz_name_obj = (JSONObject) fields.get(1);
+        String biz_name = (String) biz_name_obj.get("inferText");
+        JSONObject owner_name_obj = (JSONObject) fields.get(2);
+        String owner_name = (String) owner_name_obj.get("inferText");
+        JSONObject biz_date_obj = (JSONObject) fields.get(3);
+        String biz_date = (String) biz_date_obj.get("inferText");
 
-        map.put("biznum", biznum);
-        map.put("bizname", bizname);
-        map.put("bizowner", bizowner);
-        map.put("bizdate", bizdate);
-        map.put("bizadd", bizadd);
+        map.put("biz_num", biz_num);
+        map.put("biz_name", biz_name);
+        map.put("owner_name", owner_name);
+        map.put("biz_date", biz_date);
         return map;
     }
 }

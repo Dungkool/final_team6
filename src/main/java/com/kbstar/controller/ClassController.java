@@ -62,7 +62,7 @@ public class ClassController {
                           ClassBasic classBasic,
                           String zipcode, String address1, String address2,
                           MultipartFile img) throws Exception {
-        classBasic.setAddress(address1 + " " + address2);
+        classBasic.setAddress(address1 + " " + address2 + " (" + zipcode + ")");
         classService.register(classBasic);
         FileUploadUtil.saveFile(img, imgdir, classService.pingetter() + "_thumb.jpg");
         model.addAttribute("center", dir + "add");

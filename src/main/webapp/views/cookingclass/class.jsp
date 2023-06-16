@@ -187,6 +187,7 @@
                                               currencyCode="KRW" pattern="###,###원"/></p>
                         <a href="/cookingclass/detail" class="cart-btn"><i class="fas fa-shopping-cart"></i> 클래스 신청</a>
                     </div>
+
                 </div>
             </c:forEach>
         </div>

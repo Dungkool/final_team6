@@ -118,25 +118,28 @@
                                 <div class="section-title">
                                     <h5>STEP 01. 호스트 인증</h5>
                                 </div>
-                                <h2>${result.biznum}</h2>
-                                <h2>${result.bizname}</h2>
-                                <h2>${result.bizowner}</h2>
+                                <h2>${result.biz_num}</h2>
+                                <h2>${result.biz_name}</h2>
+                                <h2>${result.owner_name}</h2>
                                 <h2>${result.bizdate}</h2>
-                                <h2>${result.bizadd}</h2>
-                                <p><span class="highlight">사업자 등록증으로 호스트님을 인증해주세요</span></p>
-                                <div class="filebox" style="align-items: center;">
-                                    <input class="upload-name" aria-label="Search"
-                                           value="사업자등록증을 등록해주세요"
-                                           placeholder="사업자등록증을 등록해주세요">
-                                    <label for="biz_image">파일 찾기</label>
-                                    <input type="file" name="biz_image"
-                                           id="biz_image" onchange="setThumbnail(event);">
-                                    <div id="image_container" class="image_container"></div>
-                                </div>
+                                <form action="/ocrimpl" method="post" enctype="multipart/form-data" id="ocr_form"
+                                      class="well"
+                                      style="margin-top: 30px">
+                                    <p><span class="highlight">사업자 등록증으로 호스트님을 인증해주세요</span></p>
+                                    <div class="filebox" style="align-items: center;">
+                                        <input class="upload-name" aria-label="Search"
+                                               value="사업자등록증을 등록해주세요"
+                                               placeholder="사업자등록증을 등록해주세요">
+                                        <label for="biz_image">파일 찾기</label>
+                                        <input type="file" name="biz_image"
+                                               id="biz_image" onchange="setThumbnail(event);">
+                                        <div id="image_container" class="image_container"></div>
+                                    </div>
 
-                                <button id="ocr_btn" class="btn" type="button"
-                                        style="background-color: #F28123; color: #fff; ">인증
-                                </button>
+                                    <button id="ocr_btn" class="btn" type="button"
+                                            style="background-color: #F28123; color: #fff; ">인증
+                                    </button>
+                                </form>
                             </div>
                             <div class="class-step">
                                 <div class="section-title">
