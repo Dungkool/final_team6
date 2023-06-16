@@ -21,7 +21,7 @@
             var geocoder = new kakao.maps.services.Geocoder();
 
             // 주소로 좌표를 검색합니다
-            geocoder.addressSearch('서울 성동구 가람길 110', function (result, status) {
+            geocoder.addressSearch('${classdetail.address}', function (result, status) {
                 console.log("${classdetail.address}");
                 // 정상적으로 검색이 완료됐으면
                 if (status === kakao.maps.services.Status.OK) {
