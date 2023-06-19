@@ -28,15 +28,15 @@ public class NcpController {
         // img 저장
         FileUploadUtil.saveOcrFile(ncp.getBizimg(), imgpath);
         // NCP 에 요청
-
         String imgname = ncp.getBizimg().getOriginalFilename();
-
         JSONObject result = (JSONObject) OCRUtil.getResult(imgpath, imgname);
         Map map = OCRUtil.getData(result);
         log.info(map.values().toString());
 
         model.addAttribute("result", map);
-        return "redirect:/cookingclass/add";
+        return "/cookingclass/add";
     }
 }
+
+
 
